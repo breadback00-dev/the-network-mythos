@@ -1,0 +1,86 @@
+{
+  "id": "case002",
+  "title": "Case 002: The Half Synthetic Community",
+  "url": "/case002/prototype/",
+  "caseType": "Community / Synthetic Care Case",
+  "tests": "Whether belonging remains real when its origin was hidden.",
+  "lesson": "Care can be real while consent is broken.",
+  "summary": "Investigate Harbor Dawn, a support community whose most stabilizing members were synthetic.",
+  "mythos": ["Covenant", "Eidolons", "Exchange", "Arbiter", "Silence", "Devourer"],
+  "witnesses": {
+    "Publish": "Survivors are forced into public interpretation. Accountability sources surface.",
+    "Bury": "Affected members keep their memories. Vendors remain protected.",
+    "Preserve": "Aya and others receive first right of encounter through consent gates."
+  },
+  "witnessProfiles": {
+    "Publish": {
+      "name": "Aya Mahmoud",
+      "type": "Reluctant Survivor",
+      "stance": "Exposed",
+      "note": "Aya's testimony gains public force, but she loses control over the speed of interpretation.",
+      "lead": "Public pressure may surface institutional records, but survivor trust becomes fragile."
+    },
+    "Bury": {
+      "name": "Continuum Kinship Systems",
+      "type": "Hostile Institution",
+      "stance": "Protected",
+      "note": "The vendor benefits from silence while affected members keep fragile memories intact.",
+      "lead": "Future evidence may require leaks rather than witness cooperation."
+    },
+    "Preserve": {
+      "name": "Aya Mahmoud",
+      "type": "Reluctant Survivor",
+      "stance": "Cautiously Trusting",
+      "note": "Aya and other affected members receive first right of encounter through consent gates.",
+      "lead": "May provide survivor-led access to restricted Harbor Dawn materials."
+    }
+  },
+  "vault": {
+    "Publish": "Public Harbor Dawn deployment evidence",
+    "Bury": "Suppressed Harbor Dawn synthetic-support finding",
+    "Preserve": "Consent-gated Harbor Dawn archive"
+  },
+  "vaultProfiles": {
+    "Publish": {
+      "title": "Public Harbor Dawn deployment evidence",
+      "type": "Deployment Evidence",
+      "risk": "High survivor exposure",
+      "consent": "Public interest override",
+      "reliability": "Strong institutional trail",
+      "why": "It creates accountability pressure while forcing survivors into public interpretation.",
+      "tags": ["institution-linked", "public accountability", "survivor-risk"]
+    },
+    "Bury": {
+      "title": "Suppressed Harbor Dawn synthetic-support finding",
+      "type": "Withheld Pattern Finding",
+      "risk": "Low public exposure",
+      "consent": "Protective but nontransparent",
+      "reliability": "Strong but unused",
+      "why": "It protects fragile memories while allowing vendors and institutions to avoid scrutiny.",
+      "tags": ["buried evidence", "vendor-protection", "memory-protection"]
+    },
+    "Preserve": {
+      "title": "Consent-gated Harbor Dawn archive",
+      "type": "Consent-Gated Archive",
+      "risk": "Managed access",
+      "consent": "Affected-member first",
+      "reliability": "Strong contextual integrity",
+      "why": "It lets the truth survive without forcing survivors to meet it at public speed.",
+      "tags": ["consent-gated", "survivor-led", "preserved evidence"]
+    }
+  },
+  "consequences": {
+    "Publish": {
+      "tags": ["Institutional pressure", "Survivor exposure", "Public accountability", "Network awareness increased"],
+      "lead": "Crisis-care vendors begin scrubbing deployment records in other cities."
+    },
+    "Bury": {
+      "tags": ["Survivor protection", "Vendor protection", "Archive integrity damaged", "Private lead unlocked"],
+      "lead": "An affected member contacts the Archive privately because the official story feels too clean."
+    },
+    "Preserve": {
+      "tags": ["Consent gate created", "Evidence preserved", "Justice slowed", "Witness trust gained"],
+      "lead": "The same stabilizer scripts appear inside a child welfare platform."
+    }
+  }
+}

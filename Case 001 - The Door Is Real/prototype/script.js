@@ -353,6 +353,8 @@ function markdownToHtml(markdown) {
   let html = "";
   let inList = false;
   let inQuote = false;
+  let inNotes = false;
+  const isFlagged = state.flagged.has(state.selectedId);
 
   const closeList = () => {
     if (inList) {
@@ -369,6 +371,19 @@ function markdownToHtml(markdown) {
 
   for (const line of lines) {
     const trimmed = line.trim();
+
+    if (trimmed === "## Investigator Notes") {
+      closeList();
+      closeQuote();
+      inNotes = true;
+      if (isFlagged) {
+        html += `<div class="investigator-notes unlocked"><h2>Investigator Notes</h2>`;
+      } else {
+        html += `<div class="investigator-notes locked"><p class="locked-msg">🔒 Investigator Notes locked. Flag this artifact as containing a contradiction to decrypt analysis.</p><div style="display:none;">`;
+      }
+      continue;
+    }
+
     if (!trimmed) {
       closeList();
       closeQuote();
@@ -408,6 +423,13 @@ function markdownToHtml(markdown) {
   }
   closeList();
   closeQuote();
+  if (inNotes) {
+    if (!isFlagged) {
+      html += `</div></div>`;
+    } else {
+      html += `</div>`;
+    }
+  }
   return html;
 }
 
@@ -465,6 +487,9 @@ flagButton.addEventListener("click", () => {
   saveState();
   renderEvidenceList();
   renderFlags();
+  
+  const currentItem = evidence.find((entry) => entry.id === state.selectedId);
+  if (currentItem) openEvidence(currentItem);
 });
 
 noteButton.addEventListener("click", () => {
@@ -504,8 +529,51 @@ document.querySelectorAll(".filter-button").forEach((button) => {
 });
 
 document.querySelectorAll("[data-ending]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const ending = button.dataset.ending;
+  button.innerHTML = `<span>${button.textContent}</span>`;
+  
+  let holdTimer;
+  let progressInterval;
+  let isCommitted = false;
+  
+  const clearHold = () => {
+    if (isCommitted) return;
+    clearTimeout(holdTimer);
+    clearInterval(progressInterval);
+    button.style.setProperty('--progress', '0%');
+  };
+
+  const startHold = () => {
+    if (isCommitted || button.closest('.ending-panel').classList.contains('locked')) return;
+    let progress = 0;
+    
+    progressInterval = setInterval(() => {
+      progress += (100 / 40);
+      button.style.setProperty('--progress', `${Math.min(progress, 100)}%`);
+    }, 50);
+
+    holdTimer = setTimeout(() => {
+      clearInterval(progressInterval);
+      isCommitted = true;
+      button.style.setProperty('--progress', '100%');
+      
+      // Disable other buttons
+      document.querySelectorAll("[data-ending]").forEach(b => {
+        if (b !== button) b.style.opacity = "0.3";
+        b.style.pointerEvents = "none";
+      });
+
+      executeEnding(button.dataset.ending);
+    }, 2000);
+  };
+
+  button.addEventListener("mousedown", startHold);
+  button.addEventListener("touchstart", (e) => { e.preventDefault(); startHold(); });
+  button.addEventListener("mouseup", clearHold);
+  button.addEventListener("mouseleave", clearHold);
+  button.addEventListener("touchend", clearHold);
+});
+
+function executeEnding(ending) {
     const outcomes = {
       Publish: {
         copy: "You expose the counterfeit. The truth trends before it can be understood. The account loses authority, but the route to Mara becomes a map.",
@@ -540,10 +608,13 @@ document.querySelectorAll("[data-ending]").forEach((button) => {
     statusAwareness.textContent = outcome.awareness;
     nextLead.textContent = outcome.lead;
     archiveStatus.hidden = false;
+    
+    caseAudio.thud.currentTime = 0;
+    caseAudio.thud.play().catch(() => {});
+    
     recordArchiveChoice("case001", ending);
     archiveWriteResult.innerHTML = `Archive recorded: <strong>${ending}</strong>. <a href="/">Return to Archive</a>.`;
-  });
-});
+}
 
 function recordArchiveChoice(caseId, choice) {
   const defaultArchiveState = {
@@ -571,6 +642,21 @@ document.querySelector("#resetButton").addEventListener("click", () => {
   storage.remove("door.notes");
   window.location.reload();
 });
+
+const caseAudio = {
+  click: new Audio('/assets/audio/ui-click.mp3'),
+  thud: new Audio('/assets/audio/ui-thud.mp3'),
+  init() {
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+        this.click.currentTime = 0;
+        this.click.play().catch(() => {});
+      }
+    });
+  }
+};
+
+caseAudio.init();
 
 renderEvidenceList();
 renderTimeline();

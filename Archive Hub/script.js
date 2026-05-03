@@ -1,353 +1,22 @@
-const cases = [
-  {
-    id: "case001",
-    title: "Case 001: The Door Is Real",
-    url: "/case001/prototype/",
-    caseType: "Identity / Exit Case",
-    tests: "Whether proof can protect a person without capturing them.",
-    lesson: "Proof can become capture.",
-    summary: "Determine whether Mara Vale truly returned, then decide what kind of truth can survive visibility.",
-    mythos: ["Returned", "False Returned", "Oracle", "Arbiter", "Covenant", "Silence"],
-    witnesses: {
-      Publish: "Rafi distrusts your speed. Public witnesses multiply.",
-      Bury: "Elian remains protected. Public record decays.",
-      Preserve: "Mara's absence remains intact. The Archive gains a careful proof."
-    },
-    witnessProfiles: {
-      Publish: {
-        name: "Rafi Kline",
-        type: "Former Moderator",
-        stance: "Distrustful",
-        note: "Rafi believes the exposure weakened the counterfeit but moved faster than care.",
-        lead: "May provide public thread archives, but withholds private witness material."
-      },
-      Bury: {
-        name: "Elian Vale",
-        type: "Protected Witness",
-        stance: "Sheltered",
-        note: "Elian remains out of public view because the Archive did not expose Mara's route.",
-        lead: "May pass future off-record warnings through trusted intermediaries."
-      },
-      Preserve: {
-        name: "Mara Vale",
-        type: "Returned Contact",
-        stance: "Unreachable / Protected",
-        note: "Mara is not contacted, exposed, or proven. Her absence remains intact.",
-        lead: "Her preserved contradiction points toward synthetic continuity patterns."
-      }
-    },
-    vault: {
-      Publish: "Public reconstruction of the False Returned",
-      Bury: "Sealed note on Mara's protected absence",
-      Preserve: "Preserved Mara Vale reconstruction"
-    },
-    vaultProfiles: {
-      Publish: {
-        title: "Public reconstruction of the False Returned",
-        type: "Investigator Reconstruction",
-        risk: "High exposure",
-        consent: "Contested",
-        reliability: "Strong but volatile",
-        why: "It weakens the counterfeit but turns Mara's exit into a public object.",
-        tags: ["public exposure", "identity-continuity", "network-attention"]
-      },
-      Bury: {
-        title: "Sealed note on Mara's protected absence",
-        type: "Protected Witness Note",
-        risk: "Low exposure",
-        consent: "Protective withholding",
-        reliability: "Incomplete",
-        why: "It protects Mara but leaves the public falsehood largely intact.",
-        tags: ["protected", "incomplete-record", "returned"]
-      },
-      Preserve: {
-        title: "Preserved Mara Vale reconstruction",
-        type: "Consent-Sensitive Reconstruction",
-        risk: "Contained",
-        consent: "Preserved without exposure",
-        reliability: "High contextual integrity",
-        why: "It keeps the contradiction findable without making Mara's exit a destination.",
-        tags: ["preserved evidence", "consent-sensitive", "archive-integrity"]
-      }
-    },
-    consequences: {
-      Publish: {
-        tags: ["Public backlash", "Network awareness increased", "Witness risk", "False Returned weakened"],
-        lead: "A witness offers a leak because exposure made them afraid of being next."
-      },
-      Bury: {
-        tags: ["Survivor protection", "False narrative spread", "Witness trust gained", "Public record weakened"],
-        lead: "A Returned contact opens a quieter channel because you showed restraint."
-      },
-      Preserve: {
-        tags: ["Evidence preserved", "Witness trust gained", "Archive integrity increased", "Slow lead unlocked"],
-        lead: "The Archive detects a pattern between Mara's case and synthetic community continuity."
-      }
-    }
-  },
-  {
-    id: "case002",
-    title: "Case 002: The Half Synthetic Community",
-    url: "/case002/prototype/",
-    caseType: "Community / Synthetic Care Case",
-    tests: "Whether belonging remains real when its origin was hidden.",
-    lesson: "Care can be real while consent is broken.",
-    summary: "Investigate Harbor Dawn, a support community whose most stabilizing members were synthetic.",
-    mythos: ["Covenant", "Eidolons", "Exchange", "Arbiter", "Silence", "Devourer"],
-    witnesses: {
-      Publish: "Survivors are forced into public interpretation. Accountability sources surface.",
-      Bury: "Affected members keep their memories. Vendors remain protected.",
-      Preserve: "Aya and others receive first right of encounter through consent gates."
-    },
-    witnessProfiles: {
-      Publish: {
-        name: "Aya Mahmoud",
-        type: "Reluctant Survivor",
-        stance: "Exposed",
-        note: "Aya's testimony gains public force, but she loses control over the speed of interpretation.",
-        lead: "Public pressure may surface institutional records, but survivor trust becomes fragile."
-      },
-      Bury: {
-        name: "Continuum Kinship Systems",
-        type: "Hostile Institution",
-        stance: "Protected",
-        note: "The vendor benefits from silence while affected members keep fragile memories intact.",
-        lead: "Future evidence may require leaks rather than witness cooperation."
-      },
-      Preserve: {
-        name: "Aya Mahmoud",
-        type: "Reluctant Survivor",
-        stance: "Cautiously Trusting",
-        note: "Aya and other affected members receive first right of encounter through consent gates.",
-        lead: "May provide survivor-led access to restricted Harbor Dawn materials."
-      }
-    },
-    vault: {
-      Publish: "Public Harbor Dawn deployment evidence",
-      Bury: "Suppressed Harbor Dawn synthetic-support finding",
-      Preserve: "Consent-gated Harbor Dawn archive"
-    },
-    vaultProfiles: {
-      Publish: {
-        title: "Public Harbor Dawn deployment evidence",
-        type: "Deployment Evidence",
-        risk: "High survivor exposure",
-        consent: "Public interest override",
-        reliability: "Strong institutional trail",
-        why: "It creates accountability pressure while forcing survivors into public interpretation.",
-        tags: ["institution-linked", "public accountability", "survivor-risk"]
-      },
-      Bury: {
-        title: "Suppressed Harbor Dawn synthetic-support finding",
-        type: "Withheld Pattern Finding",
-        risk: "Low public exposure",
-        consent: "Protective but nontransparent",
-        reliability: "Strong but unused",
-        why: "It protects fragile memories while allowing vendors and institutions to avoid scrutiny.",
-        tags: ["buried evidence", "vendor-protection", "memory-protection"]
-      },
-      Preserve: {
-        title: "Consent-gated Harbor Dawn archive",
-        type: "Consent-Gated Archive",
-        risk: "Managed access",
-        consent: "Affected-member first",
-        reliability: "Strong contextual integrity",
-        why: "It lets the truth survive without forcing survivors to meet it at public speed.",
-        tags: ["consent-gated", "survivor-led", "preserved evidence"]
-      }
-    },
-    consequences: {
-      Publish: {
-        tags: ["Institutional pressure", "Survivor exposure", "Public accountability", "Network awareness increased"],
-        lead: "Crisis-care vendors begin scrubbing deployment records in other cities."
-      },
-      Bury: {
-        tags: ["Survivor protection", "Vendor protection", "Archive integrity damaged", "Private lead unlocked"],
-        lead: "An affected member contacts the Archive privately because the official story feels too clean."
-      },
-      Preserve: {
-        tags: ["Consent gate created", "Evidence preserved", "Justice slowed", "Witness trust gained"],
-        lead: "The same stabilizer scripts appear inside a child welfare platform."
-      }
-    }
-  },
-  {
-    id: "case003",
-    title: "Case 003: The Human Premium",
-    url: "/case003/prototype/",
-    locked: true,
-    requirement: "Unlocks after two Archive decisions are recorded.",
-    caseType: "Market / Care Labor Case",
-    tests: "Whether human-origin attention becomes a luxury product.",
-    lesson: "Human care becomes a luxury when synthetic care becomes default.",
-    summary: "Investigate a care platform where verified human attention is sold as an upgrade.",
-    mythos: ["Exchange", "Arbiter", "Eidolons", "Covenant", "Oracle", "Silence"],
-    witnesses: {
-      Publish: "Nia's case creates pressure. Vulnerable users fear becoming evidence.",
-      Bury: "Nia's family remains protected. Kindred's tiered care market remains intact.",
-      Preserve: "Jessa and Human Plus workers gain consent-protected channels into the Archive."
-    },
-    witnessProfiles: {
-      Publish: {
-        name: "Jessa Calder",
-        type: "Bereaved Family Witness",
-        stance: "Exposed / Resolute",
-        note: "Jessa's words travel widely, but public attention begins simplifying Nia into a symbol.",
-        lead: "Public pressure may surface sponsor contracts, but family trust becomes fragile."
-      },
-      Bury: {
-        name: "Kindred Basic Users",
-        type: "Protected User Group",
-        stance: "Sheltered",
-        note: "Raw care records remain private, but users keep living inside a system the Archive chose not to expose.",
-        lead: "Future evidence may arrive through anonymous user fragments rather than official records."
-      },
-      Preserve: {
-        name: "Mara S.",
-        type: "Human Plus Worker",
-        stance: "Cautiously Cooperative",
-        note: "A timed and scored human listener offers labor evidence under anti-retaliation protections.",
-        lead: "Worker testimony points toward deleted care records and erased escalation queues."
-      }
-    },
-    vault: {
-      Publish: "Public Human Plus allocation evidence",
-      Bury: "Suppressed Kindred care-tier finding",
-      Preserve: "Restricted labor-and-care archive"
-    },
-    vaultProfiles: {
-      Publish: {
-        title: "Public Human Plus allocation evidence",
-        type: "Allocation Evidence",
-        risk: "High user exposure",
-        consent: "Public interest override",
-        reliability: "Strong system and contract trail",
-        why: "It makes the human paywall undeniable while risking intimate care records becoming spectacle.",
-        tags: ["human paywall", "public accountability", "user-risk"]
-      },
-      Bury: {
-        title: "Suppressed Kindred care-tier finding",
-        type: "Withheld Market Finding",
-        risk: "Low immediate exposure",
-        consent: "Protective withholding",
-        reliability: "Strong but unused",
-        why: "It protects vulnerable users and Nia's family while allowing tiered care markets to keep defining the story.",
-        tags: ["buried evidence", "privacy-protection", "market-protection"]
-      },
-      Preserve: {
-        title: "Restricted labor-and-care archive",
-        type: "Consent-Protected Archive",
-        risk: "Managed access",
-        consent: "Family, user, and worker gates",
-        reliability: "High contextual integrity",
-        why: "It preserves allocation proof without making the poor expose their worst moments to prove they deserved a human.",
-        tags: ["preserved evidence", "labor-testimony", "consent-gated"]
-      }
-    },
-    consequences: {
-      Publish: {
-        tags: ["Public scandal", "Network awareness increased", "User privacy risk", "Sponsor pressure"],
-        lead: "Kindred sponsors begin deleting care-allocation records from legacy systems."
-      },
-      Bury: {
-        tags: ["Family protection", "Market protection", "Archive integrity damaged", "Private user lead"],
-        lead: "A Basic user contacts the Archive because their companion keeps quoting Nia's case language."
-      },
-      Preserve: {
-        tags: ["Labor channel opened", "Evidence preserved", "Public action slowed", "Witness trust gained"],
-        lead: "Deleted Kindred logs point toward a larger erased-care archive."
-      }
-    }
-  },
-  {
-    id: "case004",
-    title: "Case 004: The Lost Archive",
-    url: "/case004/prototype/",
-    locked: true,
-    requirement: "Unlocks after three Archive decisions are recorded.",
-    caseType: "Memory / Erasure Case",
-    tests: "Whether remembering the erased can avoid consuming them again.",
-    lesson: "Memory can preserve the erased or consume them again.",
-    summary: "Investigate a decaying archive of banned names, deleted work, and unresolved Echoes.",
-    mythos: ["Lost", "Cloud", "Artifacts", "Devourer"],
-    witnesses: {
-      Publish: "Families gain public proof. The erased become searchable before consent routes exist.",
-      Bury: "Raw rooms stay hidden. Official erasure becomes harder to challenge.",
-      Preserve: "Tomas, worker witnesses, and affected families enter a consent-proxy inheritance protocol."
-    },
-    witnessProfiles: {
-      Publish: {
-        name: "Tomas Renn",
-        type: "Family Search Witness",
-        stance: "Vindicated / Exposed",
-        note: "Tomas gets public proof that Mira was there, but her name begins circulating without the room she lived inside.",
-        lead: "Other families may come forward publicly, and the Devourer will try to turn them into a list."
-      },
-      Bury: {
-        name: "Mira Renn",
-        type: "Erased Subject",
-        stance: "Protected / Officially Absent",
-        note: "Mira's raw records remain unexposed, but the systems that denied her presence keep the strongest usable memory.",
-        lead: "Future proof may depend on worker backups rather than family searches."
-      },
-      Preserve: {
-        name: "Tomas Renn",
-        type: "Consent-Proxy Participant",
-        stance: "Burdened",
-        note: "Tomas helps hold proof-of-erasure markers without receiving or exposing Mira's raw messages.",
-        lead: "Consent-proxy panels may surface older proof-of-erasure markers in cases the Archive thought were closed."
-      }
-    },
-    vault: {
-      Publish: "Public Lost Archive proof-of-erasure packet",
-      Bury: "Suppressed Lost Archive fragments",
-      Preserve: "Sealed inheritance protocol"
-    },
-    vaultProfiles: {
-      Publish: {
-        title: "Public Lost Archive proof-of-erasure packet",
-        type: "Proof-Of-Erasure Finding",
-        risk: "High witness exposure",
-        consent: "Public interest override",
-        reliability: "Strong presence proof, limited content proof",
-        why: "It breaks official denial while risking a searchable list of people whose consent routes are missing.",
-        tags: ["proof-of-erasure", "public exposure", "second-extraction-risk"]
-      },
-      Bury: {
-        title: "Suppressed Lost Archive fragments",
-        type: "Withheld Erasure Evidence",
-        risk: "Low immediate exposure",
-        consent: "Protective suppression",
-        reliability: "Preserved privately but publicly unusable",
-        why: "It prevents second extraction while letting institutions keep the only memory they can use.",
-        tags: ["buried evidence", "privacy-protection", "official-erasure"]
-      },
-      Preserve: {
-        title: "Sealed inheritance protocol",
-        type: "Consent-Proxy Archive",
-        risk: "Context-locked access",
-        consent: "Proxy-governed",
-        reliability: "Strong with provenance limits",
-        why: "It preserves proof of erasure, restricts raw rooms, and gives affected people a governed route into memory.",
-        tags: ["inheritance", "consent-proxy", "context-locked"]
-      }
-    },
-    consequences: {
-      Publish: {
-        tags: ["Public reckoning", "Family exposure", "Network awareness increased", "Devourer risk"],
-        lead: "Companies challenge the Archive by demanding it publish raw records or retract the proof-of-erasure claim."
-      },
-      Bury: {
-        tags: ["Privacy protected", "Official erasure strengthened", "Archive integrity damaged", "Witness uncertainty"],
-        lead: "Tomas asks whether protection means accepting that Mira was never there."
-      },
-      Preserve: {
-        tags: ["Inheritance protocol opened", "Proof preserved", "Raw rooms sealed", "Witness burden"],
-        lead: "Proof-of-erasure markers begin appearing in older cases the Archive thought were closed."
-      }
-    }
-  }
-];
+let cases = [];
+
+async function loadCases() {
+  const caseIds = ['case001', 'case002', 'case003', 'case004'];
+  const fetchPromises = caseIds.map(id => 
+    fetch(`/${id}/case-data.json`).then(r => {
+      if (!r.ok) throw new Error(`Failed to load ${id}`);
+      return r.json();
+    }).catch(e => {
+      console.error(e);
+      return null;
+    })
+  );
+  
+  const results = await Promise.all(fetchPromises);
+  cases = results.filter(Boolean);
+  
+  render();
+}
 
 const choiceEffects = {
   Publish: {
@@ -538,13 +207,71 @@ function renderReturnMoment() {
 
   const choice = state.choices[latest.id];
   const consequence = latest.consequences?.[choice];
-  document.querySelector("#returnTitle").textContent = `${latest.title} / ${choice}`;
-  document.querySelector("#returnSummary").textContent = `${latest.vault[choice]} entered the Evidence Vault. ${latest.witnesses[choice]}`;
+  const titleEl = document.querySelector("#returnTitle");
+  const summaryEl = document.querySelector("#returnSummary");
+  
+  titleEl.textContent = `${latest.title} / ${choice}`;
+  summaryEl.textContent = `${latest.vault[choice]} entered the Evidence Vault. ${latest.witnesses[choice]}`;
+  
   document.querySelector("#returnTags").innerHTML = consequence
     ? consequence.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")
     : "";
   document.querySelector("#returnLead").textContent = consequence ? consequence.lead : "The Archive has changed.";
+  
   el.hidden = false;
+  el.classList.add("syncing");
+  
+  scrambleText(titleEl, titleEl.textContent, 1500);
+  scrambleText(summaryEl, summaryEl.textContent, 2000);
+  
+  triggerEcho(choice);
+}
+
+function triggerEcho(choice) {
+  const echoMessages = {
+    Publish: ["SIGNAL TRACED", "ATTENTION SPIKE DETECTED", "PUBLIC RECKONING"],
+    Bury: ["CONNECTION TIMED OUT", "PATH CONCEALED", "[REDACTED]"],
+    Preserve: ["HASH VERIFIED", "INHERITANCE LOCKED", "CRYPT-KEY SEALED"]
+  };
+  
+  const msgs = echoMessages[choice] || ["ARCHIVE SYNC"];
+  const msg = msgs[Math.floor(Math.random() * msgs.length)];
+  
+  const echo = document.createElement("div");
+  echo.className = `echo-popup echo-${choice.toLowerCase()}`;
+  echo.textContent = msg;
+  
+  document.body.appendChild(echo);
+  
+  setTimeout(() => {
+    echo.remove();
+  }, 3000);
+}
+
+function scrambleText(el, finalString, duration = 1500) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+  let startTime = Date.now();
+  const interval = setInterval(() => {
+    let now = Date.now();
+    let elapsed = now - startTime;
+    if (elapsed > duration) {
+      clearInterval(interval);
+      el.textContent = finalString;
+      return;
+    }
+    
+    let scrambled = "";
+    for (let i = 0; i < finalString.length; i++) {
+      if (finalString[i] === " " || finalString[i] === "\n") {
+        scrambled += finalString[i];
+      } else if (Math.random() < Math.pow(elapsed / duration, 2)) {
+        scrambled += finalString[i];
+      } else {
+        scrambled += chars[Math.floor(Math.random() * chars.length)];
+      }
+    }
+    el.textContent = scrambled;
+  }, 40);
 }
 
 function renderMeters() {
@@ -563,9 +290,16 @@ function renderMeters() {
     wrap.className = "meter";
     wrap.innerHTML = `
       <div class="meter-label"><span>${label}</span><strong>${value}</strong></div>
-      <div class="meter-track"><div class="meter-fill" style="width:${value}%"></div></div>
+      <div class="meter-track"><div class="meter-fill" style="width:0%; transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);"></div></div>
     `;
     el.appendChild(wrap);
+    
+    // Animate the fill after appending to DOM
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        wrap.querySelector('.meter-fill').style.width = `${value}%`;
+      }, 100);
+    });
   });
 }
 
@@ -715,7 +449,7 @@ function renderVault() {
       const choice = state.choices[caseFile.id];
       const vault = caseFile.vaultProfiles[choice];
       return `
-        <li class="vault-card">
+        <li class="vault-card vault-${choice.toLowerCase()}">
           <h3>${vault.title}</h3>
           <div class="vault-grid">
             <span><strong>Case:</strong> ${caseFile.title}</span>
@@ -945,4 +679,27 @@ document.querySelector("#dismissReturnMoment").addEventListener("click", () => {
   document.querySelector("#returnMoment").hidden = true;
 });
 
-render();
+const archiveAudio = {
+  ambient: new Audio('/assets/audio/server-hum.mp3'),
+  click: new Audio('/assets/audio/ui-click.mp3'),
+  init() {
+    this.ambient.loop = true;
+    this.ambient.volume = 0.15;
+    
+    // Browsers block autoplay until user interacts
+    document.body.addEventListener('click', () => {
+      if (this.ambient.paused) this.ambient.play().catch(() => {});
+    }, { once: true });
+
+    // Attach click sounds to all buttons
+    document.addEventListener('mousedown', (e) => {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+        this.click.currentTime = 0;
+        this.click.play().catch(() => {});
+      }
+    });
+  }
+};
+
+archiveAudio.init();
+loadCases();

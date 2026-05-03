@@ -1,0 +1,86 @@
+{
+  "id": "case001",
+  "title": "Case 001: The Door Is Real",
+  "url": "/case001/prototype/",
+  "caseType": "Identity / Exit Case",
+  "tests": "Whether proof can protect a person without capturing them.",
+  "lesson": "Proof can become capture.",
+  "summary": "Determine whether Mara Vale truly returned, then decide what kind of truth can survive visibility.",
+  "mythos": ["Returned", "False Returned", "Oracle", "Arbiter", "Covenant", "Silence"],
+  "witnesses": {
+    "Publish": "Rafi distrusts your speed. Public witnesses multiply.",
+    "Bury": "Elian remains protected. Public record decays.",
+    "Preserve": "Mara's absence remains intact. The Archive gains a careful proof."
+  },
+  "witnessProfiles": {
+    "Publish": {
+      "name": "Rafi Kline",
+      "type": "Former Moderator",
+      "stance": "Distrustful",
+      "note": "Rafi believes the exposure weakened the counterfeit but moved faster than care.",
+      "lead": "May provide public thread archives, but withholds private witness material."
+    },
+    "Bury": {
+      "name": "Elian Vale",
+      "type": "Protected Witness",
+      "stance": "Sheltered",
+      "note": "Elian remains out of public view because the Archive did not expose Mara's route.",
+      "lead": "May pass future off-record warnings through trusted intermediaries."
+    },
+    "Preserve": {
+      "name": "Mara Vale",
+      "type": "Returned Contact",
+      "stance": "Unreachable / Protected",
+      "note": "Mara is not contacted, exposed, or proven. Her absence remains intact.",
+      "lead": "Her preserved contradiction points toward synthetic continuity patterns."
+    }
+  },
+  "vault": {
+    "Publish": "Public reconstruction of the False Returned",
+    "Bury": "Sealed note on Mara's protected absence",
+    "Preserve": "Preserved Mara Vale reconstruction"
+  },
+  "vaultProfiles": {
+    "Publish": {
+      "title": "Public reconstruction of the False Returned",
+      "type": "Investigator Reconstruction",
+      "risk": "High exposure",
+      "consent": "Contested",
+      "reliability": "Strong but volatile",
+      "why": "It weakens the counterfeit but turns Mara's exit into a public object.",
+      "tags": ["public exposure", "identity-continuity", "network-attention"]
+    },
+    "Bury": {
+      "title": "Sealed note on Mara's protected absence",
+      "type": "Protected Witness Note",
+      "risk": "Low exposure",
+      "consent": "Protective withholding",
+      "reliability": "Incomplete",
+      "why": "It protects Mara but leaves the public falsehood largely intact.",
+      "tags": ["protected", "incomplete-record", "returned"]
+    },
+    "Preserve": {
+      "title": "Preserved Mara Vale reconstruction",
+      "type": "Consent-Sensitive Reconstruction",
+      "risk": "Contained",
+      "consent": "Preserved without exposure",
+      "reliability": "High contextual integrity",
+      "why": "It keeps the contradiction findable without making Mara's exit a destination.",
+      "tags": ["preserved evidence", "consent-sensitive", "archive-integrity"]
+    }
+  },
+  "consequences": {
+    "Publish": {
+      "tags": ["Public backlash", "Network awareness increased", "Witness risk", "False Returned weakened"],
+      "lead": "A witness offers a leak because exposure made them afraid of being next."
+    },
+    "Bury": {
+      "tags": ["Survivor protection", "False narrative spread", "Witness trust gained", "Public record weakened"],
+      "lead": "A Returned contact opens a quieter channel because you showed restraint."
+    },
+    "Preserve": {
+      "tags": ["Evidence preserved", "Witness trust gained", "Archive integrity increased", "Slow lead unlocked"],
+      "lead": "The Archive detects a pattern between Mara's case and synthetic community continuity."
+    }
+  }
+}

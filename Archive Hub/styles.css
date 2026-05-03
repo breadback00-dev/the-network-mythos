@@ -17,13 +17,20 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(rgba(240, 179, 91, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(127, 196, 178, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at 20% 0%, rgba(127, 196, 178, 0.06), transparent 34rem),
-    var(--bg);
-  background-size: 42px 42px;
+    radial-gradient(circle at 50% 0%, rgba(127, 196, 178, 0.08), transparent 50rem),
+    linear-gradient(180deg, #121514 0%, #0d100f 100%);
   color: var(--text);
   font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.panel {
+  min-height: 150px;
+  padding: 1.25rem;
+  border: 1px solid rgba(127, 196, 178, 0.15);
+  border-radius: 12px;
+  background: rgba(26, 30, 28, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
 }
 
 button, a {
@@ -144,15 +151,7 @@ button:hover, .case-link:hover {
   padding: 1rem;
 }
 
-.panel {
-  min-height: 150px;
-  padding: 1rem;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(238, 233, 223, 0.025), transparent 8rem),
-    var(--panel);
-}
+
 
 .hero-panel {
   grid-column: span 2;
@@ -514,6 +513,111 @@ button:hover, .case-link:hover {
 .lead-line {
   margin-top: 0.65rem;
   color: var(--accent);
+}
+
+/* Vault Visual States */
+.vault-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  background: var(--panel-2);
+}
+
+.vault-publish {
+  background: rgba(240, 179, 91, 0.08);
+  border: 1px solid rgba(240, 179, 91, 0.4);
+  box-shadow: inset 0 0 10px rgba(240, 179, 91, 0.1);
+}
+.vault-publish::after {
+  content: "EXPOSED";
+  position: absolute;
+  top: 1rem; right: 1rem;
+  color: var(--accent);
+  font-family: monospace;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+.vault-bury {
+  background: rgba(18, 16, 14, 0.8);
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}
+.vault-bury h3 {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.vault-bury::after {
+  content: "REDACTED";
+  position: absolute;
+  top: 1rem; right: 1rem;
+  color: var(--line);
+  font-family: monospace;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+.vault-preserve {
+  background: rgba(127, 196, 178, 0.05);
+  border: 1px solid rgba(127, 196, 178, 0.35);
+  border-radius: 8px;
+}
+.vault-preserve::before {
+  content: "CRYPT-LOCK: ACTIVE";
+  display: block;
+  font-family: monospace;
+  color: var(--green);
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+/* Echo Popups */
+.echo-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  font-family: monospace;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 800;
+  padding: 1.5rem 3rem;
+  pointer-events: none;
+  animation: glitchFade 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  text-align: center;
+}
+
+.echo-publish {
+  color: var(--red);
+  background: rgba(223, 125, 112, 0.1);
+  border: 2px solid var(--red);
+  text-shadow: 2px 0 var(--accent), -2px 0 blue;
+}
+
+.echo-bury {
+  color: var(--muted);
+  background: rgba(0,0,0,0.85);
+  border: 1px dashed var(--muted);
+  letter-spacing: 5px;
+}
+
+.echo-preserve {
+  color: var(--green);
+  background: rgba(127, 196, 178, 0.1);
+  border: 1px solid var(--green);
+  text-shadow: 0 0 8px rgba(127, 196, 178, 0.5);
+}
+
+@keyframes glitchFade {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  5% { opacity: 1; transform: translate(-52%, -48%) scale(1.05); }
+  10% { opacity: 0.8; transform: translate(-48%, -51%) scale(1); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  70% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(0px); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); filter: blur(4px); }
 }
 
 @media (max-width: 1050px) {

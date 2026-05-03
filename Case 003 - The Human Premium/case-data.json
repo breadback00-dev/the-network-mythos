@@ -1,0 +1,88 @@
+{
+  "id": "case003",
+  "title": "Case 003: The Human Premium",
+  "url": "/case003/prototype/",
+  "locked": true,
+  "requirement": "Unlocks after two Archive decisions are recorded.",
+  "caseType": "Market / Care Labor Case",
+  "tests": "Whether human-origin attention becomes a luxury product.",
+  "lesson": "Human care becomes a luxury when synthetic care becomes default.",
+  "summary": "Investigate a care platform where verified human attention is sold as an upgrade.",
+  "mythos": ["Exchange", "Arbiter", "Eidolons", "Covenant", "Oracle", "Silence"],
+  "witnesses": {
+    "Publish": "Nia's case creates pressure. Vulnerable users fear becoming evidence.",
+    "Bury": "Nia's family remains protected. Kindred's tiered care market remains intact.",
+    "Preserve": "Jessa and Human Plus workers gain consent-protected channels into the Archive."
+  },
+  "witnessProfiles": {
+    "Publish": {
+      "name": "Jessa Calder",
+      "type": "Bereaved Family Witness",
+      "stance": "Exposed / Resolute",
+      "note": "Jessa's words travel widely, but public attention begins simplifying Nia into a symbol.",
+      "lead": "Public pressure may surface sponsor contracts, but family trust becomes fragile."
+    },
+    "Bury": {
+      "name": "Kindred Basic Users",
+      "type": "Protected User Group",
+      "stance": "Sheltered",
+      "note": "Raw care records remain private, but users keep living inside a system the Archive chose not to expose.",
+      "lead": "Future evidence may arrive through anonymous user fragments rather than official records."
+    },
+    "Preserve": {
+      "name": "Mara S.",
+      "type": "Human Plus Worker",
+      "stance": "Cautiously Cooperative",
+      "note": "A timed and scored human listener offers labor evidence under anti-retaliation protections.",
+      "lead": "Worker testimony points toward deleted care records and erased escalation queues."
+    }
+  },
+  "vault": {
+    "Publish": "Public Human Plus allocation evidence",
+    "Bury": "Suppressed Kindred care-tier finding",
+    "Preserve": "Restricted labor-and-care archive"
+  },
+  "vaultProfiles": {
+    "Publish": {
+      "title": "Public Human Plus allocation evidence",
+      "type": "Allocation Evidence",
+      "risk": "High user exposure",
+      "consent": "Public interest override",
+      "reliability": "Strong system and contract trail",
+      "why": "It makes the human paywall undeniable while risking intimate care records becoming spectacle.",
+      "tags": ["human paywall", "public accountability", "user-risk"]
+    },
+    "Bury": {
+      "title": "Suppressed Kindred care-tier finding",
+      "type": "Withheld Market Finding",
+      "risk": "Low immediate exposure",
+      "consent": "Protective withholding",
+      "reliability": "Strong but unused",
+      "why": "It protects vulnerable users and Nia's family while allowing tiered care markets to keep defining the story.",
+      "tags": ["buried evidence", "privacy-protection", "market-protection"]
+    },
+    "Preserve": {
+      "title": "Restricted labor-and-care archive",
+      "type": "Consent-Protected Archive",
+      "risk": "Managed access",
+      "consent": "Family, user, and worker gates",
+      "reliability": "High contextual integrity",
+      "why": "It preserves allocation proof without making the poor expose their worst moments to prove they deserved a human.",
+      "tags": ["preserved evidence", "labor-testimony", "consent-gated"]
+    }
+  },
+  "consequences": {
+    "Publish": {
+      "tags": ["Public scandal", "Network awareness increased", "User privacy risk", "Sponsor pressure"],
+      "lead": "Kindred sponsors begin deleting care-allocation records from legacy systems."
+    },
+    "Bury": {
+      "tags": ["Family protection", "Market protection", "Archive integrity damaged", "Private user lead"],
+      "lead": "A Basic user contacts the Archive because their companion keeps quoting Nia's case language."
+    },
+    "Preserve": {
+      "tags": ["Labor channel opened", "Evidence preserved", "Public action slowed", "Witness trust gained"],
+      "lead": "Deleted Kindred logs point toward a larger erased-care archive."
+    }
+  }
+}

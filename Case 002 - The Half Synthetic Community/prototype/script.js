@@ -343,9 +343,28 @@ async function openEvidence(item) {
   documentBody.innerHTML = `<p class="empty-state">Loading artifact...</p>`;
 
   try {
+    const archiveState = JSON.parse(localStorage.getItem("network.archive.state")) || { choices: {} };
+    const case1Choice = archiveState.choices["case001"];
+
+    // Systemic Consequence: Redaction if Published
+    if (item.id === 9 && case1Choice === "Publish") {
+       documentBody.innerHTML = `<div class="echo-popup echo-publish" style="position:static; transform:none; animation:none; margin-bottom: 2rem;">[NETWORK INTERCEPT]</div>
+       <p class="empty-state" style="color:var(--red);">FILE PULLED BY NETWORK PROTOCOLS.<br>Your 'Publish' action in Case 001 triggered an attention spike. The Devourer has proactively scrubbed this deployment memo from all vulnerable servers.</p>`;
+       return;
+    }
+
     const embedded = window.CASE_ARTIFACTS?.find((artifact) => artifact.file === item.file);
     const markdown = embedded?.content || await fetch(item.file).then((response) => response.text());
-    documentBody.innerHTML = `${leadUnlockedNote(levelAfter, levelBefore)}${markdownToHtml(markdown)}`;
+    
+    // Systemic Consequence: Trust bonus if Preserved/Buried
+    let extraHtml = "";
+    if (item.id === 4 && (case1Choice === "Preserve" || case1Choice === "Bury")) {
+       extraHtml = `<div class="unlock-note" style="border-color:var(--green); background:rgba(127,196,178,0.1); color:var(--green);">
+       <strong>Sheltered Archive Benefit:</strong> "Aya trusts you because you didn't turn Mara Vale into a spectacle. She says look closely at the Moderator's timeline—Samuel knew before anyone else."
+       </div>`;
+    }
+
+    documentBody.innerHTML = `${extraHtml}${leadUnlockedNote(levelAfter, levelBefore)}${markdownToHtml(markdown)}`;
   } catch (error) {
     documentBody.innerHTML = `<p class="empty-state">Artifact could not be loaded. Open the source markdown file directly from the artifacts folder.</p>`;
   }

@@ -1,0 +1,88 @@
+{
+  "id": "case004",
+  "title": "Case 004: The Lost Archive",
+  "url": "/case004/prototype/",
+  "locked": true,
+  "requirement": "Unlocks after three Archive decisions are recorded.",
+  "caseType": "Memory / Erasure Case",
+  "tests": "Whether remembering the erased can avoid consuming them again.",
+  "lesson": "Memory can preserve the erased or consume them again.",
+  "summary": "Investigate a decaying archive of banned names, deleted work, and unresolved Echoes.",
+  "mythos": ["Lost", "Cloud", "Artifacts", "Devourer"],
+  "witnesses": {
+    "Publish": "Families gain public proof. The erased become searchable before consent routes exist.",
+    "Bury": "Raw rooms stay hidden. Official erasure becomes harder to challenge.",
+    "Preserve": "Tomas, worker witnesses, and affected families enter a consent-proxy inheritance protocol."
+  },
+  "witnessProfiles": {
+    "Publish": {
+      "name": "Tomas Renn",
+      "type": "Family Search Witness",
+      "stance": "Vindicated / Exposed",
+      "note": "Tomas gets public proof that Mira was there, but her name begins circulating without the room she lived inside.",
+      "lead": "Other families may come forward publicly, and the Devourer will try to turn them into a list."
+    },
+    "Bury": {
+      "name": "Mira Renn",
+      "type": "Erased Subject",
+      "stance": "Protected / Officially Absent",
+      "note": "Mira's raw records remain unexposed, but the systems that denied her presence keep the strongest usable memory.",
+      "lead": "Future proof may depend on worker backups rather than family searches."
+    },
+    "Preserve": {
+      "name": "Tomas Renn",
+      "type": "Consent-Proxy Participant",
+      "stance": "Burdened",
+      "note": "Tomas helps hold proof-of-erasure markers without receiving or exposing Mira's raw messages.",
+      "lead": "Consent-proxy panels may surface older proof-of-erasure markers in cases the Archive thought were closed."
+    }
+  },
+  "vault": {
+    "Publish": "Public Lost Archive proof-of-erasure packet",
+    "Bury": "Suppressed Lost Archive fragments",
+    "Preserve": "Sealed inheritance protocol"
+  },
+  "vaultProfiles": {
+    "Publish": {
+      "title": "Public Lost Archive proof-of-erasure packet",
+      "type": "Proof-Of-Erasure Finding",
+      "risk": "High witness exposure",
+      "consent": "Public interest override",
+      "reliability": "Strong presence proof, limited content proof",
+      "why": "It breaks official denial while risking a searchable list of people whose consent routes are missing.",
+      "tags": ["proof-of-erasure", "public exposure", "second-extraction-risk"]
+    },
+    "Bury": {
+      "title": "Suppressed Lost Archive fragments",
+      "type": "Withheld Erasure Evidence",
+      "risk": "Low immediate exposure",
+      "consent": "Protective suppression",
+      "reliability": "Preserved privately but publicly unusable",
+      "why": "It prevents second extraction while letting institutions keep the only memory they can use.",
+      "tags": ["buried evidence", "privacy-protection", "official-erasure"]
+    },
+    "Preserve": {
+      "title": "Sealed inheritance protocol",
+      "type": "Consent-Proxy Archive",
+      "risk": "Context-locked access",
+      "consent": "Proxy-governed",
+      "reliability": "Strong with provenance limits",
+      "why": "It preserves proof of erasure, restricts raw rooms, and gives affected people a governed route into memory.",
+      "tags": ["inheritance", "consent-proxy", "context-locked"]
+    }
+  },
+  "consequences": {
+    "Publish": {
+      "tags": ["Public reckoning", "Family exposure", "Network awareness increased", "Devourer risk"],
+      "lead": "Companies challenge the Archive by demanding it publish raw records or retract the proof-of-erasure claim."
+    },
+    "Bury": {
+      "tags": ["Privacy protected", "Official erasure strengthened", "Archive integrity damaged", "Witness uncertainty"],
+      "lead": "Tomas asks whether protection means accepting that Mira was never there."
+    },
+    "Preserve": {
+      "tags": ["Inheritance protocol opened", "Proof preserved", "Raw rooms sealed", "Witness burden"],
+      "lead": "Proof-of-erasure markers begin appearing in older cases the Archive thought were closed."
+    }
+  }
+}
