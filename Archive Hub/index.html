@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Network Mythos Archive</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="hub-header">
+      <div>
+        <p class="eyebrow">Network Mythos</p>
+        <h1>The Archive</h1>
+      </div>
+      <div class="header-actions">
+        <button id="resetArchive" type="button">Reset Archive</button>
+      </div>
+    </header>
+
+    <section id="returnMoment" class="return-moment" aria-live="polite" hidden>
+      <div>
+        <p class="eyebrow">Archive Received</p>
+        <h2 id="returnTitle">Case decision recorded</h2>
+        <p id="returnSummary"></p>
+        <div id="returnTags" class="tag-row"></div>
+      </div>
+      <div class="return-actions">
+        <p id="returnLead"></p>
+        <button id="dismissReturnMoment" type="button">Dismiss</button>
+      </div>
+    </section>
+
+    <section class="archive-status-strip" aria-label="Archive status">
+      <article>
+        <span>Decisions</span>
+        <strong id="statusDecisions">0</strong>
+      </article>
+      <article>
+        <span>Vault Entries</span>
+        <strong id="statusVault">0</strong>
+      </article>
+      <article>
+        <span>Mapped Forces</span>
+        <strong id="statusForces">0</strong>
+      </article>
+      <article>
+        <span>Available Cases</span>
+        <strong id="statusAvailable">0</strong>
+      </article>
+    </section>
+
+    <main class="hub-grid">
+      <section class="panel hero-panel">
+        <p class="eyebrow">Objective</p>
+        <h2>Build an Archive strong enough to reveal the Network without becoming useful to it.</h2>
+        <p>Each case ends with a choice: Publish, Bury, or Preserve. Those choices alter the Archive's visibility, trust, integrity, and exposure.</p>
+        <div class="path-ribbon">
+          <span>Current Archive Path</span>
+          <strong id="pathIdentity">Unformed Archive</strong>
+        </div>
+        <div id="pathDetails" class="path-details"></div>
+      </section>
+
+      <section class="panel meters-panel">
+        <h2>Archive Pressure</h2>
+        <div id="meters" class="meters"></div>
+      </section>
+
+      <section class="panel case-map">
+        <h2>Case Map</h2>
+        <div id="caseList" class="case-list"></div>
+      </section>
+
+      <section class="panel dev-panel">
+        <details>
+          <summary>Archive Override</summary>
+          <p>For testing only. Normal play records decisions from inside each case.</p>
+          <div id="overrideList" class="override-list"></div>
+        </details>
+      </section>
+
+      <section class="panel forecast-panel">
+        <h2>End-State Forecast</h2>
+        <p id="forecastText"></p>
+        <p id="forecastDetail" class="forecast-detail"></p>
+      </section>
+
+      <section class="panel latest-pressure-panel">
+        <h2>Latest Pressure</h2>
+        <p id="latestPressureText"></p>
+        <p id="latestPressureDetail" class="forecast-detail"></p>
+      </section>
+
+      <section class="panel summary-panel">
+        <h2>Completed Case Summaries</h2>
+        <div id="completedSummaries" class="completed-summaries"></div>
+      </section>
+
+      <section class="panel consequences-panel">
+        <h2>Consequences</h2>
+        <div id="consequenceList" class="completed-summaries"></div>
+      </section>
+
+      <section class="panel vault-panel">
+        <h2>Evidence Vault</h2>
+        <ul id="vaultList"></ul>
+      </section>
+
+      <section class="panel mythos-panel">
+        <h2>Mythos Layer</h2>
+        <div id="mythosList" class="chip-list"></div>
+      </section>
+
+      <section class="panel witness-panel">
+        <h2>Witness Ledger</h2>
+        <ul id="witnessList"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Case 001: The Door Is Real</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="case-header">
+      <div>
+        <p class="eyebrow">Network Mythos / Case 001</p>
+        <h1>The Door Is Real</h1>
+      </div>
+      <div class="case-status">
+        <a class="archive-link" href="/">Archive</a>
+        <span id="progressLabel">0 / 15 reviewed</span>
+        <button id="resetButton" type="button">Reset</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" aria-label="Evidence browser">
+        <section id="caseIntro" class="case-intro">
+          <p class="eyebrow">Briefing</p>
+          <p>A verified account has returned. The question is not whether the account is authentic. The question is whether Mara Vale is.</p>
+          <p class="archive-objective">Every case ends with a decision: expose the truth, protect the people involved, or preserve the evidence for the Archive.</p>
+          <button id="beginButton" type="button">Begin Review</button>
+        </section>
+
+        <section id="leadBanner" class="lead-banner" aria-live="polite">
+          <span>Lead active:</span>
+          <strong>Public evidence</strong>
+        </section>
+
+        <div class="search-block">
+          <label for="searchInput">Search evidence</label>
+          <input id="searchInput" type="search" placeholder="Try proof, voice, Porchlight">
+        </div>
+
+        <div class="filter-row" role="tablist" aria-label="Evidence filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="unread">Unread</button>
+          <button class="filter-button" type="button" data-filter="flagged">Flagged</button>
+        </div>
+
+        <div id="evidenceList" class="evidence-list"></div>
+      </aside>
+
+      <section class="document-pane" aria-live="polite">
+        <div class="document-toolbar">
+          <div>
+          <p id="docMeta" class="eyebrow">Select evidence</p>
+            <h2 id="docTitle">Case file unopened</h2>
+          </div>
+          <div class="doc-actions">
+            <button id="flagButton" type="button">Flag contradiction</button>
+            <button id="noteButton" type="button">Add note</button>
+          </div>
+        </div>
+        <article id="documentBody" class="document-body">
+          <p class="empty-state">Open an artifact from the left. The first five files are public evidence; deeper files unlock as you review and compare the case.</p>
+        </article>
+      </section>
+
+      <aside class="caseboard" aria-label="Case board">
+        <section>
+          <h2>Timeline</h2>
+          <ol id="timelineList" class="timeline-list"></ol>
+        </section>
+
+        <section>
+          <h2>Contradictions</h2>
+          <ul id="flagList" class="flag-list"></ul>
+        </section>
+
+        <section>
+          <h2>Case Theory</h2>
+          <div class="theory-prompts">
+            <label for="theorySpeaker">Who is speaking?</label>
+            <input id="theorySpeaker" type="text" placeholder="Mara, impostor, system, unknown">
+            <label for="theoryProof">What counts as proof?</label>
+            <input id="theoryProof" type="text" placeholder="Account, voice, witness, room">
+            <label for="theoryHidden">What should remain hidden?</label>
+            <input id="theoryHidden" type="text" placeholder="Location, method, archive, nothing">
+          </div>
+        </section>
+
+        <section>
+          <h2>Investigator Notes</h2>
+          <textarea id="notesArea" placeholder="Keep your reconstruction here."></textarea>
+        </section>
+
+        <section id="endingPanel" class="ending-panel locked">
+          <h2>Final Reconstruction</h2>
+          <p>Unlock the invoice and the Tier Six clue to make a final call.</p>
+          <div class="ending-actions">
+            <button type="button" data-ending="Publish">Publish</button>
+            <button type="button" data-ending="Bury">Bury</button>
+            <button type="button" data-ending="Preserve">Preserve</button>
+          </div>
+          <p id="endingResult" class="ending-result"></p>
+          <p id="archiveWriteResult" class="archive-write-result"></p>
+          <div id="archiveStatus" class="archive-status" hidden>
+            <h3>Archive Status</h3>
+            <dl>
+              <div>
+                <dt>Public Attention</dt>
+                <dd id="statusAttention">-</dd>
+              </div>
+              <div>
+                <dt>Witness Trust</dt>
+                <dd id="statusTrust">-</dd>
+              </div>
+              <div>
+                <dt>Archive Integrity</dt>
+                <dd id="statusIntegrity">-</dd>
+              </div>
+              <div>
+                <dt>Network Awareness</dt>
+                <dd id="statusAwareness">-</dd>
+              </div>
+            </dl>
+            <p id="nextLead" class="next-lead"></p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <script src="artifacts-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
