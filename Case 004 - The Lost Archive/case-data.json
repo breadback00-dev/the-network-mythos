@@ -3,6 +3,7 @@
   "title": "Case 004: The Lost Archive",
   "url": "/case004/prototype/",
   "locked": true,
+  "unlockAfter": 3,
   "requirement": "Unlocks after three Archive decisions are recorded.",
   "caseType": "Memory / Erasure Case",
   "tests": "Whether remembering the erased can avoid consuming them again.",

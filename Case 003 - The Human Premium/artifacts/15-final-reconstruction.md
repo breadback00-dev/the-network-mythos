@@ -46,22 +46,64 @@ It can decide whether her need becomes exposure, protection, or preserved proof.
 
 Release allocation records, plan gates, and selected transcripts publicly.
 
-Likely consequence: the human paywall becomes undeniable, Kindred faces public pressure, and Nia's private need risks becoming the proof strangers demand before they believe she deserved a person.
+What it gives:
+
+- the human paywall becomes harder to deny
+- Kindred, sponsors, and insurers face public pressure
+- Basic users can recognize that repeated requests were structurally filtered
+- worker and family witnesses may find protection in visibility
+
+What it risks:
+
+- Nia's private need may become the proof strangers demand before believing she deserved a person
+- vulnerable users may fear that their worst messages can become public evidence
+- Kindred can attack selective transcript release as grief-driven distortion
+- attention may center the scandal more than the market that produced it
 
 ### Bury
 
 Suppress the evidence to protect Nia's family and vulnerable Kindred users.
 
-Likely consequence: intimate records remain private, but Kindred and its sponsors keep defining synthetic default care as access expansion, and the next Basic user has to ask inside the same thresholds.
+What it gives:
+
+- Nia's family is not forced to litigate her need in public
+- Basic users' intimate care records remain protected
+- workers and families avoid becoming evidence before they consent
+- the Archive refuses to make poverty prove itself through exposure
+
+What it risks:
+
+- Kindred and its sponsors keep defining synthetic default care as access expansion
+- the next Basic user has to ask inside the same thresholds
+- human care remains a premium product with less public challenge
+- privacy becomes the language that keeps the market intact
 
 ### Preserve
 
 Create a restricted labor-and-care archive.
 
-Likely consequence: allocation proof survives, user records remain consent-protected, worker testimony is protected, and public action slows enough that delay itself may become another kind of protection for Kindred.
+What it gives:
 
-## Canonical Reading
+- allocation proof survives without raw user-care exposure
+- Nia's family can control whether and how her records speak publicly
+- worker testimony receives anti-retaliation protection
+- auditors and advocates can challenge the market through restricted evidence
 
-Preserve remains the strongest Archive path, but only if it does not become indefinite delay.
+What it risks:
+
+- public action slows while Kindred keeps operating
+- restricted access may favor institutions fluent in procedure
+- Preserve may become Bury with better language if no public finding leaves the Archive
+- the Archive becomes responsible for deciding how much proof poor users must give
+
+## Archive Reading
+
+There is no clean ending for Case 003.
+
+Publish may be necessary because the harm is structural. A market that prices human attention will not be challenged by private grief alone.
+
+Bury may be necessary because Nia's family and Basic users should not have to expose intimate records to prove that rationing happened.
+
+Preserve may be necessary because allocation proof, family consent, and worker safety all matter. It fails if restricted custody becomes a slower name for institutional survival.
 
 Case 003 expands the Mythos into class: human care becomes a luxury when synthetic care becomes default.

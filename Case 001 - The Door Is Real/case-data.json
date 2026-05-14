@@ -82,5 +82,21 @@
       "tags": ["Evidence preserved", "Witness trust gained", "Archive integrity increased", "Slow lead unlocked"],
       "lead": "The Archive detects a pattern between Mara's case and synthetic community continuity."
     }
+  },
+  "nextCaseScars": {
+    "case002": {
+      "Publish": {
+        "label": "Broadcast Scar",
+        "text": "Your public reconstruction of Mara changes how Harbor Dawn reaches you. The first leak arrives fast, but the witness asks whether the Archive can slow down once people are already looking."
+      },
+      "Bury": {
+        "label": "Hidden Scar",
+        "text": "Because you protected Mara's route, Harbor Dawn does not arrive as a leak. It arrives as a private warning from someone who thinks survivor memory should not be corrected in public."
+      },
+      "Preserve": {
+        "label": "Living Scar",
+        "text": "The preserved Mara reconstruction lets the Archive detect a quieter pattern: synthetic continuity did not only imitate a person. It helped build a community."
+      }
+    }
   }
 }

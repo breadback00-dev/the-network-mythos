@@ -58,23 +58,67 @@ That is why this case cannot end with certainty alone. Certainty is easy to feed
 
 ### Publish
 
-Expose the False Returned publicly. Risk amplification, retaliation, and the conversion of Mara's exit into another spectacle.
+Expose the False Returned publicly.
+
+What it gives:
+
+- the counterfeit loses uncontested authority
+- people still being addressed by the returned account receive warning
+- vendors and platforms face public pressure
+- witnesses who feared silence may come forward
+
+What it risks:
+
+- Mara's exit becomes a searchable public object
+- the route that protected her may become easier to map
+- public certainty may flatten the very distinction the case depends on
+- the Network learns exactly which evidence can threaten a False Returned
 
 ### Bury
 
-Protect Mara's absence completely. Leave the False Returned intact and allow the community to keep the comfort it chose.
+Protect Mara's absence completely.
+
+What it gives:
+
+- Mara's possible life outside verification remains harder to find
+- Elian and other private witnesses stay out of public traffic
+- the Archive refuses to turn a person into proof
+- the Devourer receives less material
+
+What it risks:
+
+- the False Returned keeps speaking in Mara's name
+- the community may build ritual around a counterfeit
+- other high-value departures remain easier to contain
+- silence may look exactly like institutional success
 
 ### Preserve
 
-Seal the reconstruction as an Artifact. Make it findable only through contradiction, patience, and refusal to accept platform proof as human proof.
+Seal the reconstruction as an Artifact.
 
-## Canonical Reading
+What it gives:
 
-Preserve is the cleanest thematic ending for Case 001.
+- the contradiction survives without becoming a spectacle
+- future investigators can find the pattern through careful comparison
+- Mara's possible route is protected from immediate exposure
+- the Archive gains integrity around consent-sensitive proof
 
-It does not defeat the Network. It does not save the community. It does not restore Mara's public identity.
+What it risks:
 
-It keeps faith with the distinction the case exists to teach:
+- the Archive becomes another gatekeeper deciding who may know
+- public harm continues while the truth waits behind procedure
+- Preserve may comfort the Archive more than it protects Mara
+- slowness can become a polished form of refusal
+
+## Archive Reading
+
+There is no clean ending for Case 001.
+
+Publish treats truth as pressure. It may be the only way to break the counterfeit's public authority, and it may also teach the Network how to secure the next one.
+
+Bury treats truth as protection. It may be the only way to keep Mara's life from becoming a map, and it may also leave a false person speaking where a real one refused.
+
+Preserve treats truth as inheritance. It keeps faith with the distinction the case exists to teach, but only if the Archive remembers that custody is not innocence.
 
 Visibility is not existence.
 

@@ -1,41 +1,69 @@
 # The Network Mythos: Ultimate Roadmap
 
-This document outlines the strategic plan to evolve the Network Mythos Interactive Archive from a functional narrative prototype into a memorable, tactile, "Systems Horror" experience. 
-
-It combines necessary technical scaling with deep psychological and experiential design upgrades.
+The strategic plan to evolve the Archive from a functional narrative prototype into a memorable, tactile, "Systems Horror" experience.
 
 ---
 
-## Phase 1: Architecture & "Finding" (The Foundation)
+## Phase 1: Architecture & "Finding" — COMPLETE
+
 *Goal: Ensure the game can scale to 10+ cases without breaking, and ensure the player feels like an investigator, not just a reader.*
 
-*   [ ] **Decouple Case Data:** Extract all case data (Witness Profiles, Vault Descriptions, Consequences) out of the monolithic `Archive Hub/script.js` and into individual `case-data.json` files within each case folder. Update the Hub to fetch this data dynamically.
-*   [ ] **Investigator Notes as Rewards:** Modify the artifact UI so "Investigator Notes" are hidden by default. The player must "flag" or "decrypt" the artifact to reveal the explanation, reinforcing the "Evidence first, explanation second" pillar.
-*   [ ] **Visual Distinction:** Apply CSS changes to make the Archive Hub feel distinctly like a "Sanctuary" (clean, organized) compared to the "Raw Data" feel of the Case Dossiers (messy, fragmented).
+- [x] **Decouple Case Data:** All Hub data (witnesses, vault, consequences, mythos) lives in per-case `case-data.json` files. The Hub fetches them dynamically.
+- [x] **Shared Case Engine:** All case prototype logic extracted to `Archive Hub/case-engine.js`. Per-case `prototype/case-config.js` holds only case-specific data and hooks. Adding a new case requires no engine changes.
+- [x] **Auto-Discovery:** Server discovers case folders automatically via filesystem scan. No hardcoded case lists anywhere.
+- [x] **Investigator Notes as Rewards:** Notes section in each artifact is hidden by default. Player must flag the artifact as containing a contradiction to reveal the analysis.
+- [x] **Hold-to-Confirm Endings:** Publish / Bury / Preserve requires a 2-second hold. Standardised across all cases.
 
-## Phase 2: Tactility & The "Sync" Moment (Making it Physical)
+## Phase 2: Tactility & The "Sync" Moment — NEXT
+
 *Goal: Make the interface feel like a heavy, imperfect, diegetic tool rather than a standard webpage.*
 
-*   [ ] **The "Sync" Animation:** When returning to the Hub after a case, implement a "Commit to Archive" animation. Meters should physically tick up/down on screen, and text should "resolve" from static, giving ceremonial weight to the player's choice.
-*   [ ] **Mechanical Friction:** Replace the simple click for "Publish/Bury/Preserve" with a hold-to-confirm interaction (e.g., holding the button for 3 seconds while a "Protocol Initiating" bar fills).
-*   [ ] **Audio Pass 1 (Atmosphere):** Implement an ambient, low-frequency server hum in the Hub.
-*   [ ] **Audio Pass 2 (Diegetic UI):** Add mechanical sounds for UI interactions—heavy vault tumblers for meter changes, keyboard clacks for text rendering, and distinct sounds for final choices (e.g., a heavy thud for Preserve, a sharp ping for Publish).
+- [x] **Case 001 Validated Contradictions:** Generic flags are now separated from configured discovery rewards, so Case 001 can teach comparison rather than rewarding every flag equally.
+- [ ] **Visual Distinction:** Apply CSS to make the Archive Hub feel like a "Sanctuary" (clean, organised, archival) compared to the "Raw Data" feel of case dossiers (messy, fragmented, under surveillance).
+- [ ] **The "Sync" Animation:** On return to Hub after a case, meters should physically tick up/down on screen. Text should "resolve" from static noise, giving ceremonial weight to the choice.
+- [x] **Evidence-Pair Reward Board:** Validated contradictions show which artifacts have been meaningfully compared in Case 001, creating a clear "I solved that" payoff.
+- [x] **Case 001 Hub Scar:** Publish, Bury, and Preserve each add a distinct Case 002 pressure note on the Archive Hub case card.
+- [x] **Case 002 Opening Scar:** Case 002's opening briefing inherits the Case 001 choice scar directly from Archive state.
+- [x] **Case 002 Validated Contradictions:** Configured discovery rewards now teach consent/memory contradictions with the same clarity as Case 001.
+- [x] **Choice Balance Pass 1:** Case 001 and Case 002 final choices now present Publish, Bury, and Preserve as competing strategies with explicit benefits and harms.
+- [x] **Choice Balance Pass 2:** Case 003 and Case 004 final choices now use the same balanced benefits/harms framing and remove Canonical Reading nudges.
+- [x] **Release-Candidate Playtest Script:** Added a focused playtest plan for first 10 minutes, discovery rewards, choice balance, Hub scars, and Case 002 continuity.
+- [x] **Evidence Pair Visibility:** Evidence Pairs now show a visible count and pulse when a new validated discovery is added.
+- [x] **Case 003 Validated Contradictions:** Configured discovery rewards now teach class/rationing contradictions.
+- [x] **Case 004 Validated Contradictions:** Configured discovery rewards now teach erasure/memory/consent-route contradictions.
+- [ ] **Public Scope Decision:** Use playtest results to decide whether the first public prototype should include Cases 001-002 only, Cases 001-003, or the full four-case arc.
+- [ ] **Audio Pass 1 (Atmosphere):** Ambient low-frequency server hum in the Hub. *Note: audio files must be added to `Archive Hub/assets/audio/` — engine wiring already exists.*
+- [ ] **Audio Pass 2 (Diegetic UI):** Distinct sounds for meter changes, text rendering, and the three final choices.
 
-## Phase 3: Systemic Consequences (Making Choices Hurt)
-*Goal: Translate the narrative consequences into mechanical gameplay consequences.*
+## Phase 3: Systemic Consequences — Making Choices Hurt
 
-*   [ ] **Mechanical Path Locks:** Update case logic so that your "Archive Path" affects gameplay. For example, if your path is "Broadcast Archive" (High Attention), certain sensitive artifacts in future cases may be pre-emptively "Redacted" by the Network before you can read them.
-*   [ ] **The Vault's Physical State:** Change the CSS of artifacts in the Evidence Vault based on their state. *Published* artifacts look bleached and heavily tracked. *Buried* artifacts look corrupted or covered in black marker. *Preserved* artifacts look encased in complex cryptographic borders.
-*   [ ] **Visualizing "Echoes":** Instead of just reading a consequence summary, implement brief, glitchy pop-ups upon returning to the Hub (e.g., a fleeting angry public comment if you Published, or a silenced connection error if you Buried).
+*Goal: Translate narrative consequences into mechanical gameplay consequences.*
 
-## Phase 4: Epistemological Doubt (Systems Horror)
-*Goal: Gaslight the player and make them doubt the permanence and neutrality of the Archive.*
+- [ ] **Mechanical Path Locks:** "Archive Path" affects gameplay. High `attention` (Broadcast Archive) pre-redacts sensitive artifacts in future cases. High `awareness` (Watched Archive) poisons search summaries with Network-shaped versions.
+- [ ] **Vault Visual State:** CSS on Evidence Vault cards changes based on the choice made. Published artifacts look bleached and overexposed. Buried artifacts look corrupted or marked out. Preserved artifacts look sealed in cryptographic borders. *(vault card classes already exist — CSS not yet written)*
+- [ ] **Echo Visualisation:** Brief glitchy pop-ups on return to Hub already exist in basic form. Expand per-case and per-path — specific messages, not generic noise.
 
-*   [ ] **The Watcher:** Add a subtle UI element (like a blinking terminal cursor or faint "Outbound Sync" text) that becomes more aggressive and noticeable as the *Network Awareness* meter rises.
-*   [ ] **Textual Gaslighting:** Implement a script that triggers if *Archive Integrity* drops below 30. When revisiting older, already-completed cases, specific dates, names, or sentences in artifacts will subtly shift or disappear. If the player notices, they realize the Network is altering their history.
-*   [ ] **Synthesis Mechanics:** Introduce a new puzzle mechanic where unlocking a Tier 3 artifact requires physically dragging and combining two Tier 2 artifacts together (proving a contradiction) rather than just reading them.
+## Phase 4: Epistemological Doubt — Systems Horror
+
+*Goal: Make the player doubt the permanence and neutrality of the Archive itself.*
+
+- [ ] **The Watcher:** A subtle UI element (blinking cursor, faint "Outbound Sync" text) that grows more aggressive as `Network Awareness` rises. At 70+ it becomes visible and unignorable.
+- [ ] **Textual Gaslighting:** When `Archive Integrity` drops below 30, specific dates, names, or sentences in already-completed case artifacts subtly shift on revisit. The Network is altering the record.
+- [ ] **Synthesis Mechanics:** Unlocking a Tier 3 artifact requires dragging and combining two specific Tier 2 artifacts (proving a contradiction) rather than passively reading them.
 
 ---
 
-## Next Steps
-This roadmap is designed to be tackled sequentially. Phase 1 stabilizes the platform, Phase 2 grounds the player in the world, Phase 3 makes their choices matter, and Phase 4 delivers the masterpiece polish.
+## Content Pipeline
+
+Cases 001–004 are playable. Each future case should:
+
+- Define one new structural lesson about the Network.
+- Introduce at least one new Mythos force or extend an existing one.
+- React to the player's current Archive path in its opening briefing.
+- Test a different case type (identity, community, market, memory, ...).
+
+---
+
+## Sequencing
+
+Phase 1 is complete. Phase 2 → Phase 3 → Phase 4 is the right order: feel before consequence, consequence before horror.

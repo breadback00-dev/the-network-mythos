@@ -26,11 +26,15 @@ Each ending should alter later case access:
 - Bury creates private leads, witness trust, weaker public truth, and stronger false narratives.
 - Preserve creates pattern leads, archival integrity, slower spread, and deeper long-term understanding.
 
-## Best Canonical Route
+## Choice Balance
 
-Preserve is the preferred route for the flagship arc.
+Preserve expresses the Archive's philosophy most directly, but it should not be treated as the canonically correct route.
 
-It does not erase the other routes. It simply best expresses the Mythos: not all truth should be fed to the system that profits from making truth visible.
+Publish, Bury, and Preserve each create valid future paths:
+
+- Publish weakens the public counterfeit and may surface urgent witnesses, while risking spectacle and capture.
+- Bury protects Mara's absence and private witnesses, while letting the False Returned keep public authority.
+- Preserve protects context and builds long-term Archive integrity, while making the Archive a gatekeeper over a truth people may need sooner.
 
 ## Case 002 Bridge
 
@@ -45,4 +49,3 @@ If a synthetic community saved real people, was the belonging false?
 Bridge from Case 001:
 
 The Porchlight Continuity Instance invoice reveals that community archives, reply graphs, and affinity maps can be used to reconstruct more than one person. Case 002 should follow the social layer: a whole community whose warmth partly came from generated presences.
-

@@ -24,6 +24,7 @@
         <section id="caseIntro" class="case-intro">
           <p class="eyebrow">Briefing</p>
           <p>A support community saved real people after a disaster. The question is not whether the care worked. The question is who gave it, and who consented.</p>
+          <div id="archiveScarBriefing" class="archive-scar-briefing" hidden></div>
           <p class="archive-objective">Every case ends with a decision: expose the truth, protect the people involved, or preserve the evidence for the Archive.</p>
           <button id="beginButton" type="button">Begin Review</button>
         </section>
@@ -72,6 +73,11 @@
         <section>
           <h2>Contradictions</h2>
           <ul id="flagList" class="flag-list"></ul>
+        </section>
+
+        <section>
+          <h2>Evidence Pairs</h2>
+          <ul id="discoveryList" class="discovery-list"></ul>
         </section>
 
         <section>
@@ -127,7 +133,8 @@
       </aside>
     </main>
 
+    <script src="case-config.js"></script>
     <script src="artifacts-data.js"></script>
-    <script src="script.js"></script>
+    <script src="/case-engine.js"></script>
   </body>
 </html>

@@ -12,6 +12,16 @@ The player investigates cases where ordinary digital events reveal mythic struct
 Enter Archive -> Open Case -> Read Evidence -> Unlock Deeper Files -> Build Theory -> Choose Publish/Bury/Preserve -> Archive Changes -> Next Case
 ```
 
+## Public Prototype Loop
+
+The first public version should make the loop feel active within the first 5-8 minutes:
+
+```text
+Open Case -> Notice Human Mystery -> Compare Evidence -> Validate Contradiction -> Receive Discovery Reward -> Unlock Deeper Files -> Make Archive Choice -> See Archive Scar
+```
+
+The player should receive a meaningful response from the game every 5-7 minutes. A response can be a validated contradiction, decrypted note, visible Archive change, witness-pressure shift, altered artifact, or consequence in a later case.
+
 ## Player Objective
 
 Build an Archive strong enough to reveal the Network's structure without becoming another part of the Network's machinery.
@@ -33,6 +43,8 @@ Digitally literate adults and older teens who are interested in:
 - Evidence browsing
 - Search/filter
 - Unlocking artifacts by reading, searching, or identifying contradictions
+- Validated contradiction rewards
+- Evidence-pair discoveries
 - Timeline building
 - Case theory notes
 - Final Archive decision
@@ -58,6 +70,8 @@ Truth as inheritance.
 
 Strengthens the Archive, protects context, and slows the Network's appetite for spectacle. It should not always feel clean.
 
+Preserve is the Archive's philosophical center, but it must not be the universal correct answer. Some cases should make Publish necessary for accountability, Bury necessary for immediate safety, or Preserve dangerously close to delay and gatekeeping.
+
 ## Progression
 
 Each case teaches one structural lesson:
@@ -74,6 +88,21 @@ As choices accumulate, the Archive trends toward end states:
 - Captured Archive
 - Dead Archive
 
+## Reward Philosophy
+
+Rewards should not only be more documents.
+
+Primary reward types:
+
+- discovery: a contradiction is validated
+- comprehension: the player sees how two artifacts connect
+- access: deeper files, notes, or witness leads open
+- consequence: the Archive changes visibly
+- identity: the player's Archive path becomes more specific
+- pressure: the Network, witnesses, or public attention reacts
+
+Every case should include at least one reward that changes the interface or future state, not just the player's interpretation.
+
 ## UI/UX Pillars
 
 - Dense but readable.
@@ -88,4 +117,3 @@ As choices accumulate, the Archive trends toward end states:
 - Every mythic force maps to a real-world structure.
 - Synthetic beings should not be treated as automatically fake or evil.
 - Final choices should produce consequence, not moral scoring.
-

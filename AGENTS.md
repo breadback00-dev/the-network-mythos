@@ -18,9 +18,11 @@ The player is not simply solving mysteries. The player is deciding how dangerous
 Read first:
 
 1. `PROJECT_HANDOFF.md`
-2. `Archive Hub/script.js`
-3. The relevant case's `case-design.md`
-4. The relevant case's `artifact-manifest.md`
+2. `ARCHITECTURE.md`
+3. `Archive Hub/case-engine.js`
+4. The relevant case's `prototype/case-config.js`
+5. The relevant case's `case-design.md`
+6. The relevant case's `artifact-manifest.md`
 
 ## Correct Runtime
 
@@ -66,20 +68,19 @@ The Archive Hub is the main experience container.
 
 Cases are modules served by the Hub under one origin so localStorage can be shared.
 
+The shared case engine lives at `Archive Hub/case-engine.js` and is served at `/case-engine.js`.
+Each case has its own `prototype/case-config.js` that sets `window.CASE_CONFIG`.
+See `ARCHITECTURE.md` for the full schema.
+
 When adding a new case:
 
 1. Create a new `Case 00X - Title/` folder.
-2. Include:
-   - `case-design.md`
-   - `artifact-manifest.md`
-   - `artifacts/`
-   - `prototype/`
-   - `notes/`
-   - `playtest/`
-3. Add the case to `Archive Hub/script.js`.
-4. Update `Archive Hub/server.js` with a route for the case.
-5. Make the case ending call `recordArchiveChoice("case00X", ending)`.
-6. Ensure all case URLs use the `4179` shared-origin route.
+2. Include: `case-design.md`, `artifact-manifest.md`, `artifacts/`, `prototype/`, `notes/`, `playtest/`, `case-data.json`.
+3. Create `prototype/case-config.js` with `window.CASE_CONFIG` (copy an existing one as a template).
+4. Generate `prototype/artifacts-data.js` with `window.CASE_ARTIFACTS`.
+5. Copy an existing `prototype/index.html` and `prototype/styles.css`, update case-specific text.
+6. The server discovers the case automatically — no server or Hub changes needed.
+7. Ensure `case-data.json` has the correct `id`, `url`, `locked`, and `unlockAfter` fields.
 
 ## Content Rules
 

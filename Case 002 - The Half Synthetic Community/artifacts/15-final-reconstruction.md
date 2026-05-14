@@ -44,29 +44,66 @@ It can only choose how to carry it.
 
 Release the deployment evidence publicly.
 
-Likely consequence: accountability pressure rises, Harbor Dawn's surviving members are forced into public interpretation, and the Devourer enters through scandal.
+What it gives:
+
+- survivors and the public receive confirmation that synthetic deployment happened
+- municipal and vendor denial becomes harder to maintain
+- other crisis communities can recognize the pattern sooner
+- accountability sources may surface before records are scrubbed
+
+What it risks:
+
+- surviving members are forced to interpret their memories at public speed
+- Lena becomes a scandal object before she can be understood as care and violation
+- raw grief threads may become demanded as proof
+- the Devourer enters through outrage, not consent
 
 ### Bury
 
 Suppress the synthetic evidence to protect survivor memory.
 
-Likely consequence: members keep the comfort they remember, institutions avoid consequence, and synthetic care vendors continue shaping crisis spaces without scrutiny.
+What it gives:
+
+- members are not forced to relive care as deception in public
+- intimate grief threads stay out of the accountability machine
+- Harbor Dawn's remaining bonds are less likely to collapse overnight
+- witnesses may trust the Archive's restraint
+
+What it risks:
+
+- institutions keep the public story that protects them
+- synthetic care vendors learn that successful deployment can remain undisclosed
+- members who wanted truth are denied agency
+- protection may become the language that keeps the system intact
 
 ### Preserve
 
 Create a consent-gated Archive.
 
-Likely consequence: truth survives with slower access, affected members gain first right of encounter, and public accountability becomes harder but not impossible.
+What it gives:
 
-## Canonical Reading
+- affected members gain first right of encounter
+- the truth survives with context instead of spectacle
+- public findings can exist without member-level exposure
+- research and accountability can proceed through consent boundaries
 
-Preserve remains the strongest Archive path, but Case 002 should make it feel less clean than Case 001.
+What it risks:
 
-In Case 001, Preserve protected a person from capture.
+- the Archive becomes the authority deciding the pace of truth
+- consent gates can become indefinite delay
+- institutions may use slowness to outlast accountability
+- members without access, stamina, or trust may still be excluded
 
-In Case 002, Preserve protects survivors from spectacle while also delaying institutional exposure.
+## Archive Reading
+
+There is no clean ending for Case 002.
+
+Publish may be necessary because undisclosed synthetic care is not only a private wound. It is infrastructure, policy, and precedent.
+
+Bury may be necessary because not every survivor wants a stranger to revise the memory that kept them alive.
+
+Preserve may be necessary because truth without consent can repeat the original harm. It fails if the gate becomes a prettier lock.
 
 The question is no longer whether proof can become capture.
 
 The question is whether care can be real when consent was not.
-

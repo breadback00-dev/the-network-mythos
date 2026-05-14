@@ -4,12 +4,6 @@ const path = require("path");
 
 const hubRoot = __dirname;
 const workspaceRoot = path.resolve(__dirname, "..");
-const routeRoots = {
-  "/case001/": path.join(workspaceRoot, "Case 001 - The Door Is Real"),
-  "/case002/": path.join(workspaceRoot, "Case 002 - The Half Synthetic Community"),
-  "/case003/": path.join(workspaceRoot, "Case 003 - The Human Premium"),
-  "/case004/": path.join(workspaceRoot, "Case 004 - The Lost Archive")
-};
 const port = Number(process.env.PORT || 4179);
 
 const mimeTypes = {
@@ -19,8 +13,50 @@ const mimeTypes = {
   ".json": "application/json; charset=utf-8"
 };
 
+function discoverCases() {
+  const routeRoots = {};
+  try {
+    const entries = fs.readdirSync(workspaceRoot, { withFileTypes: true });
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      const match = entry.name.match(/^Case (\d+) - /i);
+      if (!match) continue;
+      const num = match[1].padStart(3, "0");
+      const routeKey = `/case${num}/`;
+      routeRoots[routeKey] = path.join(workspaceRoot, entry.name);
+    }
+  } catch (e) {
+    console.error("Case discovery failed:", e.message);
+  }
+  return routeRoots;
+}
+
+const routeRoots = discoverCases();
+console.log("Discovered cases:", Object.keys(routeRoots).join(", "));
+
+function buildCasesIndex() {
+  const index = [];
+  for (const [, caseRoot] of Object.entries(routeRoots)) {
+    const dataPath = path.join(caseRoot, "case-data.json");
+    try {
+      const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+      index.push({ id: data.id, title: data.title });
+    } catch {
+      // Skip cases with missing or malformed case-data.json.
+    }
+  }
+  return JSON.stringify(index);
+}
+
 const server = http.createServer((req, res) => {
   const urlPath = decodeURIComponent(req.url.split("?")[0]);
+
+  if (urlPath === "/cases/index.json") {
+    res.writeHead(200, { "Content-Type": mimeTypes[".json"] });
+    res.end(buildCasesIndex());
+    return;
+  }
+
   let root = hubRoot;
   let localPath = urlPath === "/" ? "/index.html" : urlPath;
 
@@ -35,7 +71,7 @@ const server = http.createServer((req, res) => {
     }
   }
 
-  let filePath = path.join(root, localPath);
+  const filePath = path.join(root, localPath);
 
   if (!filePath.startsWith(root)) {
     res.writeHead(403);

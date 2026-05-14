@@ -59,6 +59,7 @@ What it gives:
 - public proof that the residue layer exists
 - pressure against companies using deletion as denial
 - a route for other families to recognize the pattern
+- worker backups and family testimony become harder to dismiss as isolated anomalies
 
 What it risks:
 
@@ -76,6 +77,7 @@ What it gives:
 - immediate protection against public exposure
 - no new searchable list of erased people
 - no Archive custody over rooms it cannot fairly open
+- no public incentive for companies, reporters, or strangers to demand raw grief records
 
 What it risks:
 
@@ -93,6 +95,7 @@ What it gives:
 - proof-of-erasure markers that can exist without raw-room exposure
 - context locks, appeals, proxy review, and delayed access
 - a way for families to ask for presence proof without making grief public property
+- a governance burden that can be challenged instead of hidden behind Archive virtue
 
 What it risks:
 
@@ -101,15 +104,15 @@ What it risks:
 - delay may become denial
 - Preserve may comfort the player more than it helps the Lost
 
-## Canonical Reading
+## Archive Reading
 
-Preserve is the strongest Archive path only if it creates real public proof-of-erasure and real limits on access.
+There is no clean ending for Case 004.
 
-Preserve fails if it asks everyone to trust the Archive.
+Publish may be necessary because official absence is already doing harm. It fails if attention becomes restoration's substitute.
 
-Publish fails if it mistakes attention for restoration.
+Bury may be necessary because not every erased person should be made searchable to prove they were real. It fails if protection accepts institutional absence as the final record.
 
-Bury fails if it mistakes protection for absence.
+Preserve may be necessary because consent routes are gone and raw rooms cannot be treated as public property. It fails if it asks everyone to trust the Archive.
 
 Memory can preserve the erased.
 

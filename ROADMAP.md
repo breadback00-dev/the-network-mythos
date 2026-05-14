@@ -1,60 +1,33 @@
 # Roadmap
 
-## Phase 1: Foundation
+This roadmap summarizes the public-facing next steps. `ULTIMATE_ROADMAP.md` contains the longer internal design plan.
 
-Status: complete.
+## Current Build
 
-- Build Archive Hub.
-- Build Case 001.
-- Build Case 002.
-- Connect cases through shared Archive state.
-- Add project handoff and agent instructions.
+- Four case folders are present.
+- Case 001 and Case 002 are immediately playable from the Archive Hub.
+- Case 003 unlocks after two Archive decisions.
+- Case 004 unlocks after three Archive decisions.
+- Archive state persists in browser `localStorage`.
+- The shared case engine powers all case prototypes.
 
-## Phase 2: Hub Polish
+## Near-Term
 
-Status: next.
+- Playtest the four-case path from a clean browser profile.
+- Tighten unlock pacing so each case produces a visible discovery within the first 5-8 minutes.
+- Add a small "how to play" affordance inside the Hub without turning the interface into a tutorial page.
+- Improve mobile layout for long artifact reading sessions.
 
-- Make Archive Hub visually more distinctive.
-- Add stronger completed-case summary moments.
-- Improve end-state forecast.
-- Add visible Archive path identity.
-- Add clearer locked/unlocked case progression.
+## Next Content Pass
 
-## Phase 3: Case 003
+- Add more cross-case callbacks after Publish/Bury/Preserve choices.
+- Expand witness ledger entries and vault consequences.
+- Make late-case locks feel diegetic rather than purely numeric.
+- Identify the strongest ending-state forecast for a first public demo.
 
-Recommended title:
+## Technical Polish
 
-```text
-Case 003: The Human Premium
-```
-
-Core question:
-
-```text
-What happens when real human care becomes a paid upgrade?
-```
-
-Tasks:
-
-- Create case folder.
-- Draft design doc.
-- Draft 15 artifacts.
-- Build playable prototype.
-- Connect to Archive Hub.
-
-## Phase 4: System Depth
-
-- Make choices affect case intros.
-- Add path-specific leads.
-- Add stronger Witness Ledger consequences.
-- Add Mythos Layer explanations.
-- Add evidence vault detail view.
-
-## Phase 5: Playtest
-
-- Run 5-10 player tests.
-- Track comprehension of Archive objective.
-- Track emotional response to cases.
-- Track whether Publish/Bury/Preserve feels meaningful.
-- Revise based on confusion and drop-off.
-
+- Add lightweight smoke tests for server routes and case discovery.
+- Consider a single npm script for launching the Hub.
+- Review accessibility states for locked evidence, active filters, and decision buttons.
+- Add an optional hosted build path if the project is adapted for static deployment.

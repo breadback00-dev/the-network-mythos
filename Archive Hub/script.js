@@ -1,8 +1,18 @@
 let cases = [];
 
 async function loadCases() {
-  const caseIds = ['case001', 'case002', 'case003', 'case004'];
-  const fetchPromises = caseIds.map(id => 
+  let caseIds;
+  try {
+    const indexRes = await fetch("/cases/index.json");
+    if (!indexRes.ok) throw new Error("cases/index.json not found");
+    const index = await indexRes.json();
+    caseIds = index.map(entry => entry.id);
+  } catch (e) {
+    console.error("Case discovery failed, falling back to known IDs:", e);
+    caseIds = ['case001', 'case002', 'case003', 'case004'];
+  }
+
+  const fetchPromises = caseIds.map(id =>
     fetch(`/${id}/case-data.json`).then(r => {
       if (!r.ok) throw new Error(`Failed to load ${id}`);
       return r.json();
@@ -11,10 +21,10 @@ async function loadCases() {
       return null;
     })
   );
-  
+
   const results = await Promise.all(fetchPromises);
   cases = results.filter(Boolean);
-  
+
   render();
 }
 
@@ -218,9 +228,12 @@ function renderReturnMoment() {
     : "";
   document.querySelector("#returnLead").textContent = consequence ? consequence.lead : "The Archive has changed.";
   
+  el.classList.remove("choice-publish", "choice-bury", "choice-preserve");
+  el.classList.add(`choice-${choice.toLowerCase()}`);
   el.hidden = false;
   el.classList.add("syncing");
-  
+  setTimeout(() => el.classList.remove("syncing"), 2800);
+
   scrambleText(titleEl, titleEl.textContent, 1500);
   scrambleText(summaryEl, summaryEl.textContent, 2000);
   
@@ -312,13 +325,18 @@ function renderCases() {
     const isReady = caseFile.locked && !isLocked && !isBuilt;
     const choice = state.choices[caseFile.id];
     const card = document.createElement("article");
-    card.className = `case-card ${isLocked || !isBuilt ? "locked" : ""}`;
+    let cardClass = "case-card";
+    if (isLocked || !isBuilt) cardClass += " locked";
+    if (choice) cardClass += ` case-complete case-choice-${choice.toLowerCase()}`;
+    const scar = getCaseScar(caseFile.id);
+    card.className = cardClass;
     card.innerHTML = `
       <h3>${caseFile.title}</h3>
       <span class="case-type">${caseFile.caseType}</span>
       <p>${caseFile.summary}</p>
       <p><strong>Tests:</strong> ${caseFile.tests}</p>
       <p><strong>${caseFile.lesson}</strong></p>
+      ${scar ? `<div class="case-scar"><strong>${scar.label}</strong><p>${scar.text}</p></div>` : ""}
       <footer>
         <a class="case-link" href="${isLocked || !isBuilt ? "#" : caseFile.url}">${isReady ? "Ready To Build" : isLocked || !isBuilt ? "Locked" : "Open Case"}</a>
         <span class="case-state ${choice ? "complete" : ""}">${choice ? `Archive decision: ${choice}` : isReady ? "Unlocked by Archive path. Prototype not built yet." : isLocked ? caseFile.requirement : "Awaiting case decision"}</span>
@@ -328,10 +346,21 @@ function renderCases() {
   });
 }
 
+function getCaseScar(targetCaseId) {
+  for (const sourceCase of cases) {
+    const choice = state.choices[sourceCase.id];
+    if (!choice) continue;
+    const scar = sourceCase.nextCaseScars?.[targetCaseId]?.[choice];
+    if (scar) return scar;
+  }
+  return null;
+}
+
 function renderPathIdentity() {
   const meters = calculateMeters();
   const path = getPathIdentity(meters);
   document.querySelector("#pathIdentity").textContent = path;
+  document.body.dataset.path = path.toLowerCase().replace(/\s+/g, "-");
   const details = getPathDetails(path, meters);
   document.querySelector("#pathDetails").innerHTML = `
     <p>${details.description}</p>
@@ -436,8 +465,7 @@ function renderOverrides() {
 function isCaseLocked(caseFile) {
   if (!caseFile.locked) return false;
   const completedCount = Object.keys(state.choices).length;
-  if (caseFile.id === "case003") return completedCount < 2;
-  if (caseFile.id === "case004") return completedCount < 3;
+  if (typeof caseFile.unlockAfter === "number") return completedCount < caseFile.unlockAfter;
   return true;
 }
 
@@ -676,7 +704,9 @@ document.querySelector("#resetArchive").addEventListener("click", () => {
 
 document.querySelector("#dismissReturnMoment").addEventListener("click", () => {
   markCurrentStateSeen();
-  document.querySelector("#returnMoment").hidden = true;
+  const el = document.querySelector("#returnMoment");
+  el.hidden = true;
+  el.classList.remove("syncing", "choice-publish", "choice-bury", "choice-preserve");
 });
 
 const archiveAudio = {

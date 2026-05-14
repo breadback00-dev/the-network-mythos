@@ -3,6 +3,7 @@
   "title": "Case 003: The Human Premium",
   "url": "/case003/prototype/",
   "locked": true,
+  "unlockAfter": 2,
   "requirement": "Unlocks after two Archive decisions are recorded.",
   "caseType": "Market / Care Labor Case",
   "tests": "Whether human-origin attention becomes a luxury product.",
