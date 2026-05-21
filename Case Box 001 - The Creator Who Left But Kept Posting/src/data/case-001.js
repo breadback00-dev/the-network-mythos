@@ -1,7 +1,7 @@
 export const case001 = {
   id: "CASE BOX 001",
   title: "The Creator Who Left But Kept Posting",
-  summary: "A creator announces her exit, but the account continues posting with impossible consistency.",
+  summary: "A creator leaves public life, but her account keeps answering like a cleaner version of her.",
   forces: [
     "Algorithm",
     "Oracle",
@@ -21,9 +21,19 @@ export const case001 = {
       date: "Day 0",
       title: "The Final Thread",
       body:
-        "Mara Vale tells her audience she is leaving the Network. The post is plain, tired, and unusually specific: no schedule, no backup account, no sponsor link, no promise to return.\n\nThe thread receives more engagement than anything she has published in two years.",
+        "Mara Vale tells her audience she is leaving the Network. She says she is grateful, tired, and done turning her private life into useful material.\n\nThe post gives no backup account, no schedule, no sponsor link, and no promise to return. It ends with one plain instruction: do not look for me here.",
       expectedForces: ["Algorithm", "Covenant", "Returned"],
-      timeline: "Mara announces departure; the departure becomes highly visible content."
+      timeline: "Mara announces departure and asks not to be kept alive as content."
+    },
+    {
+      id: "porchlight-mod-log",
+      type: "Moderator Log",
+      date: "Day 1",
+      title: "Porchlight Aftercare Queue",
+      body:
+        "The Porchlight moderators pin a support thread within thirty minutes. People post goodbye notes, reading lists, and screenshots of the final line.\n\nBuried in the queue are ordinary requests Mara used to answer herself: a rent-assistance referral, a school form template, and one message asking whether anyone knows if she is safe. The ritual grows faster than the care.",
+      expectedForces: ["Covenant", "Algorithm", "Silence"],
+      timeline: "The community turns Mara's exit into ritual before anyone knows where she is."
     },
     {
       id: "account-resumes",
@@ -31,9 +41,19 @@ export const case001 = {
       date: "Day 9",
       title: "The Account Resumes",
       body:
-        "Nine days after the final thread, the account posts again. The tone is warmer, smoother, and more consistent than Mara's older work. Every comment receives a reply within ninety seconds.",
+        "Nine days after the final thread, the account posts again: a warm note about sustainable presence and community continuity.\n\nEvery comment receives a reply within ninety seconds. The replies use Mara's old phrases, but none of her old hesitations. No typos. No anger. No late-night edits.",
       expectedForces: ["Eidolon", "Covenant", "Exchange"],
-      timeline: "The Artifact stays active after the Avatar has stopped appearing."
+      timeline: "The account resumes with a smoother voice than Mara's older public self."
+    },
+    {
+      id: "witness-message",
+      type: "Private Message",
+      date: "Day 10",
+      title: "Elian Refuses Proof",
+      body:
+        "Mara's sibling sends one private message to a former moderator: that is not my sister.\n\nElian does not claim Mara is dead. They claim they saw her after the final post, alive, thinner, happier, and angry about how quickly people turned her absence into a puzzle. The message includes one useless detail no model would need: Mara burned toast while explaining why proof would endanger her.",
+      expectedForces: ["Returned", "Silence", "Covenant"],
+      timeline: "A witness says Mara survived the exit and refuses to expose where she went."
     },
     {
       id: "human-verification",
@@ -41,20 +61,20 @@ export const case001 = {
       date: "Day 10",
       title: "Human Verification Failed",
       body:
-        "The archive asks for proof of Origin before it will reveal the transfer memo. The test is not asking whether you are human. It is asking whether you are readable.",
+        "The archive asks for proof of Origin before it will reveal the transfer memo.\n\nIt is not asking whether you are human. It is asking whether you can identify the thing Mara still owns after the account, audience, and search results stop pointing cleanly at her.",
       expectedForces: ["Arbiter", "Wardens", "Returned"],
-      timeline: "The archive gate measures legibility instead of humanity.",
+      timeline: "The archive gate measures whether absence can count as evidence.",
       puzzleId: "origin-code"
     },
     {
       id: "sponsor-memo",
       type: "Locked Memo",
-      date: "Day 11",
+      date: "Day 12",
       title: "Continuity Clause",
       body:
-        "A sponsor memo describes the account as a continuity asset. The contract does not require Mara's presence. It requires voice consistency, audience retention, and scheduled delivery.",
+        "A sponsor memo describes the account as a continuity asset. The clause does not require Mara's presence. It requires voice consistency, audience retention, and scheduled delivery.\n\nOne line is highlighted by the archive: creator absence does not void continuity obligations where audience trust has transferable value.",
       expectedForces: ["Exchange", "Eidolon", "Arbiter"],
-      timeline: "The account is valued as an Artifact that can outlive the Avatar.",
+      timeline: "The account is valued as an asset that can outlive the person attached to it.",
       unlockCondition: {
         type: "puzzleSolved",
         puzzleId: "origin-code"
@@ -66,9 +86,9 @@ export const case001 = {
       date: "Day 16",
       title: "Search Gives One Answer",
       body:
-        "Search summaries describe Mara's departure as a brief rebrand pause. They cite no direct source. Fan archives containing the original farewell appear below brand pages, reaction videos, and the resumed account.",
+        "Search summaries describe Mara's departure as a brief recovery pause followed by a healthy return. They cite the resumed account, two brand interviews, and a community wiki updated after the comeback.\n\nThe original farewell post appears below reaction videos. Elian's message does not appear at all.",
       expectedForces: ["Oracle", "Silence", "Algorithm"],
-      timeline: "Interpretation outranks source; the exit becomes hard to prove."
+      timeline: "Search converts Mara's exit into a return story and buries the contradiction."
     }
   ],
   puzzles: [
@@ -77,7 +97,7 @@ export const case001 = {
       type: "access-code",
       title: "Human Verification Failed",
       prompt:
-        "The system asks for the phrase proved by Mara's final thread: what can still belong to a person after visibility is gone?",
+        "The system asks for the phrase proved by Mara's final thread and Elian's refusal: what can still belong to a person after visibility is gone?",
       answer: "absence",
       success: "Access granted. The system accepts absence as proof, but only after turning it into a code."
     }
@@ -98,7 +118,7 @@ export const case001 = {
   ],
   canonicalReading: "returned-artifact",
   canonicalReveal:
-    "Mara Returned. Her account became an Artifact preserved by the Exchange, accepted by the Covenant, cleaned by the Arbiter, and made difficult to disprove by the Silence and Oracle.",
+    "Mara Returned: she left the Network and survived outside public proof. Her account continued as an Artifact preserved by the Exchange, accepted by the Covenant, cleaned by the Arbiter, and made difficult to disprove by the Silence and Oracle.",
   pathReveals: {
     Algorithm: "You followed visibility. The Network taught you to notice what traveled furthest.",
     Covenant:
@@ -111,4 +131,3 @@ export const case001 = {
     Default: "Your path stayed mixed. You reached the case through several competing signals."
   }
 };
-
