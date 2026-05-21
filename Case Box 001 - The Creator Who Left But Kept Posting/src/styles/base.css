@@ -1,0 +1,54 @@
+:root {
+  --black: #0d0d0c;
+  --charcoal: #151513;
+  --panel: #1c1b18;
+  --paper: #ede7d9;
+  --paper-soft: #d8cfbd;
+  --muted: #918875;
+  --line: rgba(237, 231, 217, 0.18);
+  --line-strong: rgba(237, 231, 217, 0.34);
+  --red: #b14332;
+  --green: #78a162;
+  --amber: #c79b55;
+  --bluegray: #87929a;
+  --mono: "Courier New", Courier, monospace;
+  --sans: Arial, Helvetica, sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:
+    linear-gradient(rgba(237, 231, 217, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 231, 217, 0.025) 1px, transparent 1px),
+    linear-gradient(145deg, #0d0d0c, #151513 48%, #101419);
+  background-size: 38px 38px, 38px 38px, auto;
+  color: var(--paper);
+  font-family: var(--sans);
+  margin: 0;
+}
+
+button,
+input,
+a {
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+

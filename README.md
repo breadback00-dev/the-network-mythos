@@ -2,12 +2,13 @@
 
 **The Network Mythos** is a playable interactive archive about synthetic identity, online communities, platform power, and the ethics of preserving truth.
 
-Players investigate strange digital cases through an Archive Hub, read evidence dossiers, unlock deeper files, build theories, and decide what the Archive should do with the truth: **Publish**, **Bury**, or **Preserve**.
+Players investigate strange digital cases through evidence, tags, locked artifacts, theory-building, and Archive decisions. The current direction is to prove the smallest strong loop first: one Case Box where the truth stays stable, but the player's route through the evidence responds to how they interpret it.
 
 ![Archive Hub screenshot](docs/images/archive-hub.png)
 
 ## What Is Playable
 
+- **Recommended public prototype: Case Box 001**: investigate a creator who left the Network, then kept posting. Inspect evidence, solve one access gate, tag interpretation signals, and compare the canonical answer with your reading path.
 - **Archive Hub**: tracks case decisions, Archive pressure meters, mapped mythic forces, witnesses, vault entries, and consequences.
 - **Case 001: The Door Is Real**: determine whether Mara Vale truly returned, and whether proof can protect a person without capturing them.
 - **Case 002: The Half Synthetic Community**: investigate a support community where the most stabilizing members were synthetic.
@@ -28,7 +29,28 @@ The current build explores:
 - archives that can preserve the erased or consume them again
 - cross-case consequences through shared Archive state
 
-## Run Locally
+## Run The Case Box Prototype
+
+The Case Box prototype is static and can be opened directly:
+
+```text
+Case Box 001 - The Creator Who Left But Kept Posting/index.html
+```
+
+Or served locally:
+
+```powershell
+cd "Case Box 001 - The Creator Who Left But Kept Posting"
+python -m http.server 5174 --bind 127.0.0.1
+```
+
+Then open:
+
+```text
+http://127.0.0.1:5174/
+```
+
+## Run The Archive Hub
 
 Requirements:
 
@@ -61,6 +83,10 @@ Archive Hub/
   styles.css
   server.js
   case-engine.js
+Case Box 001 - The Creator Who Left But Kept Posting/
+  index.html
+  src/
+  docs/
 Case 001 - The Door Is Real/
 Case 002 - The Half Synthetic Community/
 Case 003 - The Human Premium/

@@ -1,0 +1,309 @@
+.brand strong,
+.brand em,
+.case-title,
+.signal-summary,
+.kicker,
+.evidence-card,
+.document-meta,
+.puzzle-card,
+.tag-card,
+.force-tags,
+.signal-profile,
+.timeline,
+.reading-options,
+.status-line,
+.reading-path,
+.panel-topline {
+  font-family: var(--mono);
+  letter-spacing: 0;
+}
+
+.brand strong {
+  display: block;
+  font-size: 14px;
+}
+
+.brand em {
+  color: var(--green);
+  display: block;
+  font-size: 11px;
+  font-style: normal;
+  margin-top: 4px;
+}
+
+.brand-mark {
+  background:
+    radial-gradient(circle, transparent 0 20%, currentColor 21% 23%, transparent 24%),
+    linear-gradient(45deg, transparent 45%, currentColor 46% 48%, transparent 49%),
+    linear-gradient(-45deg, transparent 45%, currentColor 46% 48%, transparent 49%),
+    linear-gradient(90deg, transparent 48%, currentColor 49% 51%, transparent 52%);
+  color: var(--paper);
+  display: block;
+  height: 42px;
+  width: 42px;
+}
+
+.case-title span,
+.signal-summary span,
+.panel-topline span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.case-title strong,
+.signal-summary strong {
+  color: var(--paper-soft);
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+.panel-topline {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.kicker {
+  color: var(--red);
+  font-size: 12px;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+.evidence-list {
+  display: grid;
+  gap: 10px;
+}
+
+.evidence-card {
+  background: transparent;
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 7px;
+  min-height: 82px;
+  padding: 12px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.evidence-card:hover,
+.evidence-card.is-active {
+  border-color: var(--green);
+}
+
+.evidence-card.is-reviewed {
+  background: rgba(120, 161, 98, 0.08);
+}
+
+.evidence-card span,
+.evidence-card small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.evidence-card strong {
+  color: var(--paper-soft);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.document-card,
+.puzzle-card,
+.tag-card,
+.board-card {
+  background: rgba(28, 27, 24, 0.78);
+  border: 1px solid var(--line);
+  padding: 18px;
+}
+
+.document-card {
+  min-height: 320px;
+  padding: 26px;
+}
+
+.document-meta {
+  color: var(--muted);
+  display: flex;
+  font-size: 11px;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.document-card h1 {
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.04;
+  margin: 34px 0 22px;
+  text-transform: uppercase;
+}
+
+.document-card p {
+  color: var(--paper-soft);
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 760px;
+  white-space: pre-line;
+}
+
+.puzzle-card,
+.tag-card {
+  align-items: center;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
+}
+
+.puzzle-card h2,
+.tag-card h2 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.puzzle-card p:not(.kicker) {
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.puzzle-controls {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr auto;
+}
+
+.puzzle-controls input {
+  background: rgba(13, 13, 12, 0.72);
+  border: 1px solid var(--line);
+  min-height: 40px;
+  padding: 10px;
+}
+
+.puzzle-controls button,
+.primary-action {
+  background: var(--paper);
+  border: 0;
+  color: var(--black);
+  min-height: 40px;
+  padding: 10px 14px;
+  text-transform: uppercase;
+}
+
+.force-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.force-tags button {
+  background: transparent;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  min-height: 36px;
+  padding: 8px 10px;
+  text-transform: uppercase;
+}
+
+.force-tags button.is-selected {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.board-card h2 {
+  font-family: var(--serif);
+}
+
+.signal-profile {
+  display: grid;
+  gap: 8px;
+}
+
+.signal-row {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 92px 1fr 22px;
+}
+
+.signal-row span,
+.signal-row strong {
+  color: var(--paper-soft);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.signal-row meter {
+  accent-color: var(--amber);
+  width: 100%;
+}
+
+.timeline {
+  color: var(--paper-soft);
+  display: grid;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.reading-options {
+  border: 0;
+  display: grid;
+  gap: 10px;
+  margin: 10px 0 16px;
+  padding: 0;
+}
+
+.reading-options legend {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.reading-options label {
+  border: 1px solid var(--line);
+  color: var(--paper-soft);
+  display: grid;
+  font-size: 12px;
+  gap: 8px;
+  grid-template-columns: 18px 1fr;
+  line-height: 1.35;
+  padding: 10px;
+}
+
+.primary-action {
+  width: 100%;
+}
+
+.status-line,
+.reading-path {
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.5;
+  min-height: 34px;
+}
+
+@media (max-width: 720px) {
+  .document-card h1 {
+    font-size: 34px;
+  }
+
+  .document-card p {
+    font-size: 15px;
+  }
+
+  .puzzle-card,
+  .tag-card {
+    grid-template-columns: 1fr;
+  }
+}
+

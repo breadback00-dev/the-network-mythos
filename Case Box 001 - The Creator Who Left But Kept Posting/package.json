@@ -1,0 +1,19 @@
+{
+  "name": "network-mythos-case-box",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Phase 1 static prototype scaffold for The Network Mythos digital mystery box game.",
+  "scripts": {
+    "start": "python -m http.server 5174 --bind 127.0.0.1",
+    "check": "node --check src/scripts/app.js && node --check src/scripts/case-engine.js && node --check src/scripts/puzzle-engine.js && node --check src/scripts/signal-engine.js"
+  },
+  "keywords": [
+    "mystery-box",
+    "narrative-game",
+    "arg",
+    "systems-deduction",
+    "network-mythos"
+  ],
+  "license": "UNLICENSED"
+}

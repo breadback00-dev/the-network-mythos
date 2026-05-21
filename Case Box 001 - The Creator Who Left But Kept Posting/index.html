@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Network Mythos: Case Box</title>
+    <meta
+      name="description"
+      content="A Phase 1 digital mystery box prototype for The Network Mythos."
+    />
+    <link rel="stylesheet" href="src/styles/base.css" />
+    <link rel="stylesheet" href="src/styles/layout.css" />
+    <link rel="stylesheet" href="src/styles/components.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Network Mythos Case Box">
+      <header class="app-header">
+        <a class="brand" href="./index.html" aria-label="Network Mythos Case Box">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>Network Mythos</strong>
+            <em>Digital Mystery Box</em>
+          </span>
+        </a>
+
+        <section class="case-title" aria-label="Active case">
+          <span id="case-id">Case Box</span>
+          <strong id="case-title">Loading Case</strong>
+        </section>
+
+        <section class="signal-summary" aria-label="Signal profile summary">
+          <span>Dominant Signal</span>
+          <strong id="dominant-signal">Unformed</strong>
+        </section>
+      </header>
+
+      <section class="workspace">
+        <aside class="evidence-panel" aria-label="Evidence inbox">
+          <div class="panel-topline">
+            <p class="kicker">// Evidence Inbox</p>
+            <span id="evidence-count">0 items</span>
+          </div>
+          <div id="evidence-list" class="evidence-list"></div>
+        </aside>
+
+        <section class="active-panel" aria-live="polite">
+          <article class="document-card" aria-labelledby="evidence-title">
+            <div class="document-meta">
+              <span id="evidence-type">Evidence</span>
+              <span id="evidence-date">--</span>
+            </div>
+            <h1 id="evidence-title">Select Evidence</h1>
+            <p id="evidence-body">Open a case item from the inbox to begin.</p>
+          </article>
+
+          <section class="puzzle-card" aria-label="Nested puzzle">
+            <div>
+              <p class="kicker">// Nested Puzzle</p>
+              <h2 id="puzzle-title">No Puzzle Active</h2>
+              <p id="puzzle-prompt">Some evidence contains locked pieces, codes, or verification gates.</p>
+            </div>
+            <div class="puzzle-controls">
+              <input id="puzzle-answer" type="text" autocomplete="off" placeholder="Enter access code" />
+              <button id="submit-puzzle" type="button">Unlock</button>
+            </div>
+            <p id="puzzle-result" class="status-line" role="status"></p>
+          </section>
+
+          <section class="tag-card" aria-label="Force tagging">
+            <div>
+              <p class="kicker">// Force Tags</p>
+              <h2>What touched this signal?</h2>
+            </div>
+            <div id="force-tags" class="force-tags"></div>
+          </section>
+        </section>
+
+        <aside class="reading-panel" aria-label="Reading board">
+          <section class="board-card">
+            <p class="kicker">// Signal Profile</p>
+            <div id="signal-profile" class="signal-profile"></div>
+          </section>
+
+          <section class="board-card">
+            <p class="kicker">// Timeline</p>
+            <ol id="timeline" class="timeline"></ol>
+          </section>
+
+          <section class="board-card">
+            <p class="kicker">// Final Reading</p>
+            <fieldset id="reading-options" class="reading-options">
+              <legend>What happened?</legend>
+            </fieldset>
+            <button id="submit-reading" class="primary-action" type="button">Submit Reading</button>
+            <p id="reading-result" class="status-line" role="status"></p>
+          </section>
+
+          <section class="board-card">
+            <p class="kicker">// Your Reading Path</p>
+            <p id="reading-path" class="reading-path">
+              Your route through the case will appear after the final reading.
+            </p>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="src/scripts/app.js"></script>
+  </body>
+</html>
+

@@ -3,6 +3,7 @@
 Start with these files:
 
 - [README](../README.md): public overview, playable state, and local run instructions.
+- [Case Box 001](../Case%20Box%20001%20-%20The%20Creator%20Who%20Left%20But%20Kept%20Posting/README.md): recommended public prototype for the focused investigation loop.
 - [GAME_DESIGN](../GAME_DESIGN.md): core loop, player objective, audience, mechanics, and design pillars.
 - [ARCHITECTURE](../ARCHITECTURE.md): server model, shared-origin routing, case discovery, and case engine structure.
 - [ROADMAP](../ROADMAP.md): public next steps.
