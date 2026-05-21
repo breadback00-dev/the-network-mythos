@@ -1,3 +1,16 @@
 *.log
 node_modules/
 .claude/
+
+# Local-only creative/IP source material. Keep the public repo focused on the
+# playable prototype unless these are intentionally cleared for release.
+The Network Mythos - A Myth Bible.md
+The Network Mythos - Canon Bible.md
+ALLEY_CAT_GAMES_SUBMISSION_CONCEPT.md
+CASE_FILES_GAME_PLAN.md
+concept-images/
+research for games/
+The Residue/
+the_residue_cc version agent/
+network-mythos-case-box/
+network-mythos-hybrid-table/
