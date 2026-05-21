@@ -97,9 +97,15 @@
 }
 
 .evidence-card span,
-.evidence-card small {
+.evidence-card small,
+.evidence-card em {
   color: var(--muted);
   font-size: 10px;
+}
+
+.evidence-card em {
+  font-style: normal;
+  line-height: 1.35;
 }
 
 .evidence-card strong {
@@ -107,6 +113,10 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 1.35;
+}
+
+.evidence-card.has-tags em {
+  color: var(--amber);
 }
 
 .document-card,
@@ -147,6 +157,17 @@
   line-height: 1.65;
   max-width: 760px;
   white-space: pre-line;
+}
+
+.document-card .active-tag-summary {
+  border-top: 1px solid var(--line);
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 26px 0 0;
+  padding-top: 14px;
+  text-transform: uppercase;
 }
 
 .puzzle-card,
@@ -202,6 +223,15 @@
   gap: 8px;
 }
 
+.selected-tags-status {
+  color: var(--paper-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
 .force-tags button {
   background: transparent;
   border: 1px solid var(--line);
@@ -229,7 +259,7 @@
   align-items: center;
   display: grid;
   gap: 8px;
-  grid-template-columns: 92px 1fr 22px;
+  grid-template-columns: 92px 1fr 72px;
 }
 
 .signal-row span,
@@ -239,9 +269,30 @@
   font-weight: 400;
 }
 
-.signal-row meter {
-  accent-color: var(--amber);
-  width: 100%;
+.signal-row i {
+  background: rgba(232, 225, 205, 0.08);
+  border: 1px solid var(--line);
+  display: block;
+  height: 8px;
+  overflow: hidden;
+}
+
+.signal-row b {
+  background: var(--amber);
+  display: block;
+  height: 100%;
+}
+
+.signal-row.is-dominant span,
+.signal-row.is-dominant strong {
+  color: var(--amber);
+}
+
+.signal-empty {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0;
 }
 
 .timeline {
@@ -306,4 +357,3 @@
     grid-template-columns: 1fr;
   }
 }
-

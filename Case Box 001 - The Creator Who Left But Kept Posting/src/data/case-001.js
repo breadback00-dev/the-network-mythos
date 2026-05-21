@@ -128,6 +128,8 @@ export const case001 = {
     Eidolon:
       "You followed synthetic presence. You noticed impossible consistency where human texture used to be.",
     Returned: "You followed Origin. You noticed the signs of someone choosing life outside visibility.",
+    Mixed:
+      "Your path stayed contested. The case surfaced several explanations at once instead of collapsing cleanly into one signal.",
     Default: "Your path stayed mixed. You reached the case through several competing signals."
   }
 };

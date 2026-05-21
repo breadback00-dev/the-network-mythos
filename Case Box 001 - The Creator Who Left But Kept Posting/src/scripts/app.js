@@ -2,7 +2,7 @@ import {
   createInitialState,
   getActiveEvidence,
   getCaseProgress,
-  getVisibleEvidence,
+  getRoutedEvidence,
   toggleForceTag
 } from "./case-engine.js";
 import { case001 } from "../data/case-001.js";
@@ -19,11 +19,13 @@ const dom = {
   evidenceDate: document.querySelector("#evidence-date"),
   evidenceTitle: document.querySelector("#evidence-title"),
   evidenceBody: document.querySelector("#evidence-body"),
+  activeTagSummary: document.querySelector("#active-tag-summary"),
   puzzleTitle: document.querySelector("#puzzle-title"),
   puzzlePrompt: document.querySelector("#puzzle-prompt"),
   puzzleAnswer: document.querySelector("#puzzle-answer"),
   submitPuzzle: document.querySelector("#submit-puzzle"),
   puzzleResult: document.querySelector("#puzzle-result"),
+  selectedTagsStatus: document.querySelector("#selected-tags-status"),
   forceTags: document.querySelector("#force-tags"),
   signalProfile: document.querySelector("#signal-profile"),
   timeline: document.querySelector("#timeline"),
@@ -36,6 +38,18 @@ const dom = {
 let caseData;
 let state;
 
+function formatTags(tags) {
+  return tags.length ? tags.join(" / ") : "No signals tagged";
+}
+
+function getSignalLabel(score, maxScore, dominantSignal) {
+  if (score <= 0) return "dormant";
+  if (dominantSignal === "Mixed" && score === maxScore) return "contested";
+  if (score === maxScore && maxScore > 1) return "dominant";
+  if (score > 1) return "strong";
+  return "trace";
+}
+
 function loadCase() {
   caseData = case001;
   state = createInitialState(caseData);
@@ -43,20 +57,28 @@ function loadCase() {
 }
 
 function renderEvidenceList() {
-  const visibleEvidence = getVisibleEvidence(caseData, state);
+  const { dominantSignal } = getCaseProgress(caseData, state);
+  const visibleEvidence = getRoutedEvidence(caseData, state);
   dom.evidenceList.innerHTML = "";
-  dom.evidenceCount.textContent = `${visibleEvidence.length} items`;
+  const routeLabel =
+    dominantSignal === "Unformed" || dominantSignal === "Mixed"
+      ? `${visibleEvidence.length} items`
+      : `${visibleEvidence.length} items / routed by ${dominantSignal}`;
+  dom.evidenceCount.textContent = routeLabel;
 
   visibleEvidence.forEach((item, index) => {
+    const selectedTags = state.tagsByEvidence[item.id] || [];
     const button = document.createElement("button");
     button.className = "evidence-card";
     button.type = "button";
     button.classList.toggle("is-active", item.id === state.activeEvidenceId);
     button.classList.toggle("is-reviewed", state.reviewedEvidence.has(item.id));
+    button.classList.toggle("has-tags", selectedTags.length > 0);
     button.innerHTML = `
       <span>${String(index + 1).padStart(2, "0")} / ${item.type}</span>
       <strong>${item.title}</strong>
       <small>${state.reviewedEvidence.has(item.id) ? "Reviewed" : item.date}</small>
+      <em>${formatTags(selectedTags)}</em>
     `;
     button.addEventListener("click", () => {
       state.activeEvidenceId = item.id;
@@ -75,6 +97,9 @@ function renderActiveEvidence() {
   dom.evidenceDate.textContent = active.date;
   dom.evidenceTitle.textContent = active.title;
   dom.evidenceBody.textContent = active.body;
+  dom.activeTagSummary.textContent = `Tagged signals: ${formatTags(
+    state.tagsByEvidence[active.id] || []
+  )}`;
 }
 
 function renderPuzzle() {
@@ -101,11 +126,15 @@ function renderForceTags() {
   const active = getActiveEvidence(caseData, state);
   const selected = state.tagsByEvidence[active.id] || [];
   dom.forceTags.innerHTML = "";
+  dom.selectedTagsStatus.textContent = selected.length
+    ? `This artifact currently points toward: ${formatTags(selected)}.`
+    : "No signals tagged on this artifact.";
 
   caseData.forces.forEach((force) => {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = force;
+    button.setAttribute("aria-pressed", String(selected.includes(force)));
     button.classList.toggle("is-selected", selected.includes(force));
     button.addEventListener("click", () => {
       toggleForceTag(state, active.id, force);
@@ -117,16 +146,36 @@ function renderForceTags() {
 }
 
 function renderSignalProfile() {
-  const { profile, dominantSignal } = getCaseProgress(caseData, state);
+  const { profile, dominantSignal, rankedSignals } = getCaseProgress(caseData, state);
   dom.dominantSignal.textContent = dominantSignal;
   dom.signalProfile.innerHTML = "";
+  const maxScore = Math.max(...Object.values(profile));
 
-  Object.entries(profile).forEach(([force, score]) => {
-    const row = document.createElement("div");
-    row.className = "signal-row";
-    row.innerHTML = `<span>${force}</span><meter min="0" max="5" value="${score}">${score}</meter><strong>${score}</strong>`;
-    dom.signalProfile.append(row);
-  });
+  if (maxScore === 0) {
+    const empty = document.createElement("p");
+    empty.className = "signal-empty";
+    empty.textContent = "The case has not formed a reading path yet.";
+    dom.signalProfile.append(empty);
+    return;
+  }
+
+  rankedSignals
+    .filter(([, score]) => score > 0)
+    .forEach(([force, score]) => {
+      const row = document.createElement("div");
+      row.className = "signal-row";
+      row.classList.toggle("is-dominant", force === dominantSignal);
+      const strength = Math.max(15, Math.round((score / maxScore) * 100));
+      const signalLabel = getSignalLabel(score, maxScore, dominantSignal);
+      row.innerHTML = `
+        <span>${force}</span>
+        <i aria-label="${force} signal ${signalLabel}">
+          <b style="width: ${strength}%"></b>
+        </i>
+        <strong>${signalLabel}</strong>
+      `;
+      dom.signalProfile.append(row);
+    });
 }
 
 function renderTimeline() {

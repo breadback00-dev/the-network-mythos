@@ -17,12 +17,22 @@ export function calculateSignalProfile(caseData, tagsByEvidence) {
 }
 
 export function getDominantSignal(profile) {
-  const entries = Object.entries(profile).sort((a, b) => b[1] - a[1]);
+  const entries = getRankedSignals(profile);
   const [force, score] = entries[0] || ["Default", 0];
-  return score > 0 ? force : "Unformed";
+
+  if (score <= 0) return "Unformed";
+
+  const tiedSignals = entries.filter(([, value]) => value === score);
+  return tiedSignals.length > 1 ? "Mixed" : force;
+}
+
+export function getRankedSignals(profile) {
+  return Object.entries(profile).sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    return a[0].localeCompare(b[0]);
+  });
 }
 
 export function getReadingPath(caseData, dominantSignal) {
   return caseData.pathReveals[dominantSignal] || caseData.pathReveals.Default;
 }
-

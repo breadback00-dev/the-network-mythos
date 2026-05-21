@@ -1,5 +1,5 @@
 import { isEvidenceUnlocked } from "./puzzle-engine.js";
-import { calculateSignalProfile, getDominantSignal } from "./signal-engine.js";
+import { calculateSignalProfile, getDominantSignal, getRankedSignals } from "./signal-engine.js";
 
 export function createInitialState(caseData) {
   return {
@@ -13,6 +13,25 @@ export function createInitialState(caseData) {
 
 export function getVisibleEvidence(caseData, state) {
   return caseData.evidence.filter((item) => isEvidenceUnlocked(item, state.solvedPuzzles));
+}
+
+export function getRoutedEvidence(caseData, state) {
+  const visibleEvidence = getVisibleEvidence(caseData, state);
+  const profile = calculateSignalProfile(caseData, state.tagsByEvidence);
+  const dominantSignal = getDominantSignal(profile);
+
+  if (dominantSignal === "Unformed" || dominantSignal === "Mixed") {
+    return visibleEvidence;
+  }
+
+  return visibleEvidence
+    .map((item, index) => ({ item, index }))
+    .sort((left, right) => {
+      const leftMatch = left.item.expectedForces?.includes(dominantSignal) ? 1 : 0;
+      const rightMatch = right.item.expectedForces?.includes(dominantSignal) ? 1 : 0;
+      return rightMatch - leftMatch || left.index - right.index;
+    })
+    .map(({ item }) => item);
 }
 
 export function getActiveEvidence(caseData, state) {
@@ -31,7 +50,8 @@ export function getCaseProgress(caseData, state) {
   return {
     profile,
     dominantSignal: getDominantSignal(profile),
-    visibleEvidence: getVisibleEvidence(caseData, state)
+    rankedSignals: getRankedSignals(profile),
+    visibleEvidence: getVisibleEvidence(caseData, state),
+    routedEvidence: getRoutedEvidence(caseData, state)
   };
 }
-
