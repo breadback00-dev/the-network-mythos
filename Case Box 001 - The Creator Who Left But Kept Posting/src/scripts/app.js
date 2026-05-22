@@ -22,6 +22,7 @@ const dom = {
   evidenceTitle: document.querySelector("#evidence-title"),
   evidenceBody: document.querySelector("#evidence-body"),
   activeTagSummary: document.querySelector("#active-tag-summary"),
+  relatedEvidence: document.querySelector("#related-evidence"),
   puzzleTitle: document.querySelector("#puzzle-title"),
   puzzlePrompt: document.querySelector("#puzzle-prompt"),
   puzzleAnswer: document.querySelector("#puzzle-answer"),
@@ -31,6 +32,7 @@ const dom = {
   forceTags: document.querySelector("#force-tags"),
   signalProfile: document.querySelector("#signal-profile"),
   timeline: document.querySelector("#timeline"),
+  caseRecap: document.querySelector("#case-recap"),
   readingOptions: document.querySelector("#reading-options"),
   submitReading: document.querySelector("#submit-reading"),
   readingResult: document.querySelector("#reading-result"),
@@ -62,6 +64,32 @@ function getNewlyUnlockedEvidence(beforeVisible, afterVisible) {
 function getPuzzleFeedback(puzzle, attemptCount) {
   const hint = puzzle.hints?.[Math.min(attemptCount - 1, puzzle.hints.length - 1)];
   return hint ? `${puzzle.failure} Hint: ${hint}` : puzzle.failure;
+}
+
+function getEvidenceById(evidenceId) {
+  return getVisibleEvidence(caseData, state).find((item) => item.id === evidenceId);
+}
+
+function getReviewedContradictions(active) {
+  return (active.contradictionWith || [])
+    .map((evidenceId) => getEvidenceById(evidenceId))
+    .filter((item) => item && state.reviewedEvidence.has(item.id));
+}
+
+function setActiveEvidence(evidenceId) {
+  state.activeEvidenceId = evidenceId;
+  state.reviewedEvidence.add(evidenceId);
+  render();
+}
+
+function ensureActiveEvidence() {
+  if (getActiveEvidence(caseData, state)) return;
+
+  const firstVisible = getRoutedEvidence(caseData, state)[0];
+  if (!firstVisible) return;
+
+  state.activeEvidenceId = firstVisible.id;
+  state.reviewedEvidence.add(firstVisible.id);
 }
 
 function getReadingLabel(readingId) {
@@ -194,6 +222,50 @@ function renderActiveEvidence() {
   dom.activeTagSummary.textContent = `Tagged signals: ${formatTags(
     state.tagsByEvidence[active.id] || []
   )}`;
+  renderRelatedEvidence(active);
+}
+
+function renderRelatedEvidence(active) {
+  const relatedItems = (active.relatedEvidence || [])
+    .map((evidenceId) => getEvidenceById(evidenceId))
+    .filter(Boolean);
+  const contradictions = getReviewedContradictions(active);
+
+  dom.relatedEvidence.innerHTML = "";
+
+  if (active.recoveryCue) {
+    const cue = document.createElement("p");
+    cue.className = "recovery-cue";
+    cue.textContent = active.recoveryCue;
+    dom.relatedEvidence.append(cue);
+  }
+
+  if (contradictions.length > 0) {
+    const marker = document.createElement("p");
+    marker.className = "contradiction-marker";
+    marker.textContent = `Contradiction marked: compare with ${contradictions
+      .map((item) => item.title)
+      .join(" / ")}.`;
+    dom.relatedEvidence.append(marker);
+  }
+
+  if (!relatedItems.length) return;
+
+  const group = document.createElement("div");
+  group.className = "related-links";
+  const label = document.createElement("span");
+  label.textContent = "Related evidence";
+  group.append(label);
+
+  relatedItems.forEach((item) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = item.title;
+    button.addEventListener("click", () => setActiveEvidence(item.id));
+    group.append(button);
+  });
+
+  dom.relatedEvidence.append(group);
 }
 
 function renderPuzzle() {
@@ -279,13 +351,29 @@ function renderSignalProfile() {
 
 function renderTimeline() {
   dom.timeline.innerHTML = "";
-  caseData.evidence
+  getVisibleEvidence(caseData, state)
     .filter((item) => state.reviewedEvidence.has(item.id))
     .forEach((item) => {
       const line = document.createElement("li");
       line.textContent = item.timeline;
       dom.timeline.append(line);
     });
+}
+
+function renderCaseRecap() {
+  const visibleEvidence = getVisibleEvidence(caseData, state);
+  const reviewedEvidence = visibleEvidence.filter((item) => state.reviewedEvidence.has(item.id));
+  const { dominantSignal, visibleBonusEvidence } = getCaseProgress(caseData, state);
+  const gateSolved = state.solvedPuzzles.has("origin-code");
+  const contradictionCount = reviewedEvidence.filter((item) => {
+    return getReviewedContradictions(item).length > 0;
+  }).length;
+
+  dom.caseRecap.innerHTML = `
+    <p>${reviewedEvidence.length}/${visibleEvidence.length} evidence items reviewed. Gate ${gateSolved ? "opened" : "still locked"}. Path ${dominantSignal}.</p>
+    <p>${contradictionCount ? `${contradictionCount} contradiction marker${contradictionCount === 1 ? "" : "s"} active.` : "No reviewed contradictions marked yet."}</p>
+    <p>${visibleBonusEvidence.length ? `Bonus evidence surfaced: ${visibleBonusEvidence[0].title}.` : "No bonus evidence surfaced yet."}</p>
+  `;
 }
 
 function renderReadingOptions() {
@@ -308,6 +396,7 @@ function renderHeader() {
 }
 
 function render() {
+  ensureActiveEvidence();
   renderHeader();
   renderEvidenceList();
   renderActiveEvidence();
@@ -315,6 +404,7 @@ function render() {
   renderForceTags();
   renderSignalProfile();
   renderTimeline();
+  renderCaseRecap();
   renderReadingOptions();
   if (state.submittedReading) {
     renderReveal(state.submittedReading);

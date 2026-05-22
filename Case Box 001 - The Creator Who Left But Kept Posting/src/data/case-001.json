@@ -22,6 +22,9 @@
       "title": "The Final Thread",
       "body": "Mara Vale tells her audience she is leaving the Network. She says she is grateful, tired, and done turning her private life into useful material.\n\nThe post gives no backup account, no schedule, no sponsor link, and no promise to return. It ends with one plain instruction: do not look for me here.",
       "expectedForces": ["Algorithm", "Covenant", "Returned"],
+      "relatedEvidence": ["witness-message", "search-summary"],
+      "contradictionWith": ["account-resumes", "search-summary"],
+      "recoveryCue": "If you are stuck, hold this beside the resumed account and search summary: what did Mara ask people not to do?",
       "timeline": "Mara announces departure and asks not to be kept alive as content."
     },
     {
@@ -31,6 +34,8 @@
       "title": "Porchlight Aftercare Queue",
       "body": "The Porchlight moderators pin a support thread within thirty minutes. People post goodbye notes, reading lists, and screenshots of the final line.\n\nBuried in the queue are ordinary requests Mara used to answer herself: a rent-assistance referral, a school form template, and one message asking whether anyone knows if she is safe. The ritual grows faster than the care.",
       "expectedForces": ["Covenant", "Algorithm", "Silence"],
+      "relatedEvidence": ["farewell-thread", "witness-message"],
+      "recoveryCue": "This artifact is not proof of impersonation. It shows why the community needed an answer.",
       "timeline": "The community turns Mara's exit into ritual before anyone knows where she is."
     },
     {
@@ -40,6 +45,9 @@
       "title": "The Account Resumes",
       "body": "Nine days after the final thread, the account posts again: a warm note about sustainable presence and community continuity.\n\nEvery comment receives a reply within ninety seconds. The replies use Mara's old phrases, but none of her old hesitations. No typos. No anger. No late-night edits.",
       "expectedForces": ["Eidolon", "Covenant", "Exchange"],
+      "relatedEvidence": ["farewell-thread", "witness-message", "sponsor-memo"],
+      "contradictionWith": ["farewell-thread", "witness-message"],
+      "recoveryCue": "The wrongness is not just that the account returns. It is how cleanly it returns.",
       "timeline": "The account resumes with a smoother voice than Mara's older public self."
     },
     {
@@ -49,6 +57,9 @@
       "title": "Elian Refuses Proof",
       "body": "Mara's sibling sends one private message to a former moderator: that is not my sister.\n\nElian does not claim Mara is dead. They claim they saw her after the final post, alive, thinner, happier, and angry about how quickly people turned her absence into a puzzle. The message includes one useless detail no model would need: Mara burned toast while explaining why proof would endanger her.",
       "expectedForces": ["Returned", "Silence", "Covenant"],
+      "relatedEvidence": ["farewell-thread", "human-verification", "search-summary"],
+      "contradictionWith": ["account-resumes", "search-summary"],
+      "recoveryCue": "Elian refuses the kind of proof the Network can easily consume.",
       "timeline": "A witness says Mara survived the exit and refuses to expose where she went."
     },
     {
@@ -58,6 +69,8 @@
       "title": "Human Verification Failed",
       "body": "The archive asks for proof of Origin before it will reveal the transfer memo.\n\nIt is not asking whether you are human. It is asking whether you can identify the thing Mara still owns after the account, audience, and search results stop pointing cleanly at her.",
       "expectedForces": ["Arbiter", "Wardens", "Returned"],
+      "relatedEvidence": ["farewell-thread", "witness-message"],
+      "recoveryCue": "The answer is not a place or identity record. It is what remains when visibility is gone.",
       "timeline": "The archive gate measures whether absence can count as evidence.",
       "puzzleId": "origin-code"
     },
@@ -68,6 +81,9 @@
       "title": "Continuity Clause",
       "body": "A sponsor memo describes the account as a continuity asset. The clause does not require Mara's presence. It requires voice consistency, audience retention, and scheduled delivery.\n\nOne line is highlighted by the archive: creator absence does not void continuity obligations where audience trust has transferable value.",
       "expectedForces": ["Exchange", "Eidolon", "Arbiter"],
+      "relatedEvidence": ["account-resumes", "search-summary"],
+      "contradictionWith": ["witness-message"],
+      "recoveryCue": "This memo explains who benefits if the account and person stay legally blurred.",
       "timeline": "The account is valued as an asset that can outlive the person attached to it.",
       "unlockCondition": {
         "type": "puzzleSolved",
@@ -81,6 +97,9 @@
       "title": "Search Gives One Answer",
       "body": "Search summaries describe Mara's departure as a brief recovery pause followed by a healthy return. They cite the resumed account, two brand interviews, and a community wiki updated after the comeback.\n\nThe original farewell post appears below reaction videos. Elian's message does not appear at all.",
       "expectedForces": ["Oracle", "Silence", "Algorithm"],
+      "relatedEvidence": ["farewell-thread", "witness-message", "sponsor-memo"],
+      "contradictionWith": ["farewell-thread", "witness-message"],
+      "recoveryCue": "Search is not lying exactly. It is choosing which records become easy to believe.",
       "timeline": "Search converts Mara's exit into a return story and buries the contradiction."
     }
   ],
