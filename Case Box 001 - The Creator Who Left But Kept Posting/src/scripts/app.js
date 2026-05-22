@@ -34,7 +34,9 @@ const dom = {
   readingOptions: document.querySelector("#reading-options"),
   submitReading: document.querySelector("#submit-reading"),
   readingResult: document.querySelector("#reading-result"),
-  readingPath: document.querySelector("#reading-path")
+  readingPath: document.querySelector("#reading-path"),
+  revealCard: document.querySelector("#reveal-card"),
+  revealContent: document.querySelector("#reveal-content")
 };
 
 let caseData;
@@ -60,6 +62,78 @@ function getNewlyUnlockedEvidence(beforeVisible, afterVisible) {
 function getPuzzleFeedback(puzzle, attemptCount) {
   const hint = puzzle.hints?.[Math.min(attemptCount - 1, puzzle.hints.length - 1)];
   return hint ? `${puzzle.failure} Hint: ${hint}` : puzzle.failure;
+}
+
+function getReadingLabel(readingId) {
+  return caseData.readings.find((reading) => reading.id === readingId)?.label || "No reading";
+}
+
+function getPathEvidencePattern(dominantSignal) {
+  if (dominantSignal === "Unformed") {
+    return "No stable path formed before submission.";
+  }
+
+  if (dominantSignal === "Mixed") {
+    const taggedCount = Object.values(state.tagsByEvidence).filter((tags) => tags.length).length;
+    return `${taggedCount} artifacts carried competing signals, so the case kept multiple routes in tension.`;
+  }
+
+  const matchingEvidence = getVisibleEvidence(caseData, state).filter((item) => {
+    return state.reviewedEvidence.has(item.id) && item.expectedForces?.includes(dominantSignal);
+  });
+
+  if (!matchingEvidence.length) {
+    return `The ${dominantSignal} route formed through tags before matching evidence was fully reviewed.`;
+  }
+
+  return matchingEvidence.map((item) => item.title).join(" / ");
+}
+
+function renderReveal(selectedReadingId) {
+  const { dominantSignal, visibleBonusEvidence } = getCaseProgress(caseData, state);
+  const selectedLabel = getReadingLabel(selectedReadingId);
+  const canonicalLabel = getReadingLabel(caseData.canonicalReading);
+  const routeCopy = getReadingPath(caseData, dominantSignal);
+  const evidencePattern = getPathEvidencePattern(dominantSignal);
+  const bonusCopy = visibleBonusEvidence.length
+    ? `Route-surfaced evidence: ${visibleBonusEvidence[0].title}.`
+    : "No bonus evidence surfaced for this route.";
+
+  state.submittedReading = selectedReadingId;
+  dom.revealCard.hidden = false;
+  dom.readingResult.textContent =
+    selectedReadingId === caseData.canonicalReading
+      ? "Your reading aligns with the canonical reconstruction."
+      : "Your reading diverges from the canonical reconstruction.";
+  dom.readingPath.textContent = routeCopy;
+  dom.revealContent.innerHTML = `
+    <dl>
+      <div>
+        <dt>Your submitted reading</dt>
+        <dd>${selectedLabel}</dd>
+      </div>
+      <div>
+        <dt>Canonical reconstruction</dt>
+        <dd>${canonicalLabel}</dd>
+      </div>
+      <div>
+        <dt>What happened</dt>
+        <dd>${caseData.canonicalReveal}</dd>
+      </div>
+      <div>
+        <dt>Your route</dt>
+        <dd>${dominantSignal}: ${routeCopy}</dd>
+      </div>
+      <div>
+        <dt>Evidence pattern</dt>
+        <dd>${evidencePattern}</dd>
+      </div>
+      <div>
+        <dt>Route effect</dt>
+        <dd>${bonusCopy} Interpretation changed the route, not the truth.</dd>
+      </div>
+    </dl>
+  `;
 }
 
 function loadCase() {
@@ -242,6 +316,9 @@ function render() {
   renderSignalProfile();
   renderTimeline();
   renderReadingOptions();
+  if (state.submittedReading) {
+    renderReveal(state.submittedReading);
+  }
 }
 
 dom.submitPuzzle.addEventListener("click", () => {
@@ -278,12 +355,7 @@ dom.submitReading.addEventListener("click", () => {
     return;
   }
 
-  const { dominantSignal } = getCaseProgress(caseData, state);
-  const correct = selected.value === caseData.canonicalReading;
-  dom.readingResult.textContent = correct
-    ? `Canonical reading: ${caseData.canonicalReveal}`
-    : `Incomplete reading. ${caseData.canonicalReveal}`;
-  dom.readingPath.textContent = getReadingPath(caseData, dominantSignal);
+  renderReveal(selected.value);
 });
 
 loadCase();

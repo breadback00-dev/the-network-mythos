@@ -359,6 +359,45 @@
   min-height: 34px;
 }
 
+.reveal-card {
+  border-color: var(--amber);
+}
+
+.reveal-card[hidden] {
+  display: none;
+}
+
+.reveal-content dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.reveal-content div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.reveal-content div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.reveal-content dt {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 10px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.reveal-content dd {
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
 @media (max-width: 720px) {
   .document-card h1 {
     font-size: 34px;
