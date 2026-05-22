@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css?v=truth-custody-20260522" />
-    <link rel="stylesheet" href="src/styles/layout.css?v=truth-custody-20260522" />
-    <link rel="stylesheet" href="src/styles/components.css?v=truth-custody-20260522" />
+    <link rel="stylesheet" href="src/styles/base.css?v=system-map-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=system-map-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=system-map-20260522" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -26,6 +26,7 @@
         <section class="case-title" aria-label="Active case">
           <span id="case-id">Case Box</span>
           <strong id="case-title">Loading Case</strong>
+          <button class="map-action" data-open-map type="button">View System Map</button>
         </section>
 
         <section class="signal-summary" aria-label="Signal profile summary">
@@ -46,7 +47,10 @@
           <p class="kicker">// Your Job</p>
           <ol id="opening-goals"></ol>
           <section class="opening-doctrine" aria-label="Archive doctrine">
-            <p class="kicker">// Archive Doctrine</p>
+            <div class="doctrine-heading">
+              <p class="kicker">// Archive Doctrine</p>
+              <button class="text-action" data-open-map type="button">View System Map</button>
+            </div>
             <p id="opening-doctrine"></p>
           </section>
           <button id="start-case" class="primary-action" type="button">Open the case</button>
@@ -109,7 +113,10 @@
 
         <aside class="reading-panel" aria-label="Reading board">
           <section class="board-card doctrine-card">
-            <p class="kicker">// Archive Doctrine</p>
+            <div class="board-card-header">
+              <p class="kicker">// Archive Doctrine</p>
+              <button class="text-action" data-open-map type="button">View Map</button>
+            </div>
             <p id="doctrine-summary" class="doctrine-summary"></p>
           </section>
 
@@ -161,8 +168,37 @@
           </section>
         </aside>
       </section>
+
+      <section
+        id="system-map-modal"
+        class="system-map-modal"
+        aria-labelledby="system-map-title"
+        aria-modal="true"
+        role="dialog"
+        hidden
+      >
+        <div class="system-map-panel">
+          <div class="system-map-header">
+            <div>
+              <p class="kicker">// System Map</p>
+              <h2 id="system-map-title">Mara Vale / The Resumed Account</h2>
+            </div>
+            <button id="close-system-map" class="reset-action" type="button">Close</button>
+          </div>
+          <figure class="system-map-figure">
+            <img
+              src="public/assets/system-map-character-network.png"
+              alt="Illustrated system map connecting Mara Vale, Elian Vale, the Resumed Account, Porchlight, Sponsor, Search Oracle, Archive You, and the ten Network forces."
+            />
+            <figcaption>
+              The map is a reference surface, not the answer. Use it to notice how people,
+              platforms, proof, money, silence, and imitation press on the same case.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js?v=truth-custody-20260522"></script>
+    <script type="module" src="src/scripts/app.js?v=system-map-20260522"></script>
   </body>
 </html>

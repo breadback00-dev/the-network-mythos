@@ -15,11 +15,14 @@
 .reading-path,
 .panel-topline,
 .reset-action,
+.map-action,
+.text-action,
 .opening-actions,
 .opening-doctrine,
 .doctrine-summary,
 .custody-prompt,
-.custody-options {
+.custody-options,
+.system-map-modal {
   font-family: var(--mono);
   letter-spacing: 0;
 }
@@ -64,6 +67,55 @@
   font-size: 14px;
   font-weight: 400;
   margin-top: 6px;
+}
+
+.map-action,
+.text-action {
+  background: transparent;
+  border: 1px solid rgba(120, 161, 98, 0.26);
+  color: var(--green);
+  font-size: 10px;
+  min-height: 28px;
+  padding: 5px 9px;
+  text-transform: uppercase;
+  transition:
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.map-action {
+  margin-top: 10px;
+}
+
+.text-action {
+  border-color: rgba(237, 231, 217, 0.16);
+  color: var(--muted);
+}
+
+.map-action:hover,
+.text-action:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.doctrine-heading {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.doctrine-heading .kicker {
+  margin-bottom: 0;
+}
+
+.doctrine-force {
+  color: var(--amber);
+  font-weight: 400;
+}
+
+body.is-map-open {
+  overflow: hidden;
 }
 
 .reset-action {
@@ -736,6 +788,82 @@
   margin: 0;
 }
 
+.system-map-modal {
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(120, 161, 98, 0.12), transparent 34%),
+    rgba(4, 4, 3, 0.88);
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: fixed;
+  z-index: 30;
+}
+
+.system-map-modal:not([hidden]) {
+  display: flex;
+}
+
+.system-map-panel {
+  background:
+    linear-gradient(145deg, rgba(237, 231, 217, 0.07), transparent 42%),
+    rgba(15, 14, 12, 0.98);
+  border: 1px solid rgba(199, 155, 85, 0.34);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.58);
+  max-height: min(92vh, 980px);
+  max-width: min(1180px, 94vw);
+  overflow: auto;
+  padding: 18px;
+  width: 100%;
+}
+
+.system-map-header {
+  align-items: start;
+  border-bottom: 1px solid rgba(237, 231, 217, 0.13);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+}
+
+.system-map-header h2 {
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.system-map-header .reset-action {
+  margin-top: 0;
+}
+
+.system-map-figure {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.system-map-figure img {
+  background: rgba(5, 5, 4, 0.64);
+  border: 1px solid rgba(237, 231, 217, 0.14);
+  display: block;
+  max-height: 68vh;
+  object-fit: contain;
+  width: 100%;
+}
+
+.system-map-figure figcaption {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 0;
+  text-transform: uppercase;
+}
+
 .timeline {
   color: var(--paper-soft);
   display: grid;
@@ -910,5 +1038,42 @@
   .intake-content,
   .intake-content ol {
     grid-template-columns: 1fr;
+  }
+
+  .doctrine-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .system-map-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .map-action,
+  .text-action {
+    width: fit-content;
+  }
+
+  .system-map-modal {
+    padding: 10px;
+  }
+
+  .system-map-panel {
+    max-height: 94vh;
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  .system-map-header h2 {
+    font-size: 30px;
+  }
+
+  .system-map-header .reset-action {
+    width: fit-content;
+  }
+
+  .system-map-figure img {
+    max-height: 62vh;
   }
 }

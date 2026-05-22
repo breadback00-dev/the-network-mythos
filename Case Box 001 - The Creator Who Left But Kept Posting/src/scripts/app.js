@@ -7,7 +7,7 @@ import {
   recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js?v=truth-custody-20260522";
+import { case001 } from "../data/case-001.js?v=system-map-20260522";
 import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
@@ -16,6 +16,9 @@ const dom = {
   caseTitle: document.querySelector("#case-title"),
   dominantSignal: document.querySelector("#dominant-signal"),
   resetCase: document.querySelector("#reset-case"),
+  openMapButtons: document.querySelectorAll("[data-open-map]"),
+  systemMapModal: document.querySelector("#system-map-modal"),
+  closeSystemMap: document.querySelector("#close-system-map"),
   openingBrief: document.querySelector("#opening-brief"),
   openingTitle: document.querySelector("#opening-title"),
   openingSummary: document.querySelector("#opening-summary"),
@@ -63,9 +66,15 @@ let caseData;
 let state;
 let intakeOpen = true;
 let openingOpen = true;
+let lastMapTrigger = null;
 
 function formatTags(tags) {
   return tags.length ? tags.join(" / ") : "No signals tagged";
+}
+
+function highlightDoctrineForces(text) {
+  const forcePattern = new RegExp(`\\b(${caseData.forces.join("|")})\\b`, "g");
+  return text.replace(forcePattern, '<strong class="doctrine-force">$1</strong>');
 }
 
 function getSignalLabel(score, maxScore, dominantSignal) {
@@ -226,14 +235,30 @@ function renderOpeningBrief() {
   dom.openingTitle.textContent = opening.headline;
   dom.openingSummary.textContent = opening.summary;
   dom.openingRole.textContent = opening.role;
-  dom.openingDoctrine.textContent = caseData.doctrine;
+  dom.openingDoctrine.innerHTML = highlightDoctrineForces(caseData.doctrine);
   dom.openingGoals.innerHTML = opening.goals
     .map((goal) => `<li>${goal}</li>`)
     .join("");
 }
 
 function renderDoctrineSummary() {
-  dom.doctrineSummary.textContent = caseData.doctrine;
+  dom.doctrineSummary.innerHTML = highlightDoctrineForces(caseData.doctrine);
+}
+
+function openSystemMap() {
+  lastMapTrigger = document.activeElement;
+  dom.systemMapModal.hidden = false;
+  document.body.classList.add("is-map-open");
+  dom.closeSystemMap.focus();
+}
+
+function closeSystemMap() {
+  dom.systemMapModal.hidden = true;
+  document.body.classList.remove("is-map-open");
+
+  if (lastMapTrigger) {
+    lastMapTrigger.focus();
+  }
 }
 
 function renderEvidenceList() {
@@ -637,6 +662,24 @@ dom.startCase.addEventListener("click", () => {
 
 dom.resetCase.addEventListener("click", () => {
   restartCase();
+});
+
+dom.openMapButtons.forEach((button) => {
+  button.addEventListener("click", openSystemMap);
+});
+
+dom.closeSystemMap.addEventListener("click", closeSystemMap);
+
+dom.systemMapModal.addEventListener("click", (event) => {
+  if (event.target === dom.systemMapModal) {
+    closeSystemMap();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !dom.systemMapModal.hidden) {
+    closeSystemMap();
+  }
 });
 
 loadCase();
