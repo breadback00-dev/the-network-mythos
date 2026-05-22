@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css?v=archive-doctrine-20260522" />
-    <link rel="stylesheet" href="src/styles/layout.css?v=archive-doctrine-20260522" />
-    <link rel="stylesheet" href="src/styles/components.css?v=archive-doctrine-20260522" />
+    <link rel="stylesheet" href="src/styles/base.css?v=intake-hook-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=intake-hook-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=intake-hook-20260522" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -27,16 +27,16 @@
           <span id="case-id">Case Box</span>
           <strong id="case-title">Loading Case</strong>
           <div class="case-actions">
+            <button class="map-action" data-open-doctrine type="button">Archive Doctrine</button>
             <button class="map-action" data-open-map type="button">View System Map</button>
             <button class="map-action" data-open-intake type="button">Intake Brief</button>
-            <button class="map-action" data-open-doctrine type="button">Archive Doctrine</button>
           </div>
         </section>
 
         <section class="signal-summary" aria-label="Signal profile summary">
           <span>Dominant Signal</span>
           <strong id="dominant-signal">Unformed</strong>
-          <button id="reset-case" class="reset-action" type="button">Start again</button>
+          <button id="reset-case" class="reset-action" type="button">Reset</button>
         </section>
       </header>
 
@@ -193,7 +193,7 @@
           <div class="system-map-header">
             <div>
               <p class="kicker">// Intake Brief</p>
-              <h2 id="intake-modal-title">How to work the case</h2>
+              <h2 id="intake-modal-title">Before you open the case</h2>
             </div>
             <button id="close-intake" class="reset-action" type="button">Close</button>
           </div>
@@ -222,6 +222,6 @@
       </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js?v=archive-doctrine-20260522"></script>
+    <script type="module" src="src/scripts/app.js?v=intake-hook-20260522"></script>
   </body>
 </html>

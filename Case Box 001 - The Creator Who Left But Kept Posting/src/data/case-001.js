@@ -18,29 +18,29 @@ export const case001 = {
   doctrine:
     "The Network is the digital world after it learned to remember us.\n\nEvery post, account, search result, archive, audience, copy, silence, and gate can become part of the story. Nothing simply disappears. It is buried, ranked, repeated, priced, protected, distorted, or returned.\n\nThe Algorithm raises some lives into view and lets others sink.\nThe Oracle turns fragments into answers.\nThe Covenant makes belonging feel holy.\nThe Silence teaches absence to speak.\nThe Exchange prices attention.\nThe Arbiter names what counts as proof.\nThe Wardens keep the doors.\nThe Devourer feeds on witness.\nThe Eidolon wears familiar faces.\nThe Returned is what survives the record.\n\nYou are the Archive.\nYou do not own the truth.\nYou hold the record long enough to ask what shaped it.\n\nWhen the Network tells a story back to the world, who controls the truth?",
   intake: {
-    heading: "Intake Brief",
+    heading: "The Signal Arrives",
     summary:
-      "Use the board to test three possibilities: Mara returned, Mara vanished, or the account became a useful imitation. Evidence is what you inspect; tags are your notes about the forces involved; the gate hides one key memo; reconstruction names what happened. Custody comes after truth.",
+      "A creator asked the Network not to keep her alive as content. The Network did anyway. Her account returned smoother, faster, and easier to believe. You are not here to hunt a missing woman. You are here to decide what can be known when a person, an audience, an account, and a record stop agreeing.",
     steps: [
       {
         label: "Evidence",
-        text: "Open each item from the inbox. Contradictions matter more than any single clue."
+        text: "Open the fragments. Contradictions matter more than any single clue."
       },
       {
         label: "Tags",
-        text: "Mark the forces you see in the artifact. More than one tag can be true."
+        text: "Mark the forces pressing on each artifact. Tags are a defensible reading, not a quiz answer."
       },
       {
         label: "Gate",
-        text: "One item asks for a phrase. The answer is inside the evidence, not outside lore."
+        text: "One locked item asks for a phrase. The answer is already inside the evidence."
       },
       {
         label: "Reconstruct",
-        text: "Choose what happened, then compare the canonical answer with your route."
+        text: "Name what happened, then see what the Archive can confirm and what custody the truth deserves."
       }
     ],
     reminder:
-      "You are not trying to expose Mara. You are deciding what can be known without turning her absence into another performance."
+      "Do not turn absence into spectacle. Hold the record long enough to see who benefits from the version that survived."
   },
   cast: [
     {
