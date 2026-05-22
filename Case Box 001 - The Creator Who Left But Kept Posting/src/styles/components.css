@@ -14,6 +14,7 @@
 .status-line,
 .reading-path,
 .panel-topline,
+.case-actions,
 .reset-action,
 .map-action,
 .text-action,
@@ -69,6 +70,14 @@
   margin-top: 6px;
 }
 
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 .map-action,
 .text-action {
   background: transparent;
@@ -84,7 +93,7 @@
 }
 
 .map-action {
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .text-action {
@@ -114,7 +123,7 @@
   font-weight: 400;
 }
 
-body.is-map-open {
+body.is-reference-open {
   overflow: hidden;
 }
 
@@ -153,6 +162,12 @@ body.is-map-open {
 .evidence-list {
   display: grid;
   gap: 10px;
+}
+
+.trail-card {
+  border-top: 1px solid rgba(199, 155, 85, 0.18);
+  margin-top: 16px;
+  padding-top: 14px;
 }
 
 .evidence-card {
@@ -659,6 +674,10 @@ body.is-map-open {
   margin-top: 14px;
 }
 
+.active-panel .cast-board {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .cast-card {
   background: rgba(13, 13, 12, 0.42);
   border: 1px solid rgba(237, 231, 217, 0.14);
@@ -815,6 +834,10 @@ body.is-map-open {
   overflow: auto;
   padding: 18px;
   width: 100%;
+}
+
+.intake-panel {
+  max-width: min(860px, 94vw);
 }
 
 .system-map-header {
@@ -1035,6 +1058,7 @@ body.is-map-open {
 
   .puzzle-card,
   .tag-card,
+  .active-panel .cast-board,
   .intake-content,
   .intake-content ol {
     grid-template-columns: 1fr;

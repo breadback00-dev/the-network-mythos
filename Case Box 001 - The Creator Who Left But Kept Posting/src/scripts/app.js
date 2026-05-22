@@ -7,7 +7,7 @@ import {
   recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js?v=system-map-20260522";
+import { case001 } from "../data/case-001.js?v=panel-balance-20260522";
 import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
@@ -17,8 +17,11 @@ const dom = {
   dominantSignal: document.querySelector("#dominant-signal"),
   resetCase: document.querySelector("#reset-case"),
   openMapButtons: document.querySelectorAll("[data-open-map]"),
+  openIntakeButtons: document.querySelectorAll("[data-open-intake]"),
   systemMapModal: document.querySelector("#system-map-modal"),
   closeSystemMap: document.querySelector("#close-system-map"),
+  intakeModal: document.querySelector("#intake-modal"),
+  closeIntake: document.querySelector("#close-intake"),
   openingBrief: document.querySelector("#opening-brief"),
   openingTitle: document.querySelector("#opening-title"),
   openingSummary: document.querySelector("#opening-summary"),
@@ -27,7 +30,6 @@ const dom = {
   openingGoals: document.querySelector("#opening-goals"),
   startCase: document.querySelector("#start-case"),
   workspace: document.querySelector("#workspace"),
-  toggleIntake: document.querySelector("#toggle-intake"),
   intakeContent: document.querySelector("#intake-content"),
   evidenceCount: document.querySelector("#evidence-count"),
   evidenceList: document.querySelector("#evidence-list"),
@@ -44,7 +46,6 @@ const dom = {
   puzzleResult: document.querySelector("#puzzle-result"),
   selectedTagsStatus: document.querySelector("#selected-tags-status"),
   forceTags: document.querySelector("#force-tags"),
-  doctrineSummary: document.querySelector("#doctrine-summary"),
   signalProfile: document.querySelector("#signal-profile"),
   castProgress: document.querySelector("#cast-progress"),
   castBoard: document.querySelector("#cast-board"),
@@ -64,9 +65,8 @@ const dom = {
 
 let caseData;
 let state;
-let intakeOpen = true;
 let openingOpen = true;
-let lastMapTrigger = null;
+let lastReferenceTrigger = null;
 
 function formatTags(tags) {
   return tags.length ? tags.join(" / ") : "No signals tagged";
@@ -215,7 +215,6 @@ function loadCase() {
 
 function restartCase({ showOpening = true } = {}) {
   state = createInitialState(caseData);
-  intakeOpen = true;
   openingOpen = showOpening;
   render();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -241,23 +240,19 @@ function renderOpeningBrief() {
     .join("");
 }
 
-function renderDoctrineSummary() {
-  dom.doctrineSummary.innerHTML = highlightDoctrineForces(caseData.doctrine);
+function openReferenceModal(modal, closeButton) {
+  lastReferenceTrigger = document.activeElement;
+  modal.hidden = false;
+  document.body.classList.add("is-reference-open");
+  closeButton.focus();
 }
 
-function openSystemMap() {
-  lastMapTrigger = document.activeElement;
-  dom.systemMapModal.hidden = false;
-  document.body.classList.add("is-map-open");
-  dom.closeSystemMap.focus();
-}
+function closeReferenceModal(modal) {
+  modal.hidden = true;
+  document.body.classList.remove("is-reference-open");
 
-function closeSystemMap() {
-  dom.systemMapModal.hidden = true;
-  document.body.classList.remove("is-map-open");
-
-  if (lastMapTrigger) {
-    lastMapTrigger.focus();
+  if (lastReferenceTrigger) {
+    lastReferenceTrigger.focus();
   }
 }
 
@@ -489,11 +484,6 @@ function renderHeader() {
 
 function renderIntakeBrief() {
   const intake = caseData.intake;
-  dom.toggleIntake.setAttribute("aria-expanded", String(intakeOpen));
-  dom.toggleIntake.querySelector("strong").textContent = intakeOpen ? "Hide" : "Show";
-  dom.intakeContent.hidden = !intakeOpen;
-
-  if (!intakeOpen) return;
 
   dom.intakeContent.innerHTML = `
     <div>
@@ -594,7 +584,6 @@ function render() {
   ensureActiveEvidence();
   renderHeader();
   renderOpeningBrief();
-  renderDoctrineSummary();
   renderIntakeBrief();
   renderEvidenceList();
   renderActiveEvidence();
@@ -650,11 +639,6 @@ dom.submitReading.addEventListener("click", () => {
   renderReveal(selected.value);
 });
 
-dom.toggleIntake.addEventListener("click", () => {
-  intakeOpen = !intakeOpen;
-  renderIntakeBrief();
-});
-
 dom.startCase.addEventListener("click", () => {
   openingOpen = false;
   render();
@@ -665,20 +649,32 @@ dom.resetCase.addEventListener("click", () => {
 });
 
 dom.openMapButtons.forEach((button) => {
-  button.addEventListener("click", openSystemMap);
+  button.addEventListener("click", () => openReferenceModal(dom.systemMapModal, dom.closeSystemMap));
 });
 
-dom.closeSystemMap.addEventListener("click", closeSystemMap);
+dom.openIntakeButtons.forEach((button) => {
+  button.addEventListener("click", () => openReferenceModal(dom.intakeModal, dom.closeIntake));
+});
 
-dom.systemMapModal.addEventListener("click", (event) => {
-  if (event.target === dom.systemMapModal) {
-    closeSystemMap();
+dom.closeSystemMap.addEventListener("click", () => closeReferenceModal(dom.systemMapModal));
+dom.closeIntake.addEventListener("click", () => closeReferenceModal(dom.intakeModal));
+
+function closeOnBackdrop(event) {
+  if (event.target === event.currentTarget) {
+    closeReferenceModal(event.currentTarget);
   }
-});
+}
+
+dom.systemMapModal.addEventListener("click", closeOnBackdrop);
+dom.intakeModal.addEventListener("click", closeOnBackdrop);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !dom.systemMapModal.hidden) {
-    closeSystemMap();
+    closeReferenceModal(dom.systemMapModal);
+  }
+
+  if (event.key === "Escape" && !dom.intakeModal.hidden) {
+    closeReferenceModal(dom.intakeModal);
   }
 });
 

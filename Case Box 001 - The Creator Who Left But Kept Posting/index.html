@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css?v=system-map-20260522" />
-    <link rel="stylesheet" href="src/styles/layout.css?v=system-map-20260522" />
-    <link rel="stylesheet" href="src/styles/components.css?v=system-map-20260522" />
+    <link rel="stylesheet" href="src/styles/base.css?v=panel-balance-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=panel-balance-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=panel-balance-20260522" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -26,7 +26,10 @@
         <section class="case-title" aria-label="Active case">
           <span id="case-id">Case Box</span>
           <strong id="case-title">Loading Case</strong>
-          <button class="map-action" data-open-map type="button">View System Map</button>
+          <div class="case-actions">
+            <button class="map-action" data-open-map type="button">View System Map</button>
+            <button class="map-action" data-open-intake type="button">Intake Brief</button>
+          </div>
         </section>
 
         <section class="signal-summary" aria-label="Signal profile summary">
@@ -64,17 +67,16 @@
             <span id="evidence-count">0 items</span>
           </div>
           <div id="evidence-list" class="evidence-list"></div>
+          <section class="trail-card" aria-label="Reviewed case trail">
+            <div class="panel-topline">
+              <p class="kicker">// Case Trail</p>
+              <span>Reviewed</span>
+            </div>
+            <ol id="timeline" class="timeline"></ol>
+          </section>
         </aside>
 
         <section class="active-panel" aria-live="polite">
-          <section class="intake-brief" aria-label="How to play">
-            <button id="toggle-intake" class="intake-toggle" type="button" aria-expanded="true">
-              <span>// Intake Brief</span>
-              <strong>Hide</strong>
-            </button>
-            <div id="intake-content" class="intake-content"></div>
-          </section>
-
           <article class="document-card" aria-labelledby="evidence-title">
             <div class="document-meta">
               <span id="evidence-type">Evidence</span>
@@ -109,21 +111,6 @@
               <div id="force-tags" class="force-tags"></div>
             </div>
           </section>
-        </section>
-
-        <aside class="reading-panel" aria-label="Reading board">
-          <section class="board-card doctrine-card">
-            <div class="board-card-header">
-              <p class="kicker">// Archive Doctrine</p>
-              <button class="text-action" data-open-map type="button">View Map</button>
-            </div>
-            <p id="doctrine-summary" class="doctrine-summary"></p>
-          </section>
-
-          <section class="board-card">
-            <p class="kicker">// Signal Profile</p>
-            <div id="signal-profile" class="signal-profile"></div>
-          </section>
 
           <section class="board-card cast-board-card">
             <div class="board-card-header">
@@ -132,10 +119,12 @@
             </div>
             <div id="cast-board" class="cast-board"></div>
           </section>
+        </section>
 
+        <aside class="reading-panel" aria-label="Reading board">
           <section class="board-card">
-            <p class="kicker">// Timeline</p>
-            <ol id="timeline" class="timeline"></ol>
+            <p class="kicker">// Signal Profile</p>
+            <div id="signal-profile" class="signal-profile"></div>
           </section>
 
           <section class="board-card">
@@ -197,8 +186,28 @@
           </figure>
         </div>
       </section>
+
+      <section
+        id="intake-modal"
+        class="system-map-modal intake-modal"
+        aria-labelledby="intake-modal-title"
+        aria-modal="true"
+        role="dialog"
+        hidden
+      >
+        <div class="system-map-panel intake-panel">
+          <div class="system-map-header">
+            <div>
+              <p class="kicker">// Intake Brief</p>
+              <h2 id="intake-modal-title">How to work the case</h2>
+            </div>
+            <button id="close-intake" class="reset-action" type="button">Close</button>
+          </div>
+          <div id="intake-content" class="intake-content"></div>
+        </div>
+      </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js?v=system-map-20260522"></script>
+    <script type="module" src="src/scripts/app.js?v=panel-balance-20260522"></script>
   </body>
 </html>

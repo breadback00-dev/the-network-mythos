@@ -112,7 +112,6 @@
   align-content: start;
   display: grid;
   gap: 18px;
-  grid-template-rows: auto minmax(280px, auto) auto auto;
   padding: 22px;
 }
 
