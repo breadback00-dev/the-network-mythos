@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css?v=onboarding-20260522c" />
-    <link rel="stylesheet" href="src/styles/layout.css?v=onboarding-20260522c" />
-    <link rel="stylesheet" href="src/styles/components.css?v=onboarding-20260522c" />
+    <link rel="stylesheet" href="src/styles/base.css?v=truth-custody-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=truth-custody-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=truth-custody-20260522" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -45,6 +45,10 @@
         <div class="opening-actions">
           <p class="kicker">// Your Job</p>
           <ol id="opening-goals"></ol>
+          <section class="opening-doctrine" aria-label="Archive doctrine">
+            <p class="kicker">// Archive Doctrine</p>
+            <p id="opening-doctrine"></p>
+          </section>
           <button id="start-case" class="primary-action" type="button">Open the case</button>
         </div>
       </section>
@@ -104,6 +108,11 @@
         </section>
 
         <aside class="reading-panel" aria-label="Reading board">
+          <section class="board-card doctrine-card">
+            <p class="kicker">// Archive Doctrine</p>
+            <p id="doctrine-summary" class="doctrine-summary"></p>
+          </section>
+
           <section class="board-card">
             <p class="kicker">// Signal Profile</p>
             <div id="signal-profile" class="signal-profile"></div>
@@ -123,30 +132,37 @@
           </section>
 
           <section class="board-card">
-            <p class="kicker">// Final Reading</p>
+            <p class="kicker">// Reconstruction</p>
             <div id="case-recap" class="case-recap"></div>
             <fieldset id="reading-options" class="reading-options">
               <legend>What happened?</legend>
             </fieldset>
-            <button id="submit-reading" class="primary-action" type="button">Submit Reading</button>
+            <button id="submit-reading" class="primary-action" type="button">Submit Reconstruction</button>
             <p id="reading-result" class="status-line" role="status"></p>
           </section>
 
           <section class="board-card">
-            <p class="kicker">// Your Reading Path</p>
+            <p class="kicker">// Archive Assessment</p>
             <p id="reading-path" class="reading-path">
-              Your route through the case will appear after the final reading.
+              Your route through the case will appear after reconstruction.
             </p>
           </section>
 
           <section class="board-card reveal-card" id="reveal-card" hidden>
-            <p class="kicker">// Case Reveal</p>
+            <p class="kicker">// Canonical Reconstruction</p>
             <div id="reveal-content" class="reveal-content"></div>
+          </section>
+
+          <section class="board-card custody-card" id="custody-card" hidden>
+            <p class="kicker">// Choose Custody</p>
+            <p id="custody-prompt" class="custody-prompt"></p>
+            <div id="custody-options" class="custody-options"></div>
+            <p id="custody-result" class="status-line" role="status"></p>
           </section>
         </aside>
       </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js?v=onboarding-20260522c"></script>
+    <script type="module" src="src/scripts/app.js?v=truth-custody-20260522"></script>
   </body>
 </html>

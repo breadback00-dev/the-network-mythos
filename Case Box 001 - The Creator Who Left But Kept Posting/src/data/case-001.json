@@ -10,12 +10,13 @@
       "Read the evidence like fragments from a public disappearance.",
       "Tag the forces you think are acting on each artifact.",
       "Use the gate to surface the locked memo.",
-      "Submit a final reading and compare it with the route you created."
+      "Submit a reconstruction, receive the Archive's assessment, then choose custody of the truth."
     ]
   },
+  "doctrine": "The Network is not one villain. It is a field of forces: Algorithm makes some things visible; Oracle turns summaries into answers; Covenant makes belonging feel like duty; Silence makes absence speak; Exchange prices attention; Arbiter decides what counts as proof; Wardens control access; Devourer feeds on attention; Eidolon copies familiar shapes; Returned names the person or origin that survives outside the record.",
   "intake": {
     "heading": "Intake Brief",
-    "summary": "Use the board to test three possibilities: Mara returned, Mara vanished, or the account became a useful imitation. Evidence is what you inspect; tags are your notes about the forces involved; the gate hides one key memo; the final reading is your reconstruction.",
+    "summary": "Use the board to test three possibilities: Mara returned, Mara vanished, or the account became a useful imitation. Evidence is what you inspect; tags are your notes about the forces involved; the gate hides one key memo; reconstruction names what happened. Custody comes after truth.",
     "steps": [
       {
         "label": "Evidence",
@@ -30,7 +31,7 @@
         "text": "One item asks for a phrase. The answer is inside the evidence, not outside lore."
       },
       {
-        "label": "Final Reading",
+        "label": "Reconstruct",
         "text": "Choose what happened, then compare the canonical answer with your route."
       }
     ],
@@ -48,18 +49,27 @@
     "Eidolon",
     "Returned"
   ],
-  "forceDescriptions": {
-    "Algorithm": "Visibility systems boost, bury, and repeat the version that travels best.",
-    "Oracle": "Search, summaries, and answer machines make one version feel settled.",
-    "Covenant": "Community bonds turn care, ritual, and belonging into pressure.",
-    "Silence": "Missing, hidden, refused, or removed evidence starts shaping the truth.",
-    "Exchange": "Money, contracts, ownership, and attention turn people into value.",
-    "Arbiter": "Rules and verification systems decide what counts as proof.",
-    "Wardens": "Moderators, locks, safety layers, and guards control access.",
-    "Devourer": "Attention consumes a person, grief, or truth as material.",
-    "Eidolon": "A copy or synthetic presence wears someone's familiar shape.",
-    "Returned": "A person or origin survives outside the record built around them."
-  },
+  "custodyPrompt": "The truth is now legible. Decide how the Archive should hold it without turning Mara's life back into material.",
+  "custodyChoices": [
+    {
+      "id": "publish",
+      "label": "Publish",
+      "summary": "Expose the continuity clause and prove the resumed account is not Mara.",
+      "consequence": "Public pressure rises fast. The false return weakens, but Mara's absence becomes a spectacle again."
+    },
+    {
+      "id": "bury",
+      "label": "Bury",
+      "summary": "Suppress the proof so Mara and Elian are harder to locate.",
+      "consequence": "Mara is safer for now. The account keeps its useful lie, and the public record stays bent."
+    },
+    {
+      "id": "preserve",
+      "label": "Preserve",
+      "summary": "Seal the dangerous proof inside the Archive while keeping the reconstruction available to future cases.",
+      "consequence": "The Archive remembers without feeding the Network. Accountability slows, but the truth is not lost."
+    }
+  ],
   "evidence": [
     {
       "id": "farewell-thread",

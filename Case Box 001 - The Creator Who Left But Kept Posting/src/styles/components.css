@@ -15,7 +15,11 @@
 .reading-path,
 .panel-topline,
 .reset-action,
-.opening-actions {
+.opening-actions,
+.opening-doctrine,
+.doctrine-summary,
+.custody-prompt,
+.custody-options {
   font-family: var(--mono);
   letter-spacing: 0;
 }
@@ -195,6 +199,22 @@
   margin-top: 22px;
   padding-left: 14px;
   text-transform: uppercase;
+}
+
+.opening-doctrine {
+  border-top: 1px solid rgba(237, 231, 217, 0.14);
+  margin: 2px 0 16px;
+  padding-top: 12px;
+}
+
+.opening-doctrine .kicker {
+  margin-bottom: 8px;
+}
+
+.opening-doctrine p:not(.kicker) {
+  color: var(--paper-soft);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .opening-actions ol {
@@ -520,7 +540,7 @@
 .force-tags {
   display: grid;
   gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
 }
 
 .selected-tags-status {
@@ -536,40 +556,20 @@
   background: transparent;
   border: 1px solid var(--line);
   border-radius: 4px;
-  display: grid;
-  gap: 5px;
   font-size: 11px;
-  min-height: 72px;
-  padding: 10px;
-  text-align: left;
-  text-transform: none;
+  min-height: 36px;
+  padding: 8px 10px;
+  text-align: center;
+  text-transform: uppercase;
   transition:
     background-color 0.16s ease,
     border-color 0.16s ease,
     color 0.16s ease;
 }
 
-.force-tags button strong {
-  color: var(--paper);
-  font-size: 11px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.force-tags button small {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.4;
-}
-
 .force-tags button.is-selected {
   background: rgba(199, 155, 85, 0.1);
   border-color: var(--amber);
-  color: var(--amber);
-}
-
-.force-tags button.is-selected small,
-.force-tags button.is-selected strong {
   color: var(--amber);
 }
 
@@ -725,6 +725,17 @@
   margin: 0;
 }
 
+.doctrine-card {
+  border-color: rgba(120, 161, 98, 0.22);
+}
+
+.doctrine-summary {
+  color: var(--paper-soft);
+  font-size: 11px;
+  line-height: 1.55;
+  margin: 0;
+}
+
 .timeline {
   color: var(--paper-soft);
   display: grid;
@@ -785,8 +796,61 @@
   border-color: var(--amber);
 }
 
-.reveal-card[hidden] {
+.reveal-card[hidden],
+.custody-card[hidden] {
   display: none;
+}
+
+.custody-card {
+  border-color: rgba(120, 161, 98, 0.36);
+}
+
+.custody-prompt {
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.custody-options {
+  display: grid;
+  gap: 10px;
+}
+
+.custody-option {
+  background: rgba(13, 13, 12, 0.38);
+  border: 1px solid var(--line);
+  color: var(--paper-soft);
+  display: grid;
+  gap: 5px;
+  padding: 11px;
+  text-align: left;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.custody-option:hover,
+.custody-option.is-selected {
+  border-color: var(--green);
+}
+
+.custody-option.is-selected {
+  background: rgba(120, 161, 98, 0.1);
+}
+
+.custody-option strong {
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.custody-option span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .reveal-content dl {

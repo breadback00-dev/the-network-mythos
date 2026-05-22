@@ -7,7 +7,7 @@ import {
   recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js?v=onboarding-20260522c";
+import { case001 } from "../data/case-001.js?v=truth-custody-20260522";
 import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
@@ -20,6 +20,7 @@ const dom = {
   openingTitle: document.querySelector("#opening-title"),
   openingSummary: document.querySelector("#opening-summary"),
   openingRole: document.querySelector("#opening-role"),
+  openingDoctrine: document.querySelector("#opening-doctrine"),
   openingGoals: document.querySelector("#opening-goals"),
   startCase: document.querySelector("#start-case"),
   workspace: document.querySelector("#workspace"),
@@ -40,6 +41,7 @@ const dom = {
   puzzleResult: document.querySelector("#puzzle-result"),
   selectedTagsStatus: document.querySelector("#selected-tags-status"),
   forceTags: document.querySelector("#force-tags"),
+  doctrineSummary: document.querySelector("#doctrine-summary"),
   signalProfile: document.querySelector("#signal-profile"),
   castProgress: document.querySelector("#cast-progress"),
   castBoard: document.querySelector("#cast-board"),
@@ -50,7 +52,11 @@ const dom = {
   readingResult: document.querySelector("#reading-result"),
   readingPath: document.querySelector("#reading-path"),
   revealCard: document.querySelector("#reveal-card"),
-  revealContent: document.querySelector("#reveal-content")
+  revealContent: document.querySelector("#reveal-content"),
+  custodyCard: document.querySelector("#custody-card"),
+  custodyPrompt: document.querySelector("#custody-prompt"),
+  custodyOptions: document.querySelector("#custody-options"),
+  custodyResult: document.querySelector("#custody-result")
 };
 
 let caseData;
@@ -131,12 +137,25 @@ function getPathEvidencePattern(dominantSignal) {
   return matchingEvidence.map((item) => item.title).join(" / ");
 }
 
+function getRouteAssessment(dominantSignal) {
+  if (dominantSignal === "Unformed") {
+    return "The Archive cannot assess a path because no force pattern formed before reconstruction.";
+  }
+
+  if (dominantSignal === "Mixed") {
+    return "The Archive reads your path as contested: you held several pressures in view instead of letting one explanation dominate.";
+  }
+
+  return `The Archive reads your path through ${dominantSignal}. That does not change the truth; it shows which pressure you made legible first.`;
+}
+
 function renderReveal(selectedReadingId) {
   const { dominantSignal, visibleBonusEvidence } = getCaseProgress(caseData, state);
   const selectedLabel = getReadingLabel(selectedReadingId);
   const canonicalLabel = getReadingLabel(caseData.canonicalReading);
   const routeCopy = getReadingPath(caseData, dominantSignal);
   const evidencePattern = getPathEvidencePattern(dominantSignal);
+  const routeAssessment = getRouteAssessment(dominantSignal);
   const bonusCopy = visibleBonusEvidence.length
     ? `Route-surfaced evidence: ${visibleBonusEvidence[0].title}.`
     : "No bonus evidence surfaced for this route.";
@@ -145,26 +164,26 @@ function renderReveal(selectedReadingId) {
   dom.revealCard.hidden = false;
   dom.readingResult.textContent =
     selectedReadingId === caseData.canonicalReading
-      ? "Your reading aligns with the canonical reconstruction."
-      : "Your reading diverges from the canonical reconstruction.";
-  dom.readingPath.textContent = routeCopy;
+      ? "Your reconstruction aligns with the canonical answer. Custody is now unlocked."
+      : "Your reconstruction diverges from the canonical answer. Review the confirmed truth before choosing custody.";
+  dom.readingPath.textContent = routeAssessment;
   dom.revealContent.innerHTML = `
     <dl>
       <div>
-        <dt>Your submitted reading</dt>
+        <dt>Your submitted reconstruction</dt>
         <dd>${selectedLabel}</dd>
       </div>
       <div>
-        <dt>Canonical reconstruction</dt>
+        <dt>Canonical answer</dt>
         <dd>${canonicalLabel}</dd>
       </div>
       <div>
-        <dt>What happened</dt>
+        <dt>Confirmed truth</dt>
         <dd>${caseData.canonicalReveal}</dd>
       </div>
       <div>
-        <dt>Your route</dt>
-        <dd>${dominantSignal}: ${routeCopy}</dd>
+        <dt>Archive assessment</dt>
+        <dd>${routeAssessment}</dd>
       </div>
       <div>
         <dt>Evidence pattern</dt>
@@ -176,6 +195,7 @@ function renderReveal(selectedReadingId) {
       </div>
     </dl>
   `;
+  renderCustody();
 }
 
 function loadCase() {
@@ -206,9 +226,14 @@ function renderOpeningBrief() {
   dom.openingTitle.textContent = opening.headline;
   dom.openingSummary.textContent = opening.summary;
   dom.openingRole.textContent = opening.role;
+  dom.openingDoctrine.textContent = caseData.doctrine;
   dom.openingGoals.innerHTML = opening.goals
     .map((goal) => `<li>${goal}</li>`)
     .join("");
+}
+
+function renderDoctrineSummary() {
+  dom.doctrineSummary.textContent = caseData.doctrine;
 }
 
 function renderEvidenceList() {
@@ -343,12 +368,10 @@ function renderForceTags() {
     : "Choose the forces this artifact shows. More than one can be true.";
 
   caseData.forces.forEach((force) => {
-    const description = caseData.forceDescriptions?.[force] || "A force acting on this signal.";
     const button = document.createElement("button");
     button.type = "button";
-    button.innerHTML = `<strong>${force}</strong><small>${description}</small>`;
+    button.textContent = force;
     button.setAttribute("aria-pressed", String(selected.includes(force)));
-    button.setAttribute("aria-label", `${force}: ${description}`);
     button.classList.toggle("is-selected", selected.includes(force));
     button.addEventListener("click", () => {
       toggleForceTag(state, active.id, force);
@@ -416,7 +439,7 @@ function renderCaseRecap() {
     <p>${reviewedEvidence.length}/${visibleEvidence.length} evidence items reviewed. Gate ${gateSolved ? "opened" : "still locked"}. Path ${dominantSignal}.</p>
     <p>${contradictionCount ? `${contradictionCount} contradiction marker${contradictionCount === 1 ? "" : "s"} active.` : "No reviewed contradictions marked yet."}</p>
     <p>${visibleBonusEvidence.length ? `Bonus evidence surfaced: ${visibleBonusEvidence[0].title}.` : "No bonus evidence surfaced yet."}</p>
-    <p>Final reading means your best reconstruction after evidence, tags, and the gate.</p>
+    <p>Reconstruction names what happened. Custody unlocks after the truth is shown.</p>
   `;
 }
 
@@ -468,6 +491,37 @@ function renderIntakeBrief() {
   `;
 }
 
+function renderCustody() {
+  const choices = caseData.custodyChoices || [];
+  dom.custodyCard.hidden = !state.submittedReading;
+
+  if (!state.submittedReading) return;
+
+  dom.custodyPrompt.textContent = caseData.custodyPrompt;
+  dom.custodyOptions.innerHTML = "";
+
+  choices.forEach((choice) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "custody-option";
+    button.classList.toggle("is-selected", state.selectedCustody === choice.id);
+    button.innerHTML = `
+      <strong>${choice.label}</strong>
+      <span>${choice.summary}</span>
+    `;
+    button.addEventListener("click", () => {
+      state.selectedCustody = choice.id;
+      render();
+    });
+    dom.custodyOptions.append(button);
+  });
+
+  const selectedChoice = choices.find((choice) => choice.id === state.selectedCustody);
+  dom.custodyResult.textContent = selectedChoice
+    ? selectedChoice.consequence
+    : "Choose custody after reconstruction: expose the truth, protect the person, or preserve the record.";
+}
+
 function renderCastBoard() {
   const cast = caseData.cast || [];
   let updatedCount = 0;
@@ -515,6 +569,7 @@ function render() {
   ensureActiveEvidence();
   renderHeader();
   renderOpeningBrief();
+  renderDoctrineSummary();
   renderIntakeBrief();
   renderEvidenceList();
   renderActiveEvidence();
@@ -527,6 +582,9 @@ function render() {
   renderReadingOptions();
   if (state.submittedReading) {
     renderReveal(state.submittedReading);
+  } else {
+    dom.revealCard.hidden = true;
+    dom.custodyCard.hidden = true;
   }
 }
 

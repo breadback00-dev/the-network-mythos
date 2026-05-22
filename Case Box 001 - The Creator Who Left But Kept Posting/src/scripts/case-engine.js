@@ -9,7 +9,8 @@ export function createInitialState(caseData) {
     puzzleAttempts: {},
     lastUnlockMessage: "",
     tagsByEvidence: {},
-    submittedReading: null
+    submittedReading: null,
+    selectedCustody: null
   };
 }
 
