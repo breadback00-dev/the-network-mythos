@@ -7,7 +7,7 @@ import {
   recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js?v=panel-balance-20260522";
+import { case001 } from "../data/case-001.js?v=puzzle-tags-20260522";
 import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
@@ -39,6 +39,7 @@ const dom = {
   evidenceBody: document.querySelector("#evidence-body"),
   activeTagSummary: document.querySelector("#active-tag-summary"),
   relatedEvidence: document.querySelector("#related-evidence"),
+  puzzleCard: document.querySelector(".puzzle-card"),
   puzzleTitle: document.querySelector("#puzzle-title"),
   puzzlePrompt: document.querySelector("#puzzle-prompt"),
   puzzleAnswer: document.querySelector("#puzzle-answer"),
@@ -360,10 +361,14 @@ function renderPuzzle() {
   const isSolved = puzzle ? state.solvedPuzzles.has(puzzle.id) : false;
   const attemptCount = puzzle ? state.puzzleAttempts[puzzle.id] || 0 : 0;
 
+  dom.puzzleCard.classList.toggle("is-dormant", !puzzle);
+  dom.puzzleCard.classList.toggle("is-needed", Boolean(puzzle && !isSolved));
+  dom.puzzleCard.classList.toggle("is-solved", Boolean(puzzle && isSolved));
+  dom.puzzleCard.setAttribute("aria-disabled", String(!puzzle));
   dom.puzzleTitle.textContent = puzzle ? puzzle.title : "No Puzzle Active";
   dom.puzzlePrompt.textContent = puzzle
     ? puzzle.prompt
-    : "Some evidence contains locked pieces, codes, or verification gates.";
+    : "No gate is attached to this artifact. Keep reading and tagging evidence.";
   dom.puzzleAnswer.disabled = !puzzle || isSolved;
   dom.submitPuzzle.disabled = !puzzle || isSolved;
   dom.puzzleAnswer.placeholder = puzzle ? "Enter access code" : "No code needed";
@@ -384,8 +389,8 @@ function renderForceTags() {
   const selected = state.tagsByEvidence[active.id] || [];
   dom.forceTags.innerHTML = "";
   dom.selectedTagsStatus.textContent = selected.length
-    ? `This artifact currently points toward: ${formatTags(selected)}.`
-    : "Choose the forces this artifact shows. More than one can be true.";
+    ? `Current read: ${formatTags(selected)}. You can revise it when later evidence changes what this artifact seems to show.`
+    : "How to decide: ask what the artifact makes visible, hides, copies, protects, prices, or proves. Pick every force you can defend.";
 
   caseData.forces.forEach((force) => {
     const button = document.createElement("button");
