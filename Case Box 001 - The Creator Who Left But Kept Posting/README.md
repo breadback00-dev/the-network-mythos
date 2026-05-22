@@ -1,8 +1,10 @@
-# Network Mythos: Case Box
+# Network Mythos: Case Box 001
 
-Phase 1 prototype scaffold for a digital mystery box game set inside The Network Mythos.
+Public demo for a digital mystery box game set inside The Network Mythos. This case focuses on the first playable investigation loop: evidence first, myth underneath.
 
-The goal of Phase 1 is to test the core loop before building a full platform:
+![Case Box 001 demo](docs/case-box-demo.gif)
+
+The goal of this demo is to test the core loop before expanding the platform:
 
 1. Open a case box.
 2. Inspect evidence.
@@ -11,6 +13,14 @@ The goal of Phase 1 is to test the core loop before building a full platform:
 5. Let the player's tags shape the evidence route.
 6. Submit a final reading.
 7. Reveal both the canonical answer and the player's reading path.
+
+## What You Can Test
+
+- A first 5-8 minute investigation about a creator who left the Network, then kept posting.
+- Evidence cards that behave like objects: chat logs, receipts, uploads, notes, and locked material.
+- Player-applied tags that shape the next useful evidence without changing the underlying truth.
+- One fake access gate that teaches the mythos through discovery.
+- A final reveal that compares the submitted reading, canon, signal profile, and route effect.
 
 ## Run Locally
 
@@ -31,11 +41,15 @@ http://127.0.0.1:5174/
 ## Project Shape
 
 ```text
-network-mythos-case-box/
+Case Box 001 - The Creator Who Left But Kept Posting/
   index.html
   package.json
   README.md
   docs/
+    case-box-demo.gif
+    first-8-minute-playtest.md
+    first-8-minute-playtest-final.png
+    first-8-minute-playtest-mobile.png
     game-design.md
     case-authoring.md
   src/
@@ -73,3 +87,5 @@ Phase 1 should prove:
 - [Game design](docs/game-design.md)
 - [Case authoring](docs/case-authoring.md)
 - [First 8-minute playtest pass](docs/first-8-minute-playtest.md)
+- [Final desktop proof screenshot](docs/first-8-minute-playtest-final.png)
+- [Mobile proof screenshot](docs/first-8-minute-playtest-mobile.png)
