@@ -44,6 +44,14 @@
         </aside>
 
         <section class="active-panel" aria-live="polite">
+          <section class="intake-brief" aria-label="How to play">
+            <button id="toggle-intake" class="intake-toggle" type="button" aria-expanded="true">
+              <span>// Intake Brief</span>
+              <strong>Hide</strong>
+            </button>
+            <div id="intake-content" class="intake-content"></div>
+          </section>
+
           <article class="document-card" aria-labelledby="evidence-title">
             <div class="document-meta">
               <span id="evidence-type">Evidence</span>
@@ -84,6 +92,14 @@
           <section class="board-card">
             <p class="kicker">// Signal Profile</p>
             <div id="signal-profile" class="signal-profile"></div>
+          </section>
+
+          <section class="board-card cast-board-card">
+            <div class="board-card-header">
+              <p class="kicker">// People & Entities</p>
+              <span id="cast-progress">0 updated</span>
+            </div>
+            <div id="cast-board" class="cast-board"></div>
           </section>
 
           <section class="board-card">

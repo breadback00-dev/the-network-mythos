@@ -15,6 +15,8 @@ const dom = {
   caseId: document.querySelector("#case-id"),
   caseTitle: document.querySelector("#case-title"),
   dominantSignal: document.querySelector("#dominant-signal"),
+  toggleIntake: document.querySelector("#toggle-intake"),
+  intakeContent: document.querySelector("#intake-content"),
   evidenceCount: document.querySelector("#evidence-count"),
   evidenceList: document.querySelector("#evidence-list"),
   evidenceType: document.querySelector("#evidence-type"),
@@ -31,6 +33,8 @@ const dom = {
   selectedTagsStatus: document.querySelector("#selected-tags-status"),
   forceTags: document.querySelector("#force-tags"),
   signalProfile: document.querySelector("#signal-profile"),
+  castProgress: document.querySelector("#cast-progress"),
+  castBoard: document.querySelector("#cast-board"),
   timeline: document.querySelector("#timeline"),
   caseRecap: document.querySelector("#case-recap"),
   readingOptions: document.querySelector("#reading-options"),
@@ -43,6 +47,7 @@ const dom = {
 
 let caseData;
 let state;
+let intakeOpen = true;
 
 function formatTags(tags) {
   return tags.length ? tags.join(" / ") : "No signals tagged";
@@ -395,14 +400,88 @@ function renderHeader() {
   dom.caseTitle.textContent = caseData.title;
 }
 
+function renderIntakeBrief() {
+  const intake = caseData.intake;
+  dom.toggleIntake.setAttribute("aria-expanded", String(intakeOpen));
+  dom.toggleIntake.querySelector("strong").textContent = intakeOpen ? "Hide" : "Show";
+  dom.intakeContent.hidden = !intakeOpen;
+
+  if (!intakeOpen) return;
+
+  dom.intakeContent.innerHTML = `
+    <div>
+      <h2>${intake.heading}</h2>
+      <p>${intake.summary}</p>
+    </div>
+    <ol>
+      ${intake.steps
+        .map(
+          (step) => `
+            <li>
+              <strong>${step.label}</strong>
+              <span>${step.text}</span>
+            </li>
+          `
+        )
+        .join("")}
+    </ol>
+    <p class="intake-reminder">${intake.reminder}</p>
+  `;
+}
+
+function renderCastBoard() {
+  const cast = caseData.cast || [];
+  let updatedCount = 0;
+  dom.castBoard.innerHTML = "";
+
+  cast.forEach((person) => {
+    const revealed = person.reveals.filter((reveal) => state.reviewedEvidence.has(reveal.evidenceId));
+    if (revealed.length) updatedCount += 1;
+
+    const article = document.createElement("article");
+    article.className = "cast-card";
+    article.classList.toggle("is-updated", revealed.length > 0);
+    article.innerHTML = `
+      <div class="cast-card-topline">
+        <strong>${person.name}</strong>
+        <span>${revealed.length ? "Updated" : "Intake"}</span>
+      </div>
+      <p class="cast-role">${person.role}</p>
+      <p>${person.known}</p>
+      <p class="cast-question">${person.question}</p>
+      <div class="cast-reveals">
+        ${
+          revealed.length
+            ? revealed
+                .map(
+                  (reveal) => `
+                    <p>
+                      <strong>${reveal.label}</strong>
+                      <span>${reveal.detail}</span>
+                    </p>
+                  `
+                )
+                .join("")
+            : "<p><strong>Unread</strong><span>More context will appear as related evidence is reviewed.</span></p>"
+        }
+      </div>
+    `;
+    dom.castBoard.append(article);
+  });
+
+  dom.castProgress.textContent = `${updatedCount}/${cast.length} updated`;
+}
+
 function render() {
   ensureActiveEvidence();
   renderHeader();
+  renderIntakeBrief();
   renderEvidenceList();
   renderActiveEvidence();
   renderPuzzle();
   renderForceTags();
   renderSignalProfile();
+  renderCastBoard();
   renderTimeline();
   renderCaseRecap();
   renderReadingOptions();
@@ -446,6 +525,11 @@ dom.submitReading.addEventListener("click", () => {
   }
 
   renderReveal(selected.value);
+});
+
+dom.toggleIntake.addEventListener("click", () => {
+  intakeOpen = !intakeOpen;
+  renderIntakeBrief();
 });
 
 loadCase();

@@ -2,6 +2,166 @@ export const case001 = {
   id: "CASE BOX 001",
   title: "The Creator Who Left But Kept Posting",
   summary: "A creator leaves public life, but her account keeps answering like a cleaner version of her.",
+  intake: {
+    heading: "Intake Brief",
+    summary:
+      "Form a defensible reading of what happened to Mara Vale. Open evidence, compare contradictions, tag the forces acting on each artifact, and unlock the hidden memo before submitting your final reading.",
+    steps: [
+      {
+        label: "Inspect",
+        text: "Open evidence from the inbox. The first answer is usually incomplete."
+      },
+      {
+        label: "Tag",
+        text: "Mark what each artifact suggests. Tags shape which clue rises next, not what is true."
+      },
+      {
+        label: "Unlock",
+        text: "Some evidence contains a gate. Use the case itself to answer it."
+      },
+      {
+        label: "Submit",
+        text: "Choose what happened, then compare canon with the path you created."
+      }
+    ],
+    reminder:
+      "You are not trying to expose Mara. You are deciding what can be known without turning her absence into another performance."
+  },
+  cast: [
+    {
+      id: "mara-vale",
+      name: "Mara Vale",
+      role: "Creator / Origin",
+      known: "Left public life and asked people not to look for her here.",
+      question: "Did Mara return, vanish, or separate from the account?",
+      reveals: [
+        {
+          evidenceId: "witness-message",
+          label: "Witness claim",
+          detail: "Elian says Mara was seen alive after the farewell."
+        },
+        {
+          evidenceId: "search-summary",
+          label: "Public record",
+          detail: "Search converts her exit into a simple return story."
+        }
+      ]
+    },
+    {
+      id: "elian-vale",
+      name: "Elian Vale",
+      role: "Sibling / Witness",
+      known: "A private witness whose refusal matters as much as their claim.",
+      question: "What proof can Elian give without endangering Mara?",
+      reveals: [
+        {
+          evidenceId: "witness-message",
+          label: "Boundary",
+          detail: "Elian refuses proof that would reveal where Mara went."
+        },
+        {
+          evidenceId: "human-verification",
+          label: "Gate clue",
+          detail: "The gate asks what remains when visibility is gone."
+        }
+      ]
+    },
+    {
+      id: "porchlight",
+      name: "Porchlight",
+      role: "Community / Moderators",
+      known: "The audience space that turns Mara's exit into care, ritual, and pressure.",
+      question: "When does care become a demand for continuity?",
+      reveals: [
+        {
+          evidenceId: "porchlight-mod-log",
+          label: "Aftercare queue",
+          detail: "Real needs gather around Mara's absence before anyone knows the truth."
+        },
+        {
+          evidenceId: "farewell-thread",
+          label: "Ritual object",
+          detail: "Her final line becomes the thing people keep repeating."
+        }
+      ]
+    },
+    {
+      id: "resumed-account",
+      name: "The Resumed Account",
+      role: "Artifact / Performance",
+      known: "The account begins posting again with Mara's warmth but less human friction.",
+      question: "Is this Mara, a staged return, or an asset wearing her voice?",
+      reveals: [
+        {
+          evidenceId: "account-resumes",
+          label: "Wrong texture",
+          detail: "Replies arrive too quickly and too cleanly."
+        },
+        {
+          evidenceId: "sponsor-memo",
+          label: "Asset trail",
+          detail: "A continuity clause treats the account as transferable value."
+        }
+      ]
+    },
+    {
+      id: "sponsor",
+      name: "Sponsor / Contract Layer",
+      role: "Exchange",
+      known: "The money pressure is present before the document proving it is visible.",
+      question: "Who benefits if person and account stay legally blurred?",
+      reveals: [
+        {
+          evidenceId: "sponsor-memo",
+          label: "Continuity clause",
+          detail: "The memo does not require Mara's presence, only audience retention."
+        },
+        {
+          evidenceId: "account-resumes",
+          label: "Clean return",
+          detail: "The resumed voice protects continuity better than a human exit would."
+        }
+      ]
+    },
+    {
+      id: "search-oracle",
+      name: "Search / Oracle",
+      role: "Public Answer Machine",
+      known: "The layer that decides which version becomes easiest to believe.",
+      question: "What disappears when the summary gets too smooth?",
+      reveals: [
+        {
+          evidenceId: "search-summary",
+          label: "One answer",
+          detail: "Search buries contradiction below the resumed account."
+        },
+        {
+          evidenceId: "farewell-thread",
+          label: "Original instruction",
+          detail: "The goodbye becomes harder to hold beside the comeback."
+        }
+      ]
+    },
+    {
+      id: "archive",
+      name: "The Archive / You",
+      role: "Investigator",
+      known: "You decide what can be reconstructed without consuming the person at the center.",
+      question: "Can the Archive preserve truth without becoming another capture system?",
+      reveals: [
+        {
+          evidenceId: "human-verification",
+          label: "Access test",
+          detail: "The gate measures whether absence can count as evidence."
+        },
+        {
+          evidenceId: "sponsor-memo",
+          label: "Responsibility",
+          detail: "Unlocking proof also means deciding how proof should be used."
+        }
+      ]
+    }
+  ],
   forces: [
     "Algorithm",
     "Oracle",
