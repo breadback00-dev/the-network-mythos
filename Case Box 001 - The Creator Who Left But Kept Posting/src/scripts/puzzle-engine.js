@@ -8,7 +8,10 @@ export function findPuzzle(caseData, puzzleId) {
 
 export function checkPuzzleAnswer(puzzle, answer) {
   if (!puzzle) return false;
-  return normalizeAnswer(answer) === normalizeAnswer(puzzle.answer);
+  const acceptedAnswers = [puzzle.answer, ...(puzzle.acceptedAnswers || [])];
+  return acceptedAnswers.some((acceptedAnswer) => {
+    return normalizeAnswer(answer) === normalizeAnswer(acceptedAnswer);
+  });
 }
 
 export function isEvidenceUnlocked(evidence, solvedPuzzles) {
@@ -20,4 +23,3 @@ export function isEvidenceUnlocked(evidence, solvedPuzzles) {
 
   return true;
 }
-

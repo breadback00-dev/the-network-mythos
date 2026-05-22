@@ -99,7 +99,16 @@ export const case001 = {
       prompt:
         "The system asks for the phrase proved by Mara's final thread and Elian's refusal: what can still belong to a person after visibility is gone?",
       answer: "absence",
-      success: "Access granted. The system accepts absence as proof, but only after turning it into a code."
+      acceptedAnswers: ["her absence", "mara's absence", "not being seen"],
+      failure:
+        "Access denied. The system rejects proof that depends on locating, verifying, or displaying Mara.",
+      hints: [
+        "The answer is not a location, account name, or identity document.",
+        "Look at Mara's last instruction and Elian's refusal: what are they both protecting?"
+      ],
+      success:
+        "Access granted. The system accepts absence as proof, but only after turning it into a code.",
+      unlockMessage: "Continuity Clause surfaced from the locked transfer cache."
     }
   ],
   readings: [

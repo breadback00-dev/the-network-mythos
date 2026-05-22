@@ -3,6 +3,8 @@ import {
   getActiveEvidence,
   getCaseProgress,
   getRoutedEvidence,
+  getVisibleEvidence,
+  recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
 import { case001 } from "../data/case-001.js";
@@ -48,6 +50,16 @@ function getSignalLabel(score, maxScore, dominantSignal) {
   if (score === maxScore && maxScore > 1) return "dominant";
   if (score > 1) return "strong";
   return "trace";
+}
+
+function getNewlyUnlockedEvidence(beforeVisible, afterVisible) {
+  const beforeIds = new Set(beforeVisible.map((item) => item.id));
+  return afterVisible.find((item) => !beforeIds.has(item.id));
+}
+
+function getPuzzleFeedback(puzzle, attemptCount) {
+  const hint = puzzle.hints?.[Math.min(attemptCount - 1, puzzle.hints.length - 1)];
+  return hint ? `${puzzle.failure} Hint: ${hint}` : puzzle.failure;
 }
 
 function loadCase() {
@@ -106,6 +118,7 @@ function renderPuzzle() {
   const active = getActiveEvidence(caseData, state);
   const puzzle = active?.puzzleId ? findPuzzle(caseData, active.puzzleId) : null;
   const isSolved = puzzle ? state.solvedPuzzles.has(puzzle.id) : false;
+  const attemptCount = puzzle ? state.puzzleAttempts[puzzle.id] || 0 : 0;
 
   dom.puzzleTitle.textContent = puzzle ? puzzle.title : "No Puzzle Active";
   dom.puzzlePrompt.textContent = puzzle
@@ -116,9 +129,13 @@ function renderPuzzle() {
   dom.puzzleAnswer.placeholder = puzzle ? "Enter access code" : "No code needed";
 
   if (!puzzle) {
-    dom.puzzleResult.textContent = "";
+    dom.puzzleResult.textContent = state.lastUnlockMessage;
   } else if (isSolved) {
-    dom.puzzleResult.textContent = puzzle.success;
+    dom.puzzleResult.textContent = puzzle.unlockMessage
+      ? `${puzzle.success} ${puzzle.unlockMessage}`
+      : puzzle.success;
+  } else if (attemptCount > 0) {
+    dom.puzzleResult.textContent = getPuzzleFeedback(puzzle, attemptCount);
   }
 }
 
@@ -226,14 +243,24 @@ dom.submitPuzzle.addEventListener("click", () => {
   if (!puzzle) return;
 
   if (checkPuzzleAnswer(puzzle, dom.puzzleAnswer.value)) {
+    const beforeVisible = getVisibleEvidence(caseData, state);
     state.solvedPuzzles.add(puzzle.id);
     dom.puzzleAnswer.value = "";
-    dom.puzzleResult.textContent = puzzle.success;
+    const newlyUnlocked = getNewlyUnlockedEvidence(beforeVisible, getVisibleEvidence(caseData, state));
+    if (newlyUnlocked) {
+      state.activeEvidenceId = newlyUnlocked.id;
+      state.reviewedEvidence.add(newlyUnlocked.id);
+    }
+    state.lastUnlockMessage = puzzle.unlockMessage
+      ? `${puzzle.success} ${puzzle.unlockMessage}`
+      : puzzle.success;
     render();
     return;
   }
 
-  dom.puzzleResult.textContent = "Access denied. The system rejects this proof of Origin.";
+  const attemptCount = recordPuzzleAttempt(state, puzzle.id);
+  dom.puzzleResult.textContent = getPuzzleFeedback(puzzle, attemptCount);
+  render();
 });
 
 dom.submitReading.addEventListener("click", () => {

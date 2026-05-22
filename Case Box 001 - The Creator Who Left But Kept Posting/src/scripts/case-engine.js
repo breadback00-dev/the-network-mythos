@@ -6,6 +6,8 @@ export function createInitialState(caseData) {
     activeEvidenceId: caseData.evidence[0]?.id || null,
     reviewedEvidence: new Set(caseData.evidence[0] ? [caseData.evidence[0].id] : []),
     solvedPuzzles: new Set(),
+    puzzleAttempts: {},
+    lastUnlockMessage: "",
     tagsByEvidence: {},
     submittedReading: null
   };
@@ -43,6 +45,11 @@ export function toggleForceTag(state, evidenceId, force) {
   state.tagsByEvidence[evidenceId] = current.includes(force)
     ? current.filter((item) => item !== force)
     : [...current, force];
+}
+
+export function recordPuzzleAttempt(state, puzzleId) {
+  state.puzzleAttempts[puzzleId] = (state.puzzleAttempts[puzzleId] || 0) + 1;
+  return state.puzzleAttempts[puzzleId];
 }
 
 export function getCaseProgress(caseData, state) {
