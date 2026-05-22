@@ -1,11 +1,31 @@
 .app-shell {
-  border: 1px solid var(--line-strong);
-  margin: 8px;
+  border: 1px solid rgba(199, 155, 85, 0.28);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(237, 231, 217, 0.06);
+  margin: 10px;
   min-height: calc(100vh - 16px);
+  position: relative;
+}
+
+.app-shell::before {
+  background:
+    linear-gradient(90deg, transparent, rgba(199, 155, 85, 0.22), transparent),
+    linear-gradient(90deg, rgba(177, 67, 50, 0.7), rgba(199, 155, 85, 0.82));
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .app-header {
-  border-bottom: 1px solid var(--line-strong);
+  background:
+    linear-gradient(90deg, rgba(32, 30, 25, 0.94), rgba(18, 17, 15, 0.96)),
+    linear-gradient(rgba(237, 231, 217, 0.04) 1px, transparent 1px);
+  background-size: auto, 18px 18px;
+  border-bottom: 1px solid rgba(199, 155, 85, 0.26);
   display: grid;
   grid-template-columns: minmax(260px, 0.9fr) minmax(340px, 1.3fr) minmax(220px, 0.7fr);
   min-height: 76px;
@@ -38,6 +58,9 @@
 }
 
 .workspace {
+  background:
+    linear-gradient(90deg, rgba(13, 13, 12, 0.72), rgba(32, 30, 25, 0.72) 42%, rgba(13, 13, 12, 0.9)),
+    repeating-linear-gradient(0deg, rgba(237, 231, 217, 0.025) 0 1px, transparent 1px 12px);
   display: grid;
   grid-template-columns: 300px minmax(420px, 1fr) 360px;
   min-height: calc(100vh - 96px);
@@ -45,15 +68,20 @@
 
 .evidence-panel,
 .reading-panel {
-  background: rgba(13, 13, 12, 0.88);
+  background: rgba(10, 9, 8, 0.88);
   padding: 18px;
 }
 
 .evidence-panel {
-  border-right: 1px solid var(--line);
+  border-right: 1px solid rgba(199, 155, 85, 0.2);
 }
 
 .active-panel {
+  background:
+    linear-gradient(90deg, rgba(199, 155, 85, 0.03), transparent 30%),
+    linear-gradient(rgba(237, 231, 217, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 231, 217, 0.018) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
   display: grid;
   gap: 18px;
   grid-template-rows: minmax(280px, auto) auto auto;
@@ -61,7 +89,7 @@
 }
 
 .reading-panel {
-  border-left: 1px solid var(--line);
+  border-left: 1px solid rgba(199, 155, 85, 0.2);
   display: grid;
   gap: 16px;
   align-content: start;
@@ -102,4 +130,3 @@
     padding: 16px;
   }
 }
-

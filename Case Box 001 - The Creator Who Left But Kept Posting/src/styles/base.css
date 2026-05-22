@@ -1,7 +1,9 @@
 :root {
   --black: #0d0d0c;
   --charcoal: #151513;
-  --panel: #1c1b18;
+  --panel: #201e19;
+  --panel-deep: #12110f;
+  --paper-deep: #16130e;
   --paper: #ede7d9;
   --paper-soft: #d8cfbd;
   --muted: #918875;
@@ -22,10 +24,11 @@
 
 body {
   background:
+    linear-gradient(90deg, rgba(177, 67, 50, 0.08), transparent 34%),
     linear-gradient(rgba(237, 231, 217, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(237, 231, 217, 0.025) 1px, transparent 1px),
-    linear-gradient(145deg, #0d0d0c, #151513 48%, #101419);
-  background-size: 38px 38px, 38px 38px, auto;
+    linear-gradient(145deg, #090908, #18140f 48%, #101419);
+  background-size: auto, 34px 34px, 34px 34px, auto;
   color: var(--paper);
   font-family: var(--sans);
   margin: 0;
@@ -46,9 +49,15 @@ button {
   cursor: pointer;
 }
 
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
 button:disabled,
 input:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
-
