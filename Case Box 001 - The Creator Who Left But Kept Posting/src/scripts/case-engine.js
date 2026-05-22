@@ -14,7 +14,23 @@ export function createInitialState(caseData) {
 }
 
 export function getVisibleEvidence(caseData, state) {
-  return caseData.evidence.filter((item) => isEvidenceUnlocked(item, state.solvedPuzzles));
+  return [
+    ...caseData.evidence.filter((item) => isEvidenceUnlocked(item, state.solvedPuzzles)),
+    ...getVisibleBonusEvidence(caseData, state)
+  ];
+}
+
+export function getVisibleBonusEvidence(caseData, state) {
+  const bonusEvidence = caseData.bonusEvidence || {};
+  const profile = calculateSignalProfile(caseData, state.tagsByEvidence);
+  const dominantSignal = getDominantSignal(profile);
+
+  if (dominantSignal === "Unformed" || dominantSignal === "Mixed" || profile[dominantSignal] < 2) {
+    return [];
+  }
+
+  const bonus = bonusEvidence[dominantSignal];
+  return bonus ? [{ ...bonus, isBonus: true, surfacedBy: dominantSignal }] : [];
 }
 
 export function getRoutedEvidence(caseData, state) {
@@ -37,7 +53,7 @@ export function getRoutedEvidence(caseData, state) {
 }
 
 export function getActiveEvidence(caseData, state) {
-  return caseData.evidence.find((item) => item.id === state.activeEvidenceId);
+  return getVisibleEvidence(caseData, state).find((item) => item.id === state.activeEvidenceId);
 }
 
 export function toggleForceTag(state, evidenceId, force) {
@@ -59,6 +75,7 @@ export function getCaseProgress(caseData, state) {
     dominantSignal: getDominantSignal(profile),
     rankedSignals: getRankedSignals(profile),
     visibleEvidence: getVisibleEvidence(caseData, state),
+    visibleBonusEvidence: getVisibleBonusEvidence(caseData, state),
     routedEvidence: getRoutedEvidence(caseData, state)
   };
 }

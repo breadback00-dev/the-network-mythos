@@ -91,6 +91,68 @@ export const case001 = {
       timeline: "Search converts Mara's exit into a return story and buries the contradiction."
     }
   ],
+  bonusEvidence: {
+    Algorithm: {
+      id: "bonus-algorithm-heat",
+      type: "Route Surfaced",
+      date: "Day 17",
+      title: "Heat Map Of A Departure",
+      body:
+        "The Network kept boosting posts that quoted Mara's final line without the sentence before it. The full goodbye lost reach each time someone clipped it into a slogan.\n\nThe route did not change the truth. It changed which distortion became easiest to see.",
+      expectedForces: ["Algorithm", "Silence"],
+      timeline: "Visibility preserves the most portable fragment and weakens the rest."
+    },
+    Covenant: {
+      id: "bonus-covenant-vigil",
+      type: "Route Surfaced",
+      date: "Day 17",
+      title: "Vigil Thread Export",
+      body:
+        "A private Porchlight export shows members organizing check-ins, rent help, and grief rituals in the same thread. Care and capture sit inches apart.\n\nThe route did not change the truth. It changed which need became loudest.",
+      expectedForces: ["Covenant", "Returned"],
+      timeline: "Community care keeps people alive, but can also keep asking for a person who left."
+    },
+    Exchange: {
+      id: "bonus-exchange-valuation",
+      type: "Route Surfaced",
+      date: "Day 17",
+      title: "Audience Retention Valuation",
+      body:
+        "A valuation sheet prices Mara's absence as a temporary volatility event. The highest-risk scenario is not impersonation. It is audience recognition that the account and the person have separated.\n\nThe route did not change the truth. It changed which ownership trail surfaced first.",
+      expectedForces: ["Exchange", "Arbiter"],
+      timeline: "The account's value depends on keeping continuity legible."
+    },
+    Silence: {
+      id: "bonus-silence-cache",
+      type: "Route Surfaced",
+      date: "Day 17",
+      title: "Removed Cache Notice",
+      body:
+        "A removal notice lists three unavailable captures: the uncut farewell, Elian's first denial, and a moderation thread titled stop making her prove it.\n\nThe route did not change the truth. It changed which absence started speaking.",
+      expectedForces: ["Silence", "Returned"],
+      timeline: "Missing records form their own pattern when the same question keeps disappearing."
+    },
+    Eidolon: {
+      id: "bonus-eidolon-latency",
+      type: "Route Surfaced",
+      date: "Day 17",
+      title: "Reply Latency Trace",
+      body:
+        "A timing trace shows the resumed account answering grief, anger, and sponsorship questions at the same speed. No reply waits for discomfort. No answer arrives late.\n\nThe route did not change the truth. It changed which imitation flaw became visible.",
+      expectedForces: ["Eidolon", "Exchange"],
+      timeline: "The voice performs Mara's warmth without inheriting her friction."
+    },
+    Returned: {
+      id: "bonus-returned-offline",
+      type: "Route Surfaced",
+      date: "Day 17",
+      title: "Offline Errand Receipt",
+      body:
+        "A redacted receipt places an unnamed woman near Elian's town months after the final post. It proves almost nothing by itself, except that a life can leave weaker traces than an account.\n\nThe route did not change the truth. It changed which fragile proof you noticed.",
+      expectedForces: ["Returned", "Silence"],
+      timeline: "Mara's life outside visibility leaves small traces that cannot safely become spectacle."
+    }
+  },
   puzzles: [
     {
       id: "origin-code",

@@ -69,7 +69,7 @@ function loadCase() {
 }
 
 function renderEvidenceList() {
-  const { dominantSignal } = getCaseProgress(caseData, state);
+  const { dominantSignal, visibleBonusEvidence } = getCaseProgress(caseData, state);
   const visibleEvidence = getRoutedEvidence(caseData, state);
   dom.evidenceList.innerHTML = "";
   const routeLabel =
@@ -86,10 +86,11 @@ function renderEvidenceList() {
     button.classList.toggle("is-active", item.id === state.activeEvidenceId);
     button.classList.toggle("is-reviewed", state.reviewedEvidence.has(item.id));
     button.classList.toggle("has-tags", selectedTags.length > 0);
+    button.classList.toggle("is-bonus", item.isBonus);
     button.innerHTML = `
       <span>${String(index + 1).padStart(2, "0")} / ${item.type}</span>
       <strong>${item.title}</strong>
-      <small>${state.reviewedEvidence.has(item.id) ? "Reviewed" : item.date}</small>
+      <small>${item.isBonus ? `Surfaced by ${item.surfacedBy}` : state.reviewedEvidence.has(item.id) ? "Reviewed" : item.date}</small>
       <em>${formatTags(selectedTags)}</em>
     `;
     button.addEventListener("click", () => {
@@ -99,6 +100,13 @@ function renderEvidenceList() {
     });
     dom.evidenceList.append(button);
   });
+
+  if (visibleBonusEvidence.length > 0) {
+    const routeNote = document.createElement("p");
+    routeNote.className = "route-note";
+    routeNote.textContent = `Route surfaced: ${visibleBonusEvidence[0].title}. Truth remains stable; the path changed what appeared.`;
+    dom.evidenceList.append(routeNote);
+  }
 }
 
 function renderActiveEvidence() {

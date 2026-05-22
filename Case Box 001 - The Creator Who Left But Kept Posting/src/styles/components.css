@@ -92,6 +92,11 @@
   border-color: var(--green);
 }
 
+.evidence-card.is-bonus {
+  border-color: var(--amber);
+  box-shadow: inset 0 0 0 1px rgba(214, 177, 90, 0.22);
+}
+
 .evidence-card.is-reviewed {
   background: rgba(120, 161, 98, 0.08);
 }
@@ -117,6 +122,17 @@
 
 .evidence-card.has-tags em {
   color: var(--amber);
+}
+
+.route-note {
+  border: 1px solid var(--line);
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 2px 0 0;
+  padding: 12px;
+  text-transform: uppercase;
 }
 
 .document-card,
