@@ -67,3 +67,9 @@ Phase 1 should prove:
 - Nested puzzles add discovery rather than friction.
 - The feedback loop makes players notice their own reading path.
 - The final reveal creates conversation.
+
+## Prototype Docs
+
+- [Game design](docs/game-design.md)
+- [Case authoring](docs/case-authoring.md)
+- [First 8-minute playtest pass](docs/first-8-minute-playtest.md)
