@@ -884,6 +884,41 @@ body.is-reference-open {
   max-width: min(860px, 94vw);
 }
 
+.doctrine-panel {
+  max-width: min(920px, 94vw);
+}
+
+.doctrine-content {
+  display: grid;
+  gap: 16px;
+}
+
+.doctrine-content p {
+  border-top: 1px solid rgba(237, 231, 217, 0.1);
+  color: var(--paper-soft);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0;
+  padding-top: 16px;
+  text-transform: uppercase;
+}
+
+.doctrine-content p:first-child {
+  border-top: 0;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.08;
+  padding-top: 0;
+}
+
+.doctrine-content p:last-child {
+  border-color: rgba(199, 155, 85, 0.26);
+  color: var(--amber);
+  font-size: 15px;
+}
+
 .system-map-header {
   align-items: start;
   border-bottom: 1px solid rgba(237, 231, 217, 0.13);

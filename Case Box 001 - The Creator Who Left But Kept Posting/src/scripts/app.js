@@ -7,7 +7,7 @@ import {
   recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js?v=puzzle-tags-20260522";
+import { case001 } from "../data/case-001.js?v=archive-doctrine-20260522";
 import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
@@ -18,15 +18,18 @@ const dom = {
   resetCase: document.querySelector("#reset-case"),
   openMapButtons: document.querySelectorAll("[data-open-map]"),
   openIntakeButtons: document.querySelectorAll("[data-open-intake]"),
+  openDoctrineButtons: document.querySelectorAll("[data-open-doctrine]"),
   systemMapModal: document.querySelector("#system-map-modal"),
   closeSystemMap: document.querySelector("#close-system-map"),
   intakeModal: document.querySelector("#intake-modal"),
   closeIntake: document.querySelector("#close-intake"),
+  doctrineModal: document.querySelector("#doctrine-modal"),
+  closeDoctrine: document.querySelector("#close-doctrine"),
+  doctrineContent: document.querySelector("#doctrine-content"),
   openingBrief: document.querySelector("#opening-brief"),
   openingTitle: document.querySelector("#opening-title"),
   openingSummary: document.querySelector("#opening-summary"),
   openingRole: document.querySelector("#opening-role"),
-  openingDoctrine: document.querySelector("#opening-doctrine"),
   openingGoals: document.querySelector("#opening-goals"),
   startCase: document.querySelector("#start-case"),
   workspace: document.querySelector("#workspace"),
@@ -74,8 +77,9 @@ function formatTags(tags) {
 }
 
 function highlightDoctrineForces(text) {
-  const forcePattern = new RegExp(`\\b(${caseData.forces.join("|")})\\b`, "g");
-  return text.replace(forcePattern, '<strong class="doctrine-force">$1</strong>');
+  const escapedForces = caseData.forces.map((force) => force.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const forcePattern = new RegExp(`\\b(?:The\\s+)?(?:${escapedForces.join("|")})\\b`, "g");
+  return text.replace(forcePattern, '<strong class="doctrine-force">$&</strong>');
 }
 
 function getSignalLabel(score, maxScore, dominantSignal) {
@@ -235,9 +239,15 @@ function renderOpeningBrief() {
   dom.openingTitle.textContent = opening.headline;
   dom.openingSummary.textContent = opening.summary;
   dom.openingRole.textContent = opening.role;
-  dom.openingDoctrine.innerHTML = highlightDoctrineForces(caseData.doctrine);
   dom.openingGoals.innerHTML = opening.goals
     .map((goal) => `<li>${goal}</li>`)
+    .join("");
+}
+
+function renderArchiveDoctrine() {
+  dom.doctrineContent.innerHTML = highlightDoctrineForces(caseData.doctrine)
+    .split("\n\n")
+    .map((paragraph) => `<p>${paragraph.replace(/\n/g, "<br />")}</p>`)
     .join("");
 }
 
@@ -589,6 +599,7 @@ function render() {
   ensureActiveEvidence();
   renderHeader();
   renderOpeningBrief();
+  renderArchiveDoctrine();
   renderIntakeBrief();
   renderEvidenceList();
   renderActiveEvidence();
@@ -661,8 +672,13 @@ dom.openIntakeButtons.forEach((button) => {
   button.addEventListener("click", () => openReferenceModal(dom.intakeModal, dom.closeIntake));
 });
 
+dom.openDoctrineButtons.forEach((button) => {
+  button.addEventListener("click", () => openReferenceModal(dom.doctrineModal, dom.closeDoctrine));
+});
+
 dom.closeSystemMap.addEventListener("click", () => closeReferenceModal(dom.systemMapModal));
 dom.closeIntake.addEventListener("click", () => closeReferenceModal(dom.intakeModal));
+dom.closeDoctrine.addEventListener("click", () => closeReferenceModal(dom.doctrineModal));
 
 function closeOnBackdrop(event) {
   if (event.target === event.currentTarget) {
@@ -672,6 +688,7 @@ function closeOnBackdrop(event) {
 
 dom.systemMapModal.addEventListener("click", closeOnBackdrop);
 dom.intakeModal.addEventListener("click", closeOnBackdrop);
+dom.doctrineModal.addEventListener("click", closeOnBackdrop);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !dom.systemMapModal.hidden) {
@@ -680,6 +697,10 @@ document.addEventListener("keydown", (event) => {
 
   if (event.key === "Escape" && !dom.intakeModal.hidden) {
     closeReferenceModal(dom.intakeModal);
+  }
+
+  if (event.key === "Escape" && !dom.doctrineModal.hidden) {
+    closeReferenceModal(dom.doctrineModal);
   }
 });
 

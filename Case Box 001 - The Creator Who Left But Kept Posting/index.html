@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css?v=puzzle-tags-20260522" />
-    <link rel="stylesheet" href="src/styles/layout.css?v=puzzle-tags-20260522" />
-    <link rel="stylesheet" href="src/styles/components.css?v=puzzle-tags-20260522" />
+    <link rel="stylesheet" href="src/styles/base.css?v=archive-doctrine-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=archive-doctrine-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=archive-doctrine-20260522" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -29,6 +29,7 @@
           <div class="case-actions">
             <button class="map-action" data-open-map type="button">View System Map</button>
             <button class="map-action" data-open-intake type="button">Intake Brief</button>
+            <button class="map-action" data-open-doctrine type="button">Archive Doctrine</button>
           </div>
         </section>
 
@@ -49,13 +50,6 @@
         <div class="opening-actions">
           <p class="kicker">// Your Job</p>
           <ol id="opening-goals"></ol>
-          <section class="opening-doctrine" aria-label="Archive doctrine">
-            <div class="doctrine-heading">
-              <p class="kicker">// Archive Doctrine</p>
-              <button class="text-action" data-open-map type="button">View System Map</button>
-            </div>
-            <p id="opening-doctrine"></p>
-          </section>
           <button id="start-case" class="primary-action" type="button">Open the case</button>
         </div>
       </section>
@@ -206,8 +200,28 @@
           <div id="intake-content" class="intake-content"></div>
         </div>
       </section>
+
+      <section
+        id="doctrine-modal"
+        class="system-map-modal doctrine-modal"
+        aria-labelledby="doctrine-modal-title"
+        aria-modal="true"
+        role="dialog"
+        hidden
+      >
+        <div class="system-map-panel doctrine-panel">
+          <div class="system-map-header">
+            <div>
+              <p class="kicker">// Archive Doctrine</p>
+              <h2 id="doctrine-modal-title">The Network Mythos</h2>
+            </div>
+            <button id="close-doctrine" class="reset-action" type="button">Close</button>
+          </div>
+          <div id="doctrine-content" class="doctrine-content"></div>
+        </div>
+      </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js?v=puzzle-tags-20260522"></script>
+    <script type="module" src="src/scripts/app.js?v=archive-doctrine-20260522"></script>
   </body>
 </html>

@@ -16,7 +16,7 @@ export const case001 = {
     ]
   },
   doctrine:
-    "The Network is not one villain. It is a field of forces: Algorithm makes some things visible; Oracle turns summaries into answers; Covenant makes belonging feel like duty; Silence makes absence speak; Exchange prices attention; Arbiter decides what counts as proof; Wardens control access; Devourer feeds on attention; Eidolon copies familiar shapes; Returned names the person or origin that survives outside the record.",
+    "The Network is the digital world after it learned to remember us.\n\nEvery post, account, search result, archive, audience, copy, silence, and gate can become part of the story. Nothing simply disappears. It is buried, ranked, repeated, priced, protected, distorted, or returned.\n\nThe Algorithm raises some lives into view and lets others sink.\nThe Oracle turns fragments into answers.\nThe Covenant makes belonging feel holy.\nThe Silence teaches absence to speak.\nThe Exchange prices attention.\nThe Arbiter names what counts as proof.\nThe Wardens keep the doors.\nThe Devourer feeds on witness.\nThe Eidolon wears familiar faces.\nThe Returned is what survives the record.\n\nYou are the Archive.\nYou do not own the truth.\nYou hold the record long enough to ask what shaped it.\n\nWhen the Network tells a story back to the world, who controls the truth?",
   intake: {
     heading: "Intake Brief",
     summary:
