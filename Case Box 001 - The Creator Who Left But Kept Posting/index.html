@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css" />
-    <link rel="stylesheet" href="src/styles/layout.css" />
-    <link rel="stylesheet" href="src/styles/components.css" />
+    <link rel="stylesheet" href="src/styles/base.css?v=onboarding-20260522c" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=onboarding-20260522c" />
+    <link rel="stylesheet" href="src/styles/components.css?v=onboarding-20260522c" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -31,10 +31,25 @@
         <section class="signal-summary" aria-label="Signal profile summary">
           <span>Dominant Signal</span>
           <strong id="dominant-signal">Unformed</strong>
+          <button id="reset-case" class="reset-action" type="button">Start again</button>
         </section>
       </header>
 
-      <section class="workspace">
+      <section id="opening-brief" class="opening-brief" aria-labelledby="opening-title">
+        <div class="opening-copy">
+          <p class="kicker">// Case Opening</p>
+          <h1 id="opening-title">Loading Case</h1>
+          <p id="opening-summary"></p>
+          <p id="opening-role" class="opening-role"></p>
+        </div>
+        <div class="opening-actions">
+          <p class="kicker">// Your Job</p>
+          <ol id="opening-goals"></ol>
+          <button id="start-case" class="primary-action" type="button">Open the case</button>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace">
         <aside class="evidence-panel" aria-label="Evidence inbox">
           <div class="panel-topline">
             <p class="kicker">// Evidence Inbox</p>
@@ -132,6 +147,6 @@
       </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js"></script>
+    <script type="module" src="src/scripts/app.js?v=onboarding-20260522c"></script>
   </body>
 </html>

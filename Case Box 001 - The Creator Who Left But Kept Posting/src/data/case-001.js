@@ -2,26 +2,39 @@ export const case001 = {
   id: "CASE BOX 001",
   title: "The Creator Who Left But Kept Posting",
   summary: "A creator leaves public life, but her account keeps answering like a cleaner version of her.",
+  opening: {
+    headline: "A creator left. Her account kept answering.",
+    summary:
+      "Mara Vale asked her audience not to look for her here. Nine days later, her account returned with cleaner replies, faster warmth, and no human hesitation.",
+    role:
+      "You are the Archive investigator. Reconstruct what happened without turning Mara's absence into another performance.",
+    goals: [
+      "Read the evidence like fragments from a public disappearance.",
+      "Tag the forces you think are acting on each artifact.",
+      "Use the gate to surface the locked memo.",
+      "Submit a final reading and compare it with the route you created."
+    ]
+  },
   intake: {
     heading: "Intake Brief",
     summary:
-      "Form a defensible reading of what happened to Mara Vale. Open evidence, compare contradictions, tag the forces acting on each artifact, and unlock the hidden memo before submitting your final reading.",
+      "Use the board to test three possibilities: Mara returned, Mara vanished, or the account became a useful imitation. Evidence is what you inspect; tags are your notes about the forces involved; the gate hides one key memo; the final reading is your reconstruction.",
     steps: [
       {
-        label: "Inspect",
-        text: "Open evidence from the inbox. The first answer is usually incomplete."
+        label: "Evidence",
+        text: "Open each item from the inbox. Contradictions matter more than any single clue."
       },
       {
-        label: "Tag",
-        text: "Mark what each artifact suggests. Tags shape which clue rises next, not what is true."
+        label: "Tags",
+        text: "Mark the forces you see in the artifact. More than one tag can be true."
       },
       {
-        label: "Unlock",
-        text: "Some evidence contains a gate. Use the case itself to answer it."
+        label: "Gate",
+        text: "One item asks for a phrase. The answer is inside the evidence, not outside lore."
       },
       {
-        label: "Submit",
-        text: "Choose what happened, then compare canon with the path you created."
+        label: "Final Reading",
+        text: "Choose what happened, then compare the canonical answer with your route."
       }
     ],
     reminder:
@@ -174,6 +187,18 @@ export const case001 = {
     "Eidolon",
     "Returned"
   ],
+  forceDescriptions: {
+    Algorithm: "Visibility systems boost, bury, and repeat the version that travels best.",
+    Oracle: "Search, summaries, and answer machines make one version feel settled.",
+    Covenant: "Community bonds turn care, ritual, and belonging into pressure.",
+    Silence: "Missing, hidden, refused, or removed evidence starts shaping the truth.",
+    Exchange: "Money, contracts, ownership, and attention turn people into value.",
+    Arbiter: "Rules and verification systems decide what counts as proof.",
+    Wardens: "Moderators, locks, safety layers, and guards control access.",
+    Devourer: "Attention consumes a person, grief, or truth as material.",
+    Eidolon: "A copy or synthetic presence wears someone's familiar shape.",
+    Returned: "A person or origin survives outside the record built around them."
+  },
   evidence: [
     {
       id: "farewell-thread",

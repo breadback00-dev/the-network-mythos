@@ -7,7 +7,7 @@ import {
   recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js";
+import { case001 } from "../data/case-001.js?v=onboarding-20260522c";
 import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
@@ -15,6 +15,14 @@ const dom = {
   caseId: document.querySelector("#case-id"),
   caseTitle: document.querySelector("#case-title"),
   dominantSignal: document.querySelector("#dominant-signal"),
+  resetCase: document.querySelector("#reset-case"),
+  openingBrief: document.querySelector("#opening-brief"),
+  openingTitle: document.querySelector("#opening-title"),
+  openingSummary: document.querySelector("#opening-summary"),
+  openingRole: document.querySelector("#opening-role"),
+  openingGoals: document.querySelector("#opening-goals"),
+  startCase: document.querySelector("#start-case"),
+  workspace: document.querySelector("#workspace"),
   toggleIntake: document.querySelector("#toggle-intake"),
   intakeContent: document.querySelector("#intake-content"),
   evidenceCount: document.querySelector("#evidence-count"),
@@ -48,6 +56,7 @@ const dom = {
 let caseData;
 let state;
 let intakeOpen = true;
+let openingOpen = true;
 
 function formatTags(tags) {
   return tags.length ? tags.join(" / ") : "No signals tagged";
@@ -173,6 +182,33 @@ function loadCase() {
   caseData = case001;
   state = createInitialState(caseData);
   render();
+}
+
+function restartCase({ showOpening = true } = {}) {
+  state = createInitialState(caseData);
+  intakeOpen = true;
+  openingOpen = showOpening;
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function renderOpeningBrief() {
+  const opening = caseData.opening;
+  dom.openingBrief.hidden = !openingOpen;
+  dom.workspace.hidden = openingOpen;
+
+  if (!opening) {
+    dom.openingBrief.hidden = true;
+    dom.workspace.hidden = false;
+    return;
+  }
+
+  dom.openingTitle.textContent = opening.headline;
+  dom.openingSummary.textContent = opening.summary;
+  dom.openingRole.textContent = opening.role;
+  dom.openingGoals.innerHTML = opening.goals
+    .map((goal) => `<li>${goal}</li>`)
+    .join("");
 }
 
 function renderEvidenceList() {
@@ -304,13 +340,15 @@ function renderForceTags() {
   dom.forceTags.innerHTML = "";
   dom.selectedTagsStatus.textContent = selected.length
     ? `This artifact currently points toward: ${formatTags(selected)}.`
-    : "No signals tagged on this artifact.";
+    : "Choose the forces this artifact shows. More than one can be true.";
 
   caseData.forces.forEach((force) => {
+    const description = caseData.forceDescriptions?.[force] || "A force acting on this signal.";
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = force;
+    button.innerHTML = `<strong>${force}</strong><small>${description}</small>`;
     button.setAttribute("aria-pressed", String(selected.includes(force)));
+    button.setAttribute("aria-label", `${force}: ${description}`);
     button.classList.toggle("is-selected", selected.includes(force));
     button.addEventListener("click", () => {
       toggleForceTag(state, active.id, force);
@@ -378,6 +416,7 @@ function renderCaseRecap() {
     <p>${reviewedEvidence.length}/${visibleEvidence.length} evidence items reviewed. Gate ${gateSolved ? "opened" : "still locked"}. Path ${dominantSignal}.</p>
     <p>${contradictionCount ? `${contradictionCount} contradiction marker${contradictionCount === 1 ? "" : "s"} active.` : "No reviewed contradictions marked yet."}</p>
     <p>${visibleBonusEvidence.length ? `Bonus evidence surfaced: ${visibleBonusEvidence[0].title}.` : "No bonus evidence surfaced yet."}</p>
+    <p>Final reading means your best reconstruction after evidence, tags, and the gate.</p>
   `;
 }
 
@@ -475,6 +514,7 @@ function renderCastBoard() {
 function render() {
   ensureActiveEvidence();
   renderHeader();
+  renderOpeningBrief();
   renderIntakeBrief();
   renderEvidenceList();
   renderActiveEvidence();
@@ -530,6 +570,15 @@ dom.submitReading.addEventListener("click", () => {
 dom.toggleIntake.addEventListener("click", () => {
   intakeOpen = !intakeOpen;
   renderIntakeBrief();
+});
+
+dom.startCase.addEventListener("click", () => {
+  openingOpen = false;
+  render();
+});
+
+dom.resetCase.addEventListener("click", () => {
+  restartCase();
 });
 
 loadCase();
