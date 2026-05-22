@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Network Mythos: Case Box</title>
+    <meta
+      name="description"
+      content="A Phase 1 digital mystery box prototype for The Network Mythos."
+    />
+    <link rel="stylesheet" href="src/styles/base.css?v=intake-riddle-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=intake-riddle-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=intake-riddle-20260522" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="Network Mythos Case Box">
+      <header class="app-header">
+        <a class="brand" href="./index.html" aria-label="Network Mythos Case Box">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false">
+              <circle class="brand-mark-circle" cx="32" cy="32" r="25" />
+              <rect class="brand-mark-square" x="20" y="20" width="24" height="24" />
+              <path class="brand-mark-triangle" d="M32 23 44 44H20L32 23Z" />
+            </svg>
+          </span>
+          <span>
+            <strong>Network Mythos</strong>
+            <em>Digital Mystery Box</em>
+          </span>
+        </a>
+
+        <section class="case-title" aria-label="Active case">
+          <span id="case-id">Case Box</span>
+          <strong id="case-title">Loading Case</strong>
+          <div class="case-actions">
+            <button class="map-action" data-open-doctrine type="button">Archive Doctrine</button>
+            <button class="map-action" data-open-map type="button">View System Map</button>
+            <button class="map-action" data-open-intake type="button">Intake Brief</button>
+          </div>
+        </section>
+
+        <section class="signal-summary" aria-label="Signal profile summary">
+          <span>Dominant Signal</span>
+          <strong id="dominant-signal">Unformed</strong>
+          <button id="reset-case" class="reset-action" type="button">Reset</button>
+        </section>
+      </header>
+
+      <section id="opening-brief" class="opening-brief" aria-labelledby="opening-title">
+        <div class="opening-copy">
+          <p class="kicker">// Case Opening</p>
+          <h1 id="opening-title">Loading Case</h1>
+          <p id="opening-summary"></p>
+          <p id="opening-role" class="opening-role"></p>
+        </div>
+        <div class="opening-actions">
+          <p class="kicker">// Your Job</p>
+          <ol id="opening-goals"></ol>
+          <button id="start-case" class="primary-action" type="button">Open the case</button>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace">
+        <aside class="evidence-panel" aria-label="Evidence inbox">
+          <div class="panel-topline">
+            <p class="kicker">// Evidence Inbox</p>
+            <span id="evidence-count">0 items</span>
+          </div>
+          <div id="evidence-list" class="evidence-list"></div>
+          <section class="trail-card" aria-label="Reviewed case trail">
+            <div class="panel-topline">
+              <p class="kicker">// Case Trail</p>
+              <span>Reviewed</span>
+            </div>
+            <ol id="timeline" class="timeline"></ol>
+          </section>
+        </aside>
+
+        <section class="active-panel" aria-live="polite">
+          <article class="document-card" aria-labelledby="evidence-title">
+            <div class="document-meta">
+              <span id="evidence-type">Evidence</span>
+              <span id="evidence-date">--</span>
+            </div>
+            <h1 id="evidence-title">Select Evidence</h1>
+            <p id="evidence-body">Open a case item from the inbox to begin.</p>
+            <p id="active-tag-summary" class="active-tag-summary">No signals tagged yet.</p>
+            <div id="related-evidence" class="related-evidence"></div>
+          </article>
+
+          <section class="puzzle-card" aria-label="Nested puzzle">
+            <div>
+              <p class="kicker">// Nested Puzzle</p>
+              <h2 id="puzzle-title">No Puzzle Active</h2>
+              <p id="puzzle-prompt">Some evidence contains locked pieces, codes, or verification gates.</p>
+            </div>
+            <div class="puzzle-controls">
+              <input id="puzzle-answer" type="text" autocomplete="off" placeholder="Enter access code" />
+              <button id="submit-puzzle" type="button">Unlock</button>
+            </div>
+            <p id="puzzle-result" class="status-line" role="status"></p>
+          </section>
+
+          <section class="tag-card" aria-label="Force tagging">
+            <div>
+              <p class="kicker">// Force Tags</p>
+              <h2>What touched this signal?</h2>
+            </div>
+            <div>
+              <p id="selected-tags-status" class="selected-tags-status">No signals tagged on this artifact.</p>
+              <div id="force-tags" class="force-tags"></div>
+            </div>
+          </section>
+
+          <section class="board-card cast-board-card">
+            <div class="board-card-header">
+              <p class="kicker">// People & Entities</p>
+              <span id="cast-progress">0 updated</span>
+            </div>
+            <div id="cast-board" class="cast-board"></div>
+          </section>
+        </section>
+
+        <aside class="reading-panel" aria-label="Reading board">
+          <section class="board-card">
+            <p class="kicker">// Signal Profile</p>
+            <div id="signal-profile" class="signal-profile"></div>
+          </section>
+
+          <section class="board-card">
+            <p class="kicker">// Reconstruction</p>
+            <div id="case-recap" class="case-recap"></div>
+            <fieldset id="reading-options" class="reading-options">
+              <legend>What happened?</legend>
+            </fieldset>
+            <button id="submit-reading" class="primary-action" type="button">Submit Reconstruction</button>
+            <p id="reading-result" class="status-line" role="status"></p>
+          </section>
+
+          <section class="board-card">
+            <p class="kicker">// Archive Assessment</p>
+            <p id="reading-path" class="reading-path">
+              Your route through the case will appear after reconstruction.
+            </p>
+          </section>
+
+          <section class="board-card reveal-card" id="reveal-card" hidden>
+            <p class="kicker">// Canonical Reconstruction</p>
+            <div id="reveal-content" class="reveal-content"></div>
+          </section>
+
+          <section class="board-card custody-card" id="custody-card" hidden>
+            <p class="kicker">// Choose Custody</p>
+            <p id="custody-prompt" class="custody-prompt"></p>
+            <div id="custody-options" class="custody-options"></div>
+            <p id="custody-result" class="status-line" role="status"></p>
+          </section>
+        </aside>
+      </section>
+
+      <section
+        id="system-map-modal"
+        class="system-map-modal"
+        aria-labelledby="system-map-title"
+        aria-modal="true"
+        role="dialog"
+        hidden
+      >
+        <div class="system-map-panel">
+          <div class="system-map-header">
+            <div>
+              <p class="kicker">// System Map</p>
+              <h2 id="system-map-title">Mara Vale / The Resumed Account</h2>
+            </div>
+            <button id="close-system-map" class="reset-action" type="button">Close</button>
+          </div>
+          <figure class="system-map-figure">
+            <img
+              src="public/assets/system-map-character-network.png"
+              alt="Illustrated system map connecting Mara Vale, Elian Vale, the Resumed Account, Porchlight, Sponsor, Search Oracle, Archive You, and the ten Network forces."
+            />
+            <figcaption>
+              The map is a reference surface, not the answer. Use it to notice how people,
+              platforms, proof, money, silence, and imitation press on the same case.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section
+        id="intake-modal"
+        class="system-map-modal intake-modal"
+        aria-labelledby="intake-modal-title"
+        aria-modal="true"
+        role="dialog"
+        hidden
+      >
+        <div class="system-map-panel intake-panel">
+          <div class="system-map-header">
+            <div>
+              <p class="kicker">// Intake Brief</p>
+              <h2 id="intake-modal-title">Before you open the case</h2>
+            </div>
+            <button id="close-intake" class="reset-action" type="button">Close</button>
+          </div>
+          <div id="intake-content" class="intake-content"></div>
+        </div>
+      </section>
+
+      <section
+        id="doctrine-modal"
+        class="system-map-modal doctrine-modal"
+        aria-labelledby="doctrine-modal-title"
+        aria-modal="true"
+        role="dialog"
+        hidden
+      >
+        <div class="system-map-panel doctrine-panel">
+          <div class="system-map-header">
+            <div>
+              <p class="kicker">// Archive Doctrine</p>
+              <h2 id="doctrine-modal-title">The Network Mythos</h2>
+            </div>
+            <button id="close-doctrine" class="reset-action" type="button">Close</button>
+          </div>
+          <div id="doctrine-content" class="doctrine-content"></div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="src/scripts/app.js?v=intake-riddle-20260522"></script>
+  </body>
+</html>

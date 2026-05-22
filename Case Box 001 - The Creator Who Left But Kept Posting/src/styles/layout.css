@@ -1,0 +1,161 @@
+.app-shell {
+  border: 1px solid rgba(199, 155, 85, 0.28);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(237, 231, 217, 0.06);
+  margin: 10px;
+  min-height: calc(100vh - 16px);
+  position: relative;
+}
+
+.app-shell::before {
+  background:
+    linear-gradient(90deg, transparent, rgba(199, 155, 85, 0.22), transparent),
+    linear-gradient(90deg, rgba(177, 67, 50, 0.7), rgba(199, 155, 85, 0.82));
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.app-header {
+  background:
+    linear-gradient(90deg, rgba(32, 30, 25, 0.94), rgba(18, 17, 15, 0.96)),
+    linear-gradient(rgba(237, 231, 217, 0.04) 1px, transparent 1px);
+  background-size: auto, 18px 18px;
+  border-bottom: 1px solid rgba(199, 155, 85, 0.26);
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(340px, 1.3fr) minmax(220px, 0.7fr);
+  min-height: 76px;
+}
+
+.brand,
+.case-title,
+.signal-summary {
+  align-items: center;
+  display: flex;
+  padding: 14px 18px;
+}
+
+.brand {
+  border-right: 1px solid var(--line);
+  gap: 14px;
+  text-transform: uppercase;
+}
+
+.case-title,
+.signal-summary {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.signal-summary {
+  border-left: 1px solid var(--line);
+}
+
+.workspace {
+  background:
+    linear-gradient(90deg, rgba(13, 13, 12, 0.72), rgba(32, 30, 25, 0.72) 42%, rgba(13, 13, 12, 0.9)),
+    repeating-linear-gradient(0deg, rgba(237, 231, 217, 0.025) 0 1px, transparent 1px 12px);
+  display: grid;
+  grid-template-columns: 300px minmax(420px, 1fr) 360px;
+  min-height: calc(100vh - 96px);
+}
+
+.opening-brief {
+  background:
+    linear-gradient(90deg, rgba(177, 67, 50, 0.14), transparent 34%),
+    linear-gradient(180deg, rgba(237, 231, 217, 0.06), transparent 52%),
+    repeating-linear-gradient(0deg, rgba(237, 231, 217, 0.026) 0 1px, transparent 1px 14px);
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
+  min-height: calc(100vh - 96px);
+  padding: clamp(28px, 5vw, 72px);
+}
+
+.opening-copy,
+.opening-actions {
+  align-self: center;
+}
+
+.opening-copy {
+  max-width: 760px;
+}
+
+.opening-actions {
+  background: rgba(13, 13, 12, 0.56);
+  border: 1px solid rgba(199, 155, 85, 0.28);
+  padding: 22px;
+}
+
+.evidence-panel,
+.reading-panel {
+  background: rgba(10, 9, 8, 0.88);
+  padding: 18px;
+}
+
+.evidence-panel {
+  border-right: 1px solid rgba(199, 155, 85, 0.2);
+}
+
+.active-panel {
+  background:
+    linear-gradient(90deg, rgba(199, 155, 85, 0.03), transparent 30%),
+    linear-gradient(rgba(237, 231, 217, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 231, 217, 0.018) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
+  align-content: start;
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.reading-panel {
+  border-left: 1px solid rgba(199, 155, 85, 0.2);
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+@media (max-width: 1180px) {
+  .app-header,
+  .workspace,
+  .opening-brief {
+    grid-template-columns: 1fr;
+  }
+
+  .brand,
+  .signal-summary,
+  .evidence-panel,
+  .reading-panel {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .evidence-panel {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .reading-panel {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  .evidence-panel,
+  .active-panel,
+  .reading-panel,
+  .opening-brief {
+    padding: 16px;
+  }
+}

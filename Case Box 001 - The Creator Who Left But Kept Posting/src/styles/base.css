@@ -1,0 +1,67 @@
+:root {
+  --black: #0d0d0c;
+  --charcoal: #151513;
+  --panel: #201e19;
+  --panel-deep: #12110f;
+  --paper-deep: #16130e;
+  --paper: #ede7d9;
+  --paper-soft: #d8cfbd;
+  --muted: #918875;
+  --line: rgba(237, 231, 217, 0.18);
+  --line-strong: rgba(237, 231, 217, 0.34);
+  --red: #b14332;
+  --green: #78a162;
+  --amber: #c79b55;
+  --bluegray: #87929a;
+  --mono: "Courier New", Courier, monospace;
+  --sans: Arial, Helvetica, sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  background:
+    linear-gradient(90deg, rgba(177, 67, 50, 0.08), transparent 34%),
+    linear-gradient(rgba(237, 231, 217, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 231, 217, 0.025) 1px, transparent 1px),
+    linear-gradient(145deg, #090908, #18140f 48%, #101419);
+  background-size: auto, 34px 34px, 34px 34px, auto;
+  color: var(--paper);
+  font-family: var(--sans);
+  margin: 0;
+}
+
+button,
+input,
+a {
+  color: inherit;
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
