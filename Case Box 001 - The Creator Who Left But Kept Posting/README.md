@@ -11,8 +11,8 @@ The goal of this demo is to test the core loop before expanding the platform:
 3. Solve nested mini-puzzles.
 4. Tag evidence with mythic forces.
 5. Let the player's tags shape the evidence route.
-6. Submit a final reading.
-7. Reveal both the canonical answer and the player's reading path.
+6. Build a plain-English case sentence.
+7. Reveal the myth classification, canonical answer, and player's reading path.
 
 ## What You Can Test
 
@@ -20,7 +20,8 @@ The goal of this demo is to test the core loop before expanding the platform:
 - Evidence cards that behave like objects: chat logs, receipts, uploads, notes, and locked material.
 - Player-applied tags that shape the next useful evidence without changing the underlying truth.
 - One fake access gate that teaches the mythos through discovery.
-- A final reveal that compares the submitted reading, canon, signal profile, and route effect.
+- A Case Sentence Reconstruction Board with separate claims for Mara, the account, and the pressure that made confusion useful.
+- A final reveal that translates the player's sentence into myth language while keeping the canonical truth stable.
 
 ## Run Locally
 

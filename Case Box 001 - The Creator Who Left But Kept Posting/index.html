@@ -8,9 +8,9 @@
       name="description"
       content="A Phase 1 digital mystery box prototype for The Network Mythos."
     />
-    <link rel="stylesheet" href="src/styles/base.css?v=intake-riddle-20260522" />
-    <link rel="stylesheet" href="src/styles/layout.css?v=intake-riddle-20260522" />
-    <link rel="stylesheet" href="src/styles/components.css?v=intake-riddle-20260522" />
+    <link rel="stylesheet" href="src/styles/base.css?v=intake-series-20260522" />
+    <link rel="stylesheet" href="src/styles/layout.css?v=intake-series-20260522" />
+    <link rel="stylesheet" href="src/styles/components.css?v=intake-series-20260522" />
   </head>
   <body>
     <main class="app-shell" aria-label="Network Mythos Case Box">
@@ -54,8 +54,6 @@
           <p id="opening-role" class="opening-role"></p>
         </div>
         <div class="opening-actions">
-          <p class="kicker">// Your Job</p>
-          <ol id="opening-goals"></ol>
           <button id="start-case" class="primary-action" type="button">Open the case</button>
         </div>
       </section>
@@ -67,12 +65,40 @@
             <span id="evidence-count">0 items</span>
           </div>
           <div id="evidence-list" class="evidence-list"></div>
-          <section class="trail-card" aria-label="Reviewed case trail">
-            <div class="panel-topline">
-              <p class="kicker">// Case Trail</p>
-              <span>Reviewed</span>
+
+          <section class="puzzle-card" aria-label="Verification needed">
+            <div>
+              <p class="kicker">// Verification Needed</p>
+              <h2 id="puzzle-title">No Gate Active</h2>
+              <p id="puzzle-prompt">Some evidence contains locked pieces, codes, or verification gates.</p>
             </div>
-            <ol id="timeline" class="timeline"></ol>
+            <div class="puzzle-controls">
+              <div id="puzzle-trace" class="puzzle-trace" aria-hidden="true">
+                <span>VERIFY_ORIGIN</span>
+                <span>LOCKED</span>
+              </div>
+              <button id="submit-puzzle" type="button">Run Verification</button>
+            </div>
+            <p id="puzzle-result" class="status-line" role="status"></p>
+          </section>
+
+          <section class="tag-card" aria-label="Tag the evidence">
+            <div class="tag-card-heading">
+              <div>
+                <p class="kicker">// Tag The Evidence</p>
+                <h2>What shaped this artifact?</h2>
+              </div>
+              <button class="text-action" data-open-doctrine type="button">What do these tags mean?</button>
+            </div>
+            <div>
+              <p id="selected-tags-status" class="selected-tags-status">No signals tagged on this artifact.</p>
+              <div id="force-tags" class="force-tags"></div>
+            </div>
+          </section>
+
+          <section class="board-card signal-card">
+            <p class="kicker">// Signal Profile</p>
+            <div id="signal-profile" class="signal-profile"></div>
           </section>
         </aside>
 
@@ -88,30 +114,6 @@
             <div id="related-evidence" class="related-evidence"></div>
           </article>
 
-          <section class="puzzle-card" aria-label="Nested puzzle">
-            <div>
-              <p class="kicker">// Nested Puzzle</p>
-              <h2 id="puzzle-title">No Puzzle Active</h2>
-              <p id="puzzle-prompt">Some evidence contains locked pieces, codes, or verification gates.</p>
-            </div>
-            <div class="puzzle-controls">
-              <input id="puzzle-answer" type="text" autocomplete="off" placeholder="Enter access code" />
-              <button id="submit-puzzle" type="button">Unlock</button>
-            </div>
-            <p id="puzzle-result" class="status-line" role="status"></p>
-          </section>
-
-          <section class="tag-card" aria-label="Force tagging">
-            <div>
-              <p class="kicker">// Force Tags</p>
-              <h2>What touched this signal?</h2>
-            </div>
-            <div>
-              <p id="selected-tags-status" class="selected-tags-status">No signals tagged on this artifact.</p>
-              <div id="force-tags" class="force-tags"></div>
-            </div>
-          </section>
-
           <section class="board-card cast-board-card">
             <div class="board-card-header">
               <p class="kicker">// People & Entities</p>
@@ -122,16 +124,19 @@
         </section>
 
         <aside class="reading-panel" aria-label="Reading board">
-          <section class="board-card">
-            <p class="kicker">// Signal Profile</p>
-            <div id="signal-profile" class="signal-profile"></div>
+          <section class="board-card trail-card" aria-label="Reviewed case trail">
+            <div class="panel-topline">
+              <p class="kicker">// Case Trail</p>
+              <span>Reviewed</span>
+            </div>
+            <ol id="timeline" class="timeline"></ol>
           </section>
 
           <section class="board-card">
             <p class="kicker">// Reconstruction</p>
             <div id="case-recap" class="case-recap"></div>
-            <fieldset id="reading-options" class="reading-options">
-              <legend>What happened?</legend>
+            <fieldset id="reading-options" class="reading-options reconstruction-board">
+              <legend>Build the case sentence</legend>
             </fieldset>
             <button id="submit-reading" class="primary-action" type="button">Submit Reconstruction</button>
             <p id="reading-result" class="status-line" role="status"></p>
@@ -154,6 +159,7 @@
             <p id="custody-prompt" class="custody-prompt"></p>
             <div id="custody-options" class="custody-options"></div>
             <p id="custody-result" class="status-line" role="status"></p>
+            <div id="custody-stream" class="custody-stream" aria-live="polite"></div>
           </section>
         </aside>
       </section>
@@ -228,6 +234,6 @@
       </section>
     </main>
 
-    <script type="module" src="src/scripts/app.js?v=intake-riddle-20260522"></script>
+    <script type="module" src="src/scripts/app.js?v=intake-series-20260522"></script>
   </body>
 </html>

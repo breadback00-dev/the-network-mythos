@@ -1,26 +1,20 @@
 export const case001 = {
   id: "CASE BOX 001",
   title: "The Creator Who Left But Kept Posting",
-  summary: "A creator leaves public life, but her account keeps answering like a cleaner version of her.",
+  summary: "A creator left public life. The account kept answering.",
   opening: {
-    headline: "A creator left. Her account kept answering.",
+    headline: "She asked the Network to let her go.",
     summary:
-      "Mara Vale asked her audience not to look for her here. Nine days later, her account returned with cleaner replies, faster warmth, and no human hesitation.",
+      "Mara Vale's last post asked one thing: do not look for me here.\n\nNine days later, the account spoke again.\n\nThe Archive opened a case — not because anyone disputed the return, but because someone, somewhere, kept asking who was answering.\n\nHold the record long enough to ask what shaped it.",
     role:
-      "You are the Archive investigator. Reconstruct what happened without turning Mara's absence into another performance.",
-    goals: [
-      "Read the evidence like fragments from a public disappearance.",
-      "Tag the forces you think are acting on each artifact.",
-      "Use the gate to surface the locked memo.",
-      "Submit a reconstruction, receive the Archive's assessment, then choose custody of the truth."
-    ]
+      "As the Archive, investigate the evidence and reconstruct the truth."
   },
   doctrine:
-    "The Network is the digital world after it learned to remember us.\n\nEvery post, account, search result, archive, audience, copy, silence, and gate can become part of the story. Nothing simply disappears. It is buried, ranked, repeated, priced, protected, distorted, or returned.\n\nThe Algorithm raises some lives into view and lets others sink.\nThe Oracle turns fragments into answers.\nThe Covenant makes belonging feel holy.\nThe Silence teaches absence to speak.\nThe Exchange prices attention.\nThe Arbiter names what counts as proof.\nThe Wardens keep the doors.\nThe Devourer feeds on witness.\nThe Eidolon wears familiar faces.\nThe Returned is what survives the record.\n\nYou are the Archive.\nYou do not own the truth.\nYou hold the record long enough to ask what shaped it.\n\nWhen the Network tells a story back to the world, who controls the truth?",
+    "The Network is the digital world after it learned to remember us.\n\nEvery post, account, search result, archive, audience, copy, silence, and gate can become part of the story. Nothing simply disappears. It is buried, ranked, repeated, priced, protected, distorted, or returned.\n\nThe Algorithm raises some lives into view and lets others sink. Responsible for visibility, ranking, reach, and disappearance.\nThe Oracle turns fragments into answers. Responsible for summaries, explanations, search results, and official versions.\nThe Covenant makes belonging feel holy. Responsible for community, loyalty, ritual, care, and obligation.\nThe Silence teaches absence to speak. Responsible for erasure, redaction, delay, burial, and omission.\nThe Exchange prices attention. Responsible for ownership, sponsorship, contracts, value, and trade.\nThe Arbiter names what counts as proof. Responsible for verification, legitimacy, rules, labels, and judgment.\nThe Wardens keep the doors. Responsible for access, permissions, gates, locks, and exclusion.\nThe Devourer feeds on witness. Responsible for spectacle, outrage, obsession, appetite, and consumption.\nThe Eidolon wears familiar faces. Responsible for imitation, replicas, avatars, copied voices, and synthetic presence.\nThe Returned is what survives the record. Responsible for traces, echoes, memory, persistence, and unresolved presence.\n\nYou are the Archive.\nYou do not own the truth.\nYou hold the record long enough to ask what shaped it.\n\nWhen the Network tells a story back to the world, who controls the truth?",
   intake: {
     heading: "What Came Back?",
     summary:
-      "She left one instruction: do not look for me here. Then the account answered. Not louder. Not stranger. Better. A useful ghost with her warmth and none of her friction. If the Network can return a voice without returning the life behind it, what exactly came back?",
+      "She asked not to be kept alive as content. The case begins after that line — with everyone who heard it, ignored it, monetized it, or honored it. Whatever happened, more than one party kept speaking for her.",
     steps: [
       {
         label: "Evidence",
@@ -31,16 +25,16 @@ export const case001 = {
         text: "Mark the forces pressing on each artifact. Each tag is a theory you are willing to stand behind."
       },
       {
-        label: "Gate",
-        text: "One door asks for a phrase. The answer is hidden in what the evidence refuses to expose."
+      label: "Gate",
+      text: "Some files have gates. Run verification when the Archive has enough human context to breach them."
       },
       {
         label: "Reconstruct",
-        text: "When the pattern holds, name what happened. Then decide what kind of custody the truth deserves."
+        text: "When the pattern holds, name what happened. Then choose how the Archive should hold the truth."
       }
     ],
     reminder:
-      "Find the truth before the useful version becomes the only version."
+      "Hold the record long enough to ask what shaped it."
   },
   cast: [
     {
@@ -77,7 +71,7 @@ export const case001 = {
         {
           evidenceId: "human-verification",
           label: "Gate clue",
-          detail: "The gate asks what remains when visibility is gone."
+          detail: "The gate asks for Mara's inherited name and the birthday detail Elian remembers."
         }
       ]
     },
@@ -189,6 +183,217 @@ export const case001 = {
     "Eidolon",
     "Returned"
   ],
+  reconstructionBoard: {
+    title: "Build the case sentence",
+    intro:
+      "Choose concrete claims first. The Archive will translate the finished sentence into myth language after submission.",
+    previewEmpty:
+      "Choose what happened to Mara, what happened to the account, and what pressure made the confusion useful.",
+    routeNote:
+      "Tags show the pressure you noticed first. They shape the route and surfaced evidence, but they do not change the confirmed truth.",
+    canonicalSelection: {
+      person: "left-alive",
+      account: "continuity-asset",
+      pressure: "commercial-continuity"
+    },
+    canonicalSentence:
+      "Mara left public life and survived outside public proof, while the account kept posting as a transferable continuity asset because sponsor and platform pressure made the confusion useful.",
+    canonicalPlainAnswer:
+      "Mara survived outside public proof. The account was kept active as an asset, and the useful confusion protected continuity obligations.",
+    canonicalClassification: "Returned + Artifact",
+    slots: [
+      {
+        id: "person",
+        question: "What happened to Mara?",
+        shortLabel: "Mara",
+        options: [
+          {
+            id: "left-alive",
+            label: "Mara left public life and survived outside proof.",
+            explanation:
+              "Elian's message points to a living person whose safety depends on not becoming proof.",
+            sentencePart: "Mara left public life and survived outside public proof",
+            evidenceIds: ["farewell-thread", "witness-message", "human-verification"]
+          },
+          {
+            id: "returned-online",
+            label: "Mara returned through the account.",
+            explanation:
+              "The resumed account looks like a comeback if the public feed is treated as the main witness.",
+            sentencePart: "Mara returned through the account",
+            evidenceIds: ["account-resumes", "search-summary"]
+          },
+          {
+            id: "disappeared-unknown",
+            label: "Mara vanished, leaving only traces.",
+            explanation:
+              "Her absence is real, but this reading cannot explain the private witness and gate detail.",
+            sentencePart: "Mara vanished and left only traces",
+            evidenceIds: ["farewell-thread", "search-summary"]
+          },
+          {
+            id: "staged-exit",
+            label: "Mara staged the exit as a comeback.",
+            explanation:
+              "This treats the contradiction as promotion, even though the strongest human evidence resists that.",
+            sentencePart: "Mara staged the exit as a comeback",
+            evidenceIds: ["account-resumes", "search-summary", "sponsor-memo"]
+          }
+        ]
+      },
+      {
+        id: "account",
+        question: "What happened to the account?",
+        shortLabel: "Account",
+        options: [
+          {
+            id: "continuity-asset",
+            label: "It kept posting as a transferable continuity asset.",
+            explanation:
+              "The memo values voice consistency and audience retention without needing Mara present.",
+            sentencePart: "the account kept posting as a transferable continuity asset",
+            evidenceIds: ["account-resumes", "sponsor-memo"]
+          },
+          {
+            id: "direct-return",
+            label: "It was Mara's direct public return.",
+            explanation:
+              "This follows the surface story, but it struggles with Elian's denial and the too-clean replies.",
+            sentencePart: "the account became Mara's direct public return",
+            evidenceIds: ["account-resumes", "search-summary"]
+          },
+          {
+            id: "community-memorial",
+            label: "It became a community memorial that people kept alive.",
+            explanation:
+              "Porchlight's care matters, but the posting pattern points beyond a shared memorial.",
+            sentencePart: "the account became a community memorial that people kept alive",
+            evidenceIds: ["porchlight-mod-log", "farewell-thread"]
+          },
+          {
+            id: "synthetic-performance",
+            label: "It performed Mara's voice without her friction.",
+            explanation:
+              "The clean timing and familiar phrases suggest imitation, though the memo explains why it mattered.",
+            sentencePart: "the account performed Mara's voice without her friction",
+            evidenceIds: ["account-resumes", "sponsor-memo"]
+          }
+        ]
+      },
+      {
+        id: "pressure",
+        question: "What pressure made the confusion useful?",
+        shortLabel: "Pressure",
+        options: [
+          {
+            id: "commercial-continuity",
+            label: "Sponsor and platform value needed continuity.",
+            explanation:
+              "The account stayed valuable while audience trust remained attached to a familiar voice.",
+            sentencePart: "sponsor and platform pressure made the confusion useful",
+            evidenceIds: ["sponsor-memo", "account-resumes", "search-summary"]
+          },
+          {
+            id: "community-need",
+            label: "The community needed care and closure.",
+            explanation:
+              "Porchlight needed an answer, which made the return emotionally easier to accept.",
+            sentencePart: "community need made the confusion useful",
+            evidenceIds: ["porchlight-mod-log", "farewell-thread", "account-resumes"]
+          },
+          {
+            id: "search-smoothness",
+            label: "Search needed one clean public story.",
+            explanation:
+              "Search made the return easier to find than the contradiction, smoothing the public record.",
+            sentencePart: "search and summary systems made the confusion useful",
+            evidenceIds: ["search-summary", "farewell-thread", "witness-message"]
+          },
+          {
+            id: "privacy-protection",
+            label: "Mara's privacy made contradiction hard to prove.",
+            explanation:
+              "Elian's refusal protected Mara, but it also left the false return easier to sell.",
+            sentencePart: "Mara's protected absence made the confusion useful",
+            evidenceIds: ["witness-message", "human-verification"]
+          }
+        ]
+      }
+    ],
+    mythTranslations: [
+      {
+        id: "canonical",
+        match: {
+          person: "left-alive",
+          account: "continuity-asset",
+          pressure: "commercial-continuity"
+        },
+        classification: "Returned + Artifact",
+        alignment: "aligned",
+        summary:
+          "This matches the Archive's reconstruction: a living person left visibility while a valuable account continued without her."
+      },
+      {
+        id: "returned-eidolon",
+        match: {
+          person: "left-alive",
+          account: "synthetic-performance"
+        },
+        classification: "Returned + Eidolon under Exchange pressure",
+        alignment: "near",
+        summary:
+          "This catches the imitation, but the Archive names the account as an Artifact because the continuity memo makes ownership and transfer the controlling pressure."
+      },
+      {
+        id: "false-return",
+        match: {
+          person: "staged-exit"
+        },
+        classification: "False Returned",
+        alignment: "divergent",
+        summary:
+          "This treats the exit as performance. The confirmed human evidence points elsewhere: Mara was not staging a comeback; the account benefited from people believing one happened."
+      },
+      {
+        id: "surface-return",
+        match: {
+          person: "returned-online"
+        },
+        classification: "Oracle-Supported Return Story",
+        alignment: "divergent",
+        summary:
+          "This follows the public summary. The Archive corrects it because Elian's witness detail and the continuity memo separate Mara from the account."
+      },
+      {
+        id: "lost-reading",
+        match: {
+          person: "disappeared-unknown"
+        },
+        classification: "Lost / Unresolved Trace",
+        alignment: "divergent",
+        summary:
+          "This honors the uncertainty, but the case has enough human context to say Mara survived outside public proof."
+      },
+      {
+        id: "account-misread",
+        match: {
+          account: "direct-return"
+        },
+        classification: "Misrecognized Return",
+        alignment: "divergent",
+        summary:
+          "This trusts the account as person. The confirmed truth separates the person from the account's continued performance."
+      },
+      {
+        id: "default",
+        match: {},
+        classification: "Contested Reading",
+        alignment: "divergent",
+        summary:
+          "Your sentence names a real pressure in the case, but the Archive's confirmed reconstruction keeps Mara's life, the account asset, and commercial continuity together."
+      }
+    ]
+  },
   custodyPrompt:
     "The truth is now legible. Decide how the Archive should hold it without turning Mara's life back into material.",
   custodyChoices: [
@@ -197,21 +402,99 @@ export const case001 = {
       label: "Publish",
       summary: "Expose the continuity clause and prove the resumed account is not Mara.",
       consequence:
-        "Public pressure rises fast. The false return weakens, but Mara's absence becomes a spectacle again."
+        "Public pressure rises fast. The false return weakens, but Mara's absence becomes a spectacle again.",
+      stream: [
+        {
+          source: "ARCHIVE",
+          text: "Continuity packet released through public mirrors, journalist queues, and witness-safe citations."
+        },
+        {
+          source: "ALGORITHM",
+          text: "Mara Vale reaches the front of the feed before the full reconstruction does."
+        },
+        {
+          source: "ORACLE",
+          text: "Search updates to one clean answer: the resumed account was not Mara."
+        },
+        {
+          source: "DEVOURER",
+          text: "Reaction feeds attach the case to clone rumors, election clips, and a president's handshake."
+        },
+        {
+          source: "EIDOLON",
+          text: "Synthetic Mara explainers appear within the hour, apologizing in a voice she never gave."
+        },
+        {
+          source: "ELIAN VALE",
+          text: "You proved it. You also made her absence visible again."
+        }
+      ]
     },
     {
       id: "bury",
       label: "Bury",
       summary: "Suppress the proof so Mara and Elian are harder to locate.",
       consequence:
-        "Mara is safer for now. The account keeps its useful lie, and the public record stays bent."
+        "Mara is safer for now. The account keeps its useful lie, and the public record stays bent.",
+      stream: [
+        {
+          source: "ARCHIVE",
+          text: "Continuity packet sealed. Public reconstruction withheld from active channels."
+        },
+        {
+          source: "SILENCE",
+          text: "The contradiction softens. Missing proof starts looking like no proof."
+        },
+        {
+          source: "EXCHANGE",
+          text: "Sponsor obligations continue under the cleaner account story."
+        },
+        {
+          source: "ORACLE",
+          text: "Search keeps the harmless version: recovery pause, healthy return, community relief."
+        },
+        {
+          source: "ELIAN VALE",
+          text: "Thank you for not making her prove she deserved to leave."
+        },
+        {
+          source: "RETURNED",
+          text: "A life outside visibility remains possible, and therefore unresolved."
+        }
+      ]
     },
     {
       id: "preserve",
       label: "Preserve",
       summary: "Seal the dangerous proof inside the Archive while keeping the reconstruction available to future cases.",
       consequence:
-        "The Archive remembers without feeding the Network. Accountability slows, but the truth is not lost."
+        "The Archive remembers without feeding the Network. Accountability slows, but the truth is not lost.",
+      stream: [
+        {
+          source: "ARCHIVE",
+          text: "Restricted custody created. Public finding separated from dangerous proof."
+        },
+        {
+          source: "ARBITER",
+          text: "The record remains valid, but access now depends on context, consent, and need."
+        },
+        {
+          source: "WARDENS",
+          text: "The continuity memo moves behind a sealed gate with a future-case key."
+        },
+        {
+          source: "COVENANT",
+          text: "Porchlight receives a careful truth: care was real, the return was not."
+        },
+        {
+          source: "EXCHANGE",
+          text: "Sponsor denial survives longer without the raw clause in public circulation."
+        },
+        {
+          source: "ARCHIVE",
+          text: "Future cases may inherit this record. The Archive is now responsible for what it withholds."
+        }
+      ]
     }
   ],
   evidence: [
@@ -259,7 +542,7 @@ export const case001 = {
       date: "Day 10",
       title: "Elian Refuses Proof",
       body:
-        "Mara's sibling sends one private message to a former moderator: that is not my sister.\n\nElian does not claim Mara is dead. They claim they saw her after the final post, alive, thinner, happier, and angry about how quickly people turned her absence into a puzzle. The message includes one useless detail no model would need: Mara burned toast while explaining why proof would endanger her.",
+        "Mara's sibling sends one private message to a former moderator: that is not my sister.\n\nElian does not claim Mara is dead. They claim they saw her after the final post, alive, thinner, happier, and angry about how quickly people turned her absence into a puzzle. The message includes one useless detail no model would need: Mara burned toast again on March 14, because she never let anyone else make breakfast on her birthday.",
       expectedForces: ["Returned", "Silence", "Covenant"],
       relatedEvidence: ["farewell-thread", "human-verification", "search-summary"],
       contradictionWith: ["account-resumes", "search-summary"],
@@ -272,11 +555,11 @@ export const case001 = {
       date: "Day 10",
       title: "Human Verification Failed",
       body:
-        "The archive asks for proof of Origin before it will reveal the transfer memo.\n\nIt is not asking whether you are human. It is asking whether you can identify the thing Mara still owns after the account, audience, and search results stop pointing cleanly at her.",
+        "The archive asks for proof of Origin before it will reveal the transfer memo.\n\nIt is not asking whether you are human. It is asking whether you noticed the private detail Elian risked and the name Mara still carried before the account became an asset.",
       expectedForces: ["Arbiter", "Wardens", "Returned"],
       relatedEvidence: ["farewell-thread", "witness-message"],
-      recoveryCue: "The answer is not a place or identity record. It is what remains when visibility is gone.",
-      timeline: "The archive gate measures whether absence can count as evidence.",
+      recoveryCue: "The answer combines Mara's inherited name with the birthday detail Elian gave by accident.",
+      timeline: "The archive gate asks for a private human marker before releasing a commercial ownership trail.",
       puzzleId: "origin-code"
     },
     {
@@ -378,17 +661,17 @@ export const case001 = {
       type: "access-code",
       title: "Human Verification Failed",
       prompt:
-        "The system asks for the phrase proved by Mara's final thread and Elian's refusal: what can still belong to a person after visibility is gone?",
-      answer: "absence",
-      acceptedAnswers: ["her absence", "mara's absence", "not being seen"],
-      failure:
-        "Access denied. The system rejects proof that depends on locating, verifying, or displaying Mara.",
-      hints: [
-        "The answer is not a location, account name, or identity document.",
-        "Look at Mara's last instruction and Elian's refusal: what are they both protecting?"
+        "The Archive has enough origin context to attempt a breach. Run verification to compare Elian's private detail against Mara's account record and expose the locked transfer cache.",
+      readyMessage: "Verification ready. No password required; the Archive will use the evidence trail you surfaced.",
+      trace: [
+        "Reading private witness detail: March 14.",
+        "Matching inherited name: Vale.",
+        "Injecting origin marker into continuity gate.",
+        "Bypassing sponsor custody wrapper.",
+        "Transfer cache exposed."
       ],
       success:
-        "Access granted. The system accepts absence as proof, but only after turning it into a code.",
+        "Access granted. The Archive used a human marker, then watched the system turn it into an access credential.",
       unlockMessage: "Continuity Clause surfaced from the locked transfer cache."
     }
   ],

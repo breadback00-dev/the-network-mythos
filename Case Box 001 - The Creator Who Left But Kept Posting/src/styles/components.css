@@ -190,9 +190,7 @@ body.is-reference-open {
 }
 
 .trail-card {
-  border-top: 1px solid rgba(199, 155, 85, 0.18);
-  margin-top: 16px;
-  padding-top: 14px;
+  border-color: rgba(199, 155, 85, 0.24);
 }
 
 .evidence-card {
@@ -281,6 +279,7 @@ body.is-reference-open {
   line-height: 1.6;
   margin: 0;
   max-width: 700px;
+  white-space: pre-line;
 }
 
 .opening-copy .opening-role {
@@ -307,34 +306,6 @@ body.is-reference-open {
   color: var(--paper-soft);
   font-size: 11px;
   line-height: 1.5;
-}
-
-.opening-actions ol {
-  counter-reset: opening-goal;
-  display: grid;
-  gap: 10px;
-  list-style: none;
-  margin: 0 0 18px;
-  padding: 0;
-}
-
-.opening-actions li {
-  border-top: 1px solid rgba(237, 231, 217, 0.13);
-  color: var(--paper-soft);
-  counter-increment: opening-goal;
-  font-size: 12px;
-  line-height: 1.45;
-  padding: 12px 0 0 34px;
-  position: relative;
-  text-transform: uppercase;
-}
-
-.opening-actions li::before {
-  color: var(--amber);
-  content: counter(opening-goal, decimal-leading-zero);
-  left: 0;
-  position: absolute;
-  top: 12px;
 }
 
 .document-card,
@@ -628,6 +599,28 @@ body.is-reference-open {
   border-color: rgba(120, 161, 98, 0.28);
 }
 
+.evidence-panel .puzzle-card,
+.evidence-panel .tag-card {
+  align-items: stretch;
+  grid-template-columns: 1fr;
+  padding: 14px;
+}
+
+.evidence-panel .puzzle-card h2,
+.evidence-panel .tag-card h2 {
+  font-size: 22px;
+}
+
+.tag-card-heading {
+  display: grid;
+  gap: 12px;
+}
+
+.tag-card-heading .text-action {
+  justify-self: start;
+  text-align: left;
+}
+
 .puzzle-card h2,
 .tag-card h2 {
   font-family: var(--serif);
@@ -648,6 +641,40 @@ body.is-reference-open {
   display: grid;
   gap: 8px;
   grid-template-columns: 1fr auto;
+}
+
+.evidence-panel .puzzle-controls {
+  grid-template-columns: 1fr;
+}
+
+.puzzle-trace {
+  background:
+    linear-gradient(90deg, rgba(120, 161, 98, 0.08), transparent 5px),
+    rgba(13, 13, 12, 0.72);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
+  min-height: 72px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.puzzle-trace span {
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.puzzle-card.is-running .puzzle-trace {
+  border-color: rgba(120, 161, 98, 0.42);
+  box-shadow: inset 0 0 22px rgba(120, 161, 98, 0.1);
+}
+
+.puzzle-card.is-running .puzzle-trace span:last-child {
+  animation: tracePulse 0.72s ease-in-out infinite alternate;
 }
 
 .puzzle-controls input {
@@ -673,10 +700,24 @@ body.is-reference-open {
   text-transform: uppercase;
 }
 
+@keyframes tracePulse {
+  from {
+    opacity: 0.48;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .force-tags {
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+}
+
+.evidence-panel .force-tags {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .selected-tags-status {
@@ -823,6 +864,10 @@ body.is-reference-open {
 .signal-profile {
   display: grid;
   gap: 8px;
+}
+
+.signal-card {
+  border-color: rgba(120, 161, 98, 0.28);
 }
 
 .signal-row {
@@ -1004,7 +1049,7 @@ body.is-reference-open {
 .reading-options {
   border: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   margin: 10px 0 16px;
   padding: 0;
 }
@@ -1024,15 +1069,124 @@ body.is-reference-open {
   text-transform: uppercase;
 }
 
-.reading-options label {
+.reconstruction-intro,
+.reconstruction-route,
+.claim-option em {
+  color: var(--paper-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.reconstruction-route {
+  border: 1px solid rgba(120, 161, 98, 0.22);
+  color: var(--green);
+  padding: 10px;
+}
+
+.case-sentence-preview {
+  background: rgba(13, 13, 12, 0.5);
+  border: 1px solid rgba(199, 155, 85, 0.24);
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+}
+
+.case-sentence-preview span {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.case-sentence-preview strong {
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.reconstruction-slots {
+  display: grid;
+  gap: 14px;
+}
+
+.reconstruction-slot {
+  display: grid;
+  gap: 9px;
+}
+
+.reconstruction-slot h3 {
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.claim-options {
+  display: grid;
+  gap: 8px;
+}
+
+.claim-option {
   border: 1px solid var(--line);
   color: var(--paper-soft);
   display: grid;
   font-size: 12px;
-  gap: 8px;
+  gap: 9px;
   grid-template-columns: 18px 1fr;
   line-height: 1.35;
+  min-height: 118px;
   padding: 10px;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.claim-option:hover,
+.claim-option.is-selected {
+  border-color: var(--amber);
+}
+
+.claim-option.is-selected {
+  background: rgba(199, 155, 85, 0.1);
+}
+
+.claim-option input {
+  accent-color: var(--amber);
+  margin-top: 2px;
+}
+
+.claim-option span {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.claim-option strong {
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.claim-option small {
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.claim-option em {
+  color: var(--muted);
+  font-style: normal;
 }
 
 .primary-action {
@@ -1108,6 +1262,64 @@ body.is-reference-open {
   line-height: 1.4;
 }
 
+.custody-stream {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.custody-stream:empty {
+  display: none;
+}
+
+.custody-stream-heading {
+  border-top: 1px solid rgba(120, 161, 98, 0.22);
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin: 2px 0 0;
+  padding-top: 12px;
+  text-transform: uppercase;
+}
+
+.custody-stream-item {
+  animation: stream-in 0.28s ease both;
+  animation-delay: calc(var(--stream-index) * 80ms);
+  background: rgba(13, 13, 12, 0.42);
+  border: 1px solid rgba(237, 231, 217, 0.14);
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+}
+
+.custody-stream-item strong {
+  color: var(--amber);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.custody-stream-item span {
+  color: var(--paper-soft);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@keyframes stream-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .reveal-content dl {
   display: grid;
   gap: 14px;
@@ -1158,6 +1370,14 @@ body.is-reference-open {
 
   .opening-copy p {
     font-size: 15px;
+  }
+
+  .case-sentence-preview strong {
+    font-size: 19px;
+  }
+
+  .claim-option {
+    min-height: 0;
   }
 
   .puzzle-card,

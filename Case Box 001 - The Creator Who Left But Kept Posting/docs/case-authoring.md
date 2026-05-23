@@ -12,8 +12,7 @@ Core fields:
 - `forces`: force vocabulary for this case.
 - `evidence`: evidence items.
 - `puzzles`: nested puzzle definitions.
-- `readings`: final answer options.
-- `canonicalReading`: correct answer id.
+- `reconstructionBoard`: final case-sentence slots, claim options, canonical selection, and myth translations.
 - `pathReveals`: end-of-case route summaries.
 
 ## Evidence Item
@@ -42,9 +41,24 @@ Phase 1 supports simple puzzle gates:
 
 Later puzzle types can include crosswords, image inspection, archive diffs, and timeline ordering.
 
+## Reconstruction Board
+
+Phase 1 uses a three-slot board instead of lore-answer radio buttons:
+
+- `person`: what happened to the person at the center.
+- `account`: what happened to the account, record, or object that kept acting.
+- `pressure`: what made the confusion useful.
+
+Each option should include a plain-English `label`, a one-line `explanation`, a `sentencePart`, and optional `evidenceIds` for reviewed support cues. The board also needs `canonicalSelection`, `canonicalSentence`, `canonicalPlainAnswer`, `canonicalClassification`, and `mythTranslations`.
+
+Keep old `readings` data only as a compatibility fallback when needed. New playable cases should author the board first.
+
 ## Authoring Rule
 
 Every puzzle should answer this question:
 
 What mythos concept does this teach through action?
 
+Every reconstruction should answer this question:
+
+What can a beginner say in plain English before the Archive gives it a myth name?

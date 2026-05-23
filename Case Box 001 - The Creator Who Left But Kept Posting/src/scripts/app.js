@@ -4,11 +4,10 @@ import {
   getCaseProgress,
   getRoutedEvidence,
   getVisibleEvidence,
-  recordPuzzleAttempt,
   toggleForceTag
 } from "./case-engine.js";
-import { case001 } from "../data/case-001.js?v=intake-riddle-20260522";
-import { checkPuzzleAnswer, findPuzzle } from "./puzzle-engine.js";
+import { case001 } from "../data/case-001.js?v=intake-series-20260522";
+import { findPuzzle } from "./puzzle-engine.js";
 import { getReadingPath } from "./signal-engine.js";
 
 const dom = {
@@ -30,7 +29,6 @@ const dom = {
   openingTitle: document.querySelector("#opening-title"),
   openingSummary: document.querySelector("#opening-summary"),
   openingRole: document.querySelector("#opening-role"),
-  openingGoals: document.querySelector("#opening-goals"),
   startCase: document.querySelector("#start-case"),
   workspace: document.querySelector("#workspace"),
   intakeContent: document.querySelector("#intake-content"),
@@ -45,7 +43,7 @@ const dom = {
   puzzleCard: document.querySelector(".puzzle-card"),
   puzzleTitle: document.querySelector("#puzzle-title"),
   puzzlePrompt: document.querySelector("#puzzle-prompt"),
-  puzzleAnswer: document.querySelector("#puzzle-answer"),
+  puzzleTrace: document.querySelector("#puzzle-trace"),
   submitPuzzle: document.querySelector("#submit-puzzle"),
   puzzleResult: document.querySelector("#puzzle-result"),
   selectedTagsStatus: document.querySelector("#selected-tags-status"),
@@ -64,13 +62,15 @@ const dom = {
   custodyCard: document.querySelector("#custody-card"),
   custodyPrompt: document.querySelector("#custody-prompt"),
   custodyOptions: document.querySelector("#custody-options"),
-  custodyResult: document.querySelector("#custody-result")
+  custodyResult: document.querySelector("#custody-result"),
+  custodyStream: document.querySelector("#custody-stream")
 };
 
 let caseData;
 let state;
 let openingOpen = true;
 let lastReferenceTrigger = null;
+let verificationRunning = false;
 
 function formatTags(tags) {
   return tags.length ? tags.join(" / ") : "No signals tagged";
@@ -93,11 +93,6 @@ function getSignalLabel(score, maxScore, dominantSignal) {
 function getNewlyUnlockedEvidence(beforeVisible, afterVisible) {
   const beforeIds = new Set(beforeVisible.map((item) => item.id));
   return afterVisible.find((item) => !beforeIds.has(item.id));
-}
-
-function getPuzzleFeedback(puzzle, attemptCount) {
-  const hint = puzzle.hints?.[Math.min(attemptCount - 1, puzzle.hints.length - 1)];
-  return hint ? `${puzzle.failure} Hint: ${hint}` : puzzle.failure;
 }
 
 function getEvidenceById(evidenceId) {
@@ -126,8 +121,74 @@ function ensureActiveEvidence() {
   state.reviewedEvidence.add(firstVisible.id);
 }
 
-function getReadingLabel(readingId) {
-  return caseData.readings.find((reading) => reading.id === readingId)?.label || "No reading";
+function getReconstructionBoard() {
+  return caseData.reconstructionBoard;
+}
+
+function getReconstructionSlot(slotId) {
+  return getReconstructionBoard()?.slots.find((slot) => slot.id === slotId);
+}
+
+function getReconstructionOption(slotId, optionId) {
+  return getReconstructionSlot(slotId)?.options.find((option) => option.id === optionId);
+}
+
+function getSelectedReconstructionOptions(selections = state.reconstructionSelections) {
+  return (getReconstructionBoard()?.slots || []).map((slot) => ({
+    slot,
+    option: getReconstructionOption(slot.id, selections[slot.id])
+  }));
+}
+
+function isCompleteReconstruction(selections = state.reconstructionSelections) {
+  return (getReconstructionBoard()?.slots || []).every((slot) => Boolean(selections[slot.id]));
+}
+
+function buildCaseSentence(selections = state.reconstructionSelections) {
+  const board = getReconstructionBoard();
+  const selectedOptions = getSelectedReconstructionOptions(selections).map(({ option }) => option);
+
+  if (!board || selectedOptions.some((option) => !option)) {
+    return board?.previewEmpty || "Choose claims to build a case sentence.";
+  }
+
+  const [person, account, pressure] = selectedOptions;
+  return `${person.sentencePart}, while ${account.sentencePart}, because ${pressure.sentencePart}.`;
+}
+
+function isCanonicalReconstruction(selections = state.reconstructionSelections) {
+  const canonical = getReconstructionBoard()?.canonicalSelection || {};
+  return Object.entries(canonical).every(([slotId, optionId]) => selections[slotId] === optionId);
+}
+
+function matchesTranslation(translation, selections) {
+  return Object.entries(translation.match || {}).every(([slotId, optionId]) => {
+    return selections[slotId] === optionId;
+  });
+}
+
+function getMythTranslation(selections = state.reconstructionSelections) {
+  const translations = getReconstructionBoard()?.mythTranslations || [];
+  return (
+    translations.find((translation) => translation.id !== "default" && matchesTranslation(translation, selections)) ||
+    translations.find((translation) => translation.id === "default") || {
+      classification: getReconstructionBoard()?.canonicalClassification || "Unclassified",
+      alignment: "divergent",
+      summary: "The Archive can translate this as a contested reconstruction."
+    }
+  );
+}
+
+function getReviewedSupportText(option) {
+  const reviewedSupport = (option.evidenceIds || [])
+    .map((evidenceId) => getEvidenceById(evidenceId))
+    .filter((item) => item && state.reviewedEvidence.has(item.id));
+
+  if (!reviewedSupport.length) {
+    return "Reviewed support: none yet.";
+  }
+
+  return `Reviewed support: ${reviewedSupport.map((item) => item.title).join(" / ")}.`;
 }
 
 function getPathEvidencePattern(dominantSignal) {
@@ -163,41 +224,70 @@ function getRouteAssessment(dominantSignal) {
   return `The Archive reads your path through ${dominantSignal}. That does not change the truth; it shows which pressure you made legible first.`;
 }
 
-function renderReveal(selectedReadingId) {
+function getBoardRouteContext() {
   const { dominantSignal, visibleBonusEvidence } = getCaseProgress(caseData, state);
-  const selectedLabel = getReadingLabel(selectedReadingId);
-  const canonicalLabel = getReadingLabel(caseData.canonicalReading);
-  const routeCopy = getReadingPath(caseData, dominantSignal);
+  const board = getReconstructionBoard();
+
+  if (dominantSignal === "Unformed") {
+    return "No route has formed yet. You can still reconstruct the case; tags will add pressure context as you review evidence.";
+  }
+
+  if (dominantSignal === "Mixed") {
+    return "Your tags are contested, so the board is holding multiple pressures in view instead of steering toward one route.";
+  }
+
+  const routeEvidence = visibleBonusEvidence.length
+    ? ` Route-surfaced evidence: ${visibleBonusEvidence[0].title}.`
+    : "";
+
+  return `Dominant pressure: ${dominantSignal}. ${board?.routeNote || ""}${routeEvidence}`;
+}
+
+function renderReveal() {
+  const { dominantSignal, visibleBonusEvidence } = getCaseProgress(caseData, state);
+  const submitted = state.submittedReconstruction;
+  const board = getReconstructionBoard();
+  const translation = submitted?.translation || getMythTranslation(submitted?.selections);
+  const aligned = translation.alignment === "aligned";
   const evidencePattern = getPathEvidencePattern(dominantSignal);
   const routeAssessment = getRouteAssessment(dominantSignal);
+  const routeCopy = getReadingPath(caseData, dominantSignal);
+  const routeIntro = dominantSignal === "Unformed" ? "" : `${routeCopy} `;
   const bonusCopy = visibleBonusEvidence.length
     ? `Route-surfaced evidence: ${visibleBonusEvidence[0].title}.`
     : "No bonus evidence surfaced for this route.";
 
-  state.submittedReading = selectedReadingId;
   dom.revealCard.hidden = false;
   dom.readingResult.textContent =
-    selectedReadingId === caseData.canonicalReading
-      ? "Your reconstruction aligns with the canonical answer. Custody is now unlocked."
-      : "Your reconstruction diverges from the canonical answer. Review the confirmed truth before choosing custody.";
+    aligned || isCanonicalReconstruction(submitted?.selections)
+      ? "Your case sentence aligns with the canonical reconstruction. Custody is now unlocked."
+      : "Your case sentence diverges from the canonical reconstruction. The Archive corrects the truth before custody.";
   dom.readingPath.textContent = routeAssessment;
   dom.revealContent.innerHTML = `
     <dl>
       <div>
-        <dt>Your submitted reconstruction</dt>
-        <dd>${selectedLabel}</dd>
+        <dt>Your case sentence</dt>
+        <dd>${submitted?.sentence || board.previewEmpty}</dd>
       </div>
       <div>
-        <dt>Canonical answer</dt>
-        <dd>${canonicalLabel}</dd>
+        <dt>Archive classification</dt>
+        <dd>${translation.classification}</dd>
       </div>
       <div>
-        <dt>Confirmed truth</dt>
-        <dd>${caseData.canonicalReveal}</dd>
+        <dt>Archive translation</dt>
+        <dd>${translation.summary}</dd>
+      </div>
+      <div>
+        <dt>Canonical plain-English answer</dt>
+        <dd>${board.canonicalPlainAnswer}</dd>
+      </div>
+      <div>
+        <dt>Canonical myth language</dt>
+        <dd>${board.canonicalClassification}: ${caseData.canonicalReveal}</dd>
       </div>
       <div>
         <dt>Archive assessment</dt>
-        <dd>${routeAssessment}</dd>
+        <dd>${routeIntro}${routeAssessment}</dd>
       </div>
       <div>
         <dt>Evidence pattern</dt>
@@ -239,9 +329,6 @@ function renderOpeningBrief() {
   dom.openingTitle.textContent = opening.headline;
   dom.openingSummary.textContent = opening.summary;
   dom.openingRole.textContent = opening.role;
-  dom.openingGoals.innerHTML = opening.goals
-    .map((goal) => `<li>${goal}</li>`)
-    .join("");
 }
 
 function renderArchiveDoctrine() {
@@ -369,19 +456,34 @@ function renderPuzzle() {
   const active = getActiveEvidence(caseData, state);
   const puzzle = active?.puzzleId ? findPuzzle(caseData, active.puzzleId) : null;
   const isSolved = puzzle ? state.solvedPuzzles.has(puzzle.id) : false;
-  const attemptCount = puzzle ? state.puzzleAttempts[puzzle.id] || 0 : 0;
 
   dom.puzzleCard.classList.toggle("is-dormant", !puzzle);
   dom.puzzleCard.classList.toggle("is-needed", Boolean(puzzle && !isSolved));
   dom.puzzleCard.classList.toggle("is-solved", Boolean(puzzle && isSolved));
+  dom.puzzleCard.classList.toggle("is-running", verificationRunning);
   dom.puzzleCard.setAttribute("aria-disabled", String(!puzzle));
-  dom.puzzleTitle.textContent = puzzle ? puzzle.title : "No Puzzle Active";
+  dom.puzzleTitle.textContent = puzzle ? puzzle.title : "No Gate Active";
   dom.puzzlePrompt.textContent = puzzle
     ? puzzle.prompt
     : "No gate is attached to this artifact. Keep reading and tagging evidence.";
-  dom.puzzleAnswer.disabled = !puzzle || isSolved;
-  dom.submitPuzzle.disabled = !puzzle || isSolved;
-  dom.puzzleAnswer.placeholder = puzzle ? "Enter access code" : "No code needed";
+  dom.submitPuzzle.disabled = !puzzle || isSolved || verificationRunning;
+  dom.submitPuzzle.textContent = !puzzle
+    ? "No Gate"
+    : verificationRunning
+      ? "Verifying..."
+      : isSolved
+        ? "Verified"
+        : "Run Verification";
+  if (!puzzle) {
+    dom.puzzleTrace.innerHTML = state.lastUnlockTrace?.length
+      ? state.lastUnlockTrace.map((line) => `<span>${line}</span>`).join("")
+      : "<span>NO_GATE</span><span>IDLE</span>";
+  } else if (isSolved) {
+    const solvedTrace = [...(puzzle.trace || []), "ORIGIN_CONFIRMED / UNSEALED"];
+    dom.puzzleTrace.innerHTML = solvedTrace.map((line) => `<span>${line}</span>`).join("");
+  } else {
+    dom.puzzleTrace.innerHTML = "<span>VERIFY_ORIGIN</span><span>LOCKED</span>";
+  }
 
   if (!puzzle) {
     dom.puzzleResult.textContent = state.lastUnlockMessage;
@@ -389,8 +491,8 @@ function renderPuzzle() {
     dom.puzzleResult.textContent = puzzle.unlockMessage
       ? `${puzzle.success} ${puzzle.unlockMessage}`
       : puzzle.success;
-  } else if (attemptCount > 0) {
-    dom.puzzleResult.textContent = getPuzzleFeedback(puzzle, attemptCount);
+  } else if (!verificationRunning) {
+    dom.puzzleResult.textContent = puzzle.readyMessage || "";
   }
 }
 
@@ -400,7 +502,7 @@ function renderForceTags() {
   dom.forceTags.innerHTML = "";
   dom.selectedTagsStatus.textContent = selected.length
     ? `Current read: ${formatTags(selected)}. You can revise it when later evidence changes what this artifact seems to show.`
-    : "How to decide: ask what the artifact makes visible, hides, copies, protects, prices, or proves. Pick every force you can defend.";
+    : "Choose the forces you think shaped this artifact. Your choices build the Signal Profile and may surface different evidence.";
 
   caseData.forces.forEach((force) => {
     const button = document.createElement("button");
@@ -474,22 +576,84 @@ function renderCaseRecap() {
     <p>${reviewedEvidence.length}/${visibleEvidence.length} evidence items reviewed. Gate ${gateSolved ? "opened" : "still locked"}. Path ${dominantSignal}.</p>
     <p>${contradictionCount ? `${contradictionCount} contradiction marker${contradictionCount === 1 ? "" : "s"} active.` : "No reviewed contradictions marked yet."}</p>
     <p>${visibleBonusEvidence.length ? `Bonus evidence surfaced: ${visibleBonusEvidence[0].title}.` : "No bonus evidence surfaced yet."}</p>
-    <p>Reconstruction names what happened. Custody unlocks after the truth is shown.</p>
+    <p>Truth stays stable. Your route shows which pressure became easiest to see.</p>
   `;
 }
 
-function renderReadingOptions() {
-  const existingSelection = document.querySelector("input[name='final-reading']:checked")?.value;
-  dom.readingOptions.innerHTML = "<legend>What happened?</legend>";
+function renderReconstructionBoard() {
+  const board = getReconstructionBoard();
 
-  caseData.readings.forEach((reading) => {
-    const label = document.createElement("label");
-    label.innerHTML = `
-      <input type="radio" name="final-reading" value="${reading.id}" ${existingSelection === reading.id ? "checked" : ""} />
-      ${reading.label}
+  if (!board) {
+    dom.readingOptions.innerHTML = "<legend>What happened?</legend>";
+    return;
+  }
+
+  const sentence = buildCaseSentence();
+  dom.readingOptions.innerHTML = `
+    <legend>${board.title}</legend>
+    <p class="reconstruction-intro">${board.intro}</p>
+    <p class="reconstruction-route">${getBoardRouteContext()}</p>
+    <div class="case-sentence-preview" aria-live="polite">
+      <span>Case sentence</span>
+      <strong>${sentence}</strong>
+    </div>
+    <div class="reconstruction-slots"></div>
+  `;
+
+  const slotsContainer = dom.readingOptions.querySelector(".reconstruction-slots");
+
+  board.slots.forEach((slot) => {
+    const selectedOptionId = state.reconstructionSelections[slot.id];
+    const slotElement = document.createElement("section");
+    slotElement.className = "reconstruction-slot";
+    slotElement.setAttribute("aria-labelledby", `slot-${slot.id}`);
+    slotElement.innerHTML = `
+      <h3 id="slot-${slot.id}">${slot.question}</h3>
+      <div class="claim-options"></div>
     `;
-    dom.readingOptions.append(label);
+
+    const optionsContainer = slotElement.querySelector(".claim-options");
+
+    slot.options.forEach((option) => {
+      const selected = selectedOptionId === option.id;
+      const label = document.createElement("label");
+      label.className = "claim-option";
+      label.classList.toggle("is-selected", selected);
+      label.innerHTML = `
+        <input
+          type="radio"
+          name="reconstruction-${slot.id}"
+          value="${option.id}"
+          ${selected ? "checked" : ""}
+        />
+        <span>
+          <strong>${option.label}</strong>
+          <small>${option.explanation}</small>
+          <em>${getReviewedSupportText(option)}</em>
+        </span>
+      `;
+      optionsContainer.append(label);
+    });
+
+    slotsContainer.append(slotElement);
   });
+
+  dom.readingOptions.querySelectorAll("input[type='radio']").forEach((input) => {
+    input.addEventListener("change", (event) => {
+      const slotId = event.target.name.replace("reconstruction-", "");
+      state.reconstructionSelections[slotId] = event.target.value;
+      state.submittedReconstruction = null;
+      state.submittedReading = null;
+      state.selectedCustody = null;
+      render();
+    });
+  });
+
+  if (!state.submittedReconstruction) {
+    dom.readingResult.textContent = isCompleteReconstruction()
+      ? "Case sentence ready. Submit to let the Archive translate it."
+      : "Choose one claim in each slot to complete the case sentence.";
+  }
 }
 
 function renderHeader() {
@@ -523,9 +687,10 @@ function renderIntakeBrief() {
 
 function renderCustody() {
   const choices = caseData.custodyChoices || [];
-  dom.custodyCard.hidden = !state.submittedReading;
+  const custodyUnlocked = Boolean(state.submittedReconstruction || state.submittedReading);
+  dom.custodyCard.hidden = !custodyUnlocked;
 
-  if (!state.submittedReading) return;
+  if (!custodyUnlocked) return;
 
   dom.custodyPrompt.textContent = caseData.custodyPrompt;
   dom.custodyOptions.innerHTML = "";
@@ -550,6 +715,26 @@ function renderCustody() {
   dom.custodyResult.textContent = selectedChoice
     ? selectedChoice.consequence
     : "Choose custody after reconstruction: expose the truth, protect the person, or preserve the record.";
+
+  dom.custodyStream.innerHTML = "";
+
+  if (!selectedChoice) return;
+
+  const heading = document.createElement("p");
+  heading.className = "custody-stream-heading";
+  heading.textContent = "Archive consequence stream";
+  dom.custodyStream.append(heading);
+
+  selectedChoice.stream.forEach((entry, index) => {
+    const item = document.createElement("article");
+    item.className = "custody-stream-item";
+    item.style.setProperty("--stream-index", index);
+    item.innerHTML = `
+      <strong>${entry.source}</strong>
+      <span>${entry.text}</span>
+    `;
+    dom.custodyStream.append(item);
+  });
 }
 
 function renderCastBoard() {
@@ -609,50 +794,89 @@ function render() {
   renderCastBoard();
   renderTimeline();
   renderCaseRecap();
-  renderReadingOptions();
-  if (state.submittedReading) {
-    renderReveal(state.submittedReading);
+  renderReconstructionBoard();
+  if (state.submittedReconstruction) {
+    renderReveal();
   } else {
     dom.revealCard.hidden = true;
     dom.custodyCard.hidden = true;
   }
 }
 
-dom.submitPuzzle.addEventListener("click", () => {
+function wait(ms) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
+async function runVerificationTrace(puzzle) {
+  verificationRunning = true;
+  dom.puzzleCard.classList.add("is-running");
+  dom.submitPuzzle.disabled = true;
+  dom.submitPuzzle.textContent = "Verifying...";
+
+  const trace = puzzle.trace || [
+    "Opening origin gate...",
+    "Comparing witness detail...",
+    "Bypassing continuity lock...",
+    "Transfer cache exposed."
+  ];
+
+  dom.puzzleTrace.innerHTML = "";
+  dom.puzzleResult.textContent = "";
+
+  for (const line of trace) {
+    const item = document.createElement("span");
+    item.textContent = line;
+    dom.puzzleTrace.append(item);
+    dom.puzzleResult.textContent = line;
+    await wait(520);
+  }
+
+  verificationRunning = false;
+  return trace;
+}
+
+dom.submitPuzzle.addEventListener("click", async () => {
   const active = getActiveEvidence(caseData, state);
   const puzzle = active?.puzzleId ? findPuzzle(caseData, active.puzzleId) : null;
 
-  if (!puzzle) return;
+  if (!puzzle || state.solvedPuzzles.has(puzzle.id) || verificationRunning) return;
 
-  if (checkPuzzleAnswer(puzzle, dom.puzzleAnswer.value)) {
-    const beforeVisible = getVisibleEvidence(caseData, state);
-    state.solvedPuzzles.add(puzzle.id);
-    dom.puzzleAnswer.value = "";
-    const newlyUnlocked = getNewlyUnlockedEvidence(beforeVisible, getVisibleEvidence(caseData, state));
-    if (newlyUnlocked) {
-      state.activeEvidenceId = newlyUnlocked.id;
-      state.reviewedEvidence.add(newlyUnlocked.id);
-    }
-    state.lastUnlockMessage = puzzle.unlockMessage
-      ? `${puzzle.success} ${puzzle.unlockMessage}`
-      : puzzle.success;
-    render();
-    return;
+  const beforeVisible = getVisibleEvidence(caseData, state);
+  const completedTrace = await runVerificationTrace(puzzle);
+  state.solvedPuzzles.add(puzzle.id);
+  const newlyUnlocked = getNewlyUnlockedEvidence(beforeVisible, getVisibleEvidence(caseData, state));
+  if (newlyUnlocked) {
+    state.activeEvidenceId = newlyUnlocked.id;
+    state.reviewedEvidence.add(newlyUnlocked.id);
   }
-
-  const attemptCount = recordPuzzleAttempt(state, puzzle.id);
-  dom.puzzleResult.textContent = getPuzzleFeedback(puzzle, attemptCount);
+  state.lastUnlockMessage = puzzle.unlockMessage
+    ? `${puzzle.success} ${puzzle.unlockMessage}`
+    : puzzle.success;
+  state.lastUnlockTrace = [...completedTrace, "ORIGIN_CONFIRMED / UNSEALED"];
   render();
 });
 
 dom.submitReading.addEventListener("click", () => {
-  const selected = document.querySelector("input[name='final-reading']:checked");
-  if (!selected) {
-    dom.readingResult.textContent = "Choose a final reading before submitting.";
+  if (!isCompleteReconstruction()) {
+    const missingSlots = (getReconstructionBoard()?.slots || [])
+      .filter((slot) => !state.reconstructionSelections[slot.id])
+      .map((slot) => slot.shortLabel || slot.question);
+    dom.readingResult.textContent = `Choose a claim for ${missingSlots.join(", ")} before submitting.`;
     return;
   }
 
-  renderReveal(selected.value);
+  const selections = { ...state.reconstructionSelections };
+  state.submittedReconstruction = {
+    selections,
+    sentence: buildCaseSentence(selections),
+    translation: getMythTranslation(selections),
+    aligned: isCanonicalReconstruction(selections)
+  };
+  state.submittedReading = "case-sentence";
+  state.selectedCustody = null;
+  render();
 });
 
 dom.startCase.addEventListener("click", () => {

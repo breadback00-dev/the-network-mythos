@@ -28,10 +28,13 @@ Target path for a first-time player:
 6. Notice that the signal profile forms a `Returned` route.
 7. See route-surfaced bonus evidence appear.
 8. Open "Human Verification Failed."
-9. Try an incorrect proof-style answer and receive a hint.
-10. Enter `absence`.
+9. Click "Run Verification" and watch the origin trace.
+10. Confirm the gate uses Mara's surname and birthday from Elian's evidence.
 11. Unlock "Continuity Clause."
 12. See the recap update before final submission.
+13. Build a case sentence by choosing claims for Mara, the account, and the useful pressure.
+14. Submit the reconstruction and confirm the Archive translates it into myth language.
+15. Reset and try one divergent sentence to confirm the truth correction remains understandable.
 
 ## Results
 
@@ -39,14 +42,15 @@ Target path for a first-time player:
 - After tagging "The Final Thread" and "Elian Refuses Proof" with `Returned`, the dominant path becomes `Returned`.
 - Route-surfaced bonus evidence appears: "Offline Errand Receipt."
 - Routed evidence order moves `Returned`-relevant evidence forward.
-- Wrong gate answer is rejected.
-- First failed attempt increments the hint state.
-- Correct gate answer `absence` is accepted.
+- Verification starts without requiring a typed password.
+- Verification trace references March 14 and Vale.
+- Verification unlocks the gate.
 - Gate unlocks "Continuity Clause."
 - After unlock, 8 evidence items are visible: 6 initial, 1 route bonus, 1 gate-unlocked memo.
 - Recap inputs show reviewed evidence count, gate status, path, and bonus evidence.
-- Final reading submission opens the Case Reveal panel.
-- The reveal separates submitted reading, canonical reconstruction, what happened, player route, evidence pattern, and route effect.
+- Case sentence submission opens the Case Reveal panel.
+- The reveal separates the submitted sentence, myth classification, canonical plain-English answer, player route, evidence pattern, and route effect.
+- Divergent reconstructions still unlock custody after the Archive names the confirmed truth.
 - Browser console errors: none observed.
 
 ## Browser Automation Log
@@ -58,18 +62,19 @@ Automated path executed with Python Playwright against `http://127.0.0.1:5174/`.
 - Dominant signal after tags: `Returned`.
 - Count after bonus: 7 items / routed by Returned.
 - Bonus visible: true.
-- Wrong answer feedback: "Access denied..." plus hint.
-- Correct answer: `absence`.
+- Verification action: `Run Verification`.
+- Trace includes: `Reading private witness detail: March 14.` and `Matching inherited name: Vale.`
 - After unlock title: "Continuity Clause."
 - Count after gate: 8 items / routed by Returned.
-- Final reading result: "Your reading aligns with the canonical reconstruction."
-- Reveal content includes canonical reconstruction, evidence pattern, and route/truth distinction.
+- Canonical reconstruction result: "Your case sentence aligns with the canonical reconstruction."
+- Divergent reconstruction result explains that the sentence diverges before naming the confirmed truth.
+- Reveal content includes the player's sentence, Archive classification, canonical plain-English answer, evidence pattern, and route/truth distinction.
 - Desktop console errors: none observed.
 
 Mobile-width pass executed at 390px viewport.
 
 - Case loaded and stacked into a single-column flow.
-- Same inspect/tag/gate/final-reading path completed.
+- Same inspect/tag/gate/reconstruction path completed.
 - Reveal panel visible after submission.
 - Mobile console errors: none observed.
 
@@ -103,9 +108,11 @@ Watch for:
 - Do they tag evidence without being told?
 - Do they notice the dominant signal change?
 - Do they find the gate?
-- Do they understand the hint after a wrong answer?
-- Do they describe `absence` as a clue rather than a random password?
+- Do they understand why the gate can run after Elian's evidence?
+- Do they notice the verification trace using Mara's surname and birthday detail?
 - Do they notice bonus evidence or route ordering?
+- Can they build a sentence without needing lore terms?
+- Do they understand that myth language appears after submission?
 - Do they say what they would do next?
 
 ## Next Fixes If Testers Stall
@@ -114,3 +121,4 @@ Watch for:
 - If testers miss the gate, make "Human Verification Failed" look more clearly interactive in the evidence inbox.
 - If testers solve the gate but miss the unlocked memo, add a stronger inbox pulse or temporary "new" state.
 - If testers think tags change the truth, strengthen route/truth language in the recap and reveal.
+- If testers still look for lore labels before submitting, shorten option explanations and make the three concrete questions more visually dominant.

@@ -90,7 +90,10 @@
 .opening-actions {
   background: rgba(13, 13, 12, 0.56);
   border: 1px solid rgba(199, 155, 85, 0.28);
+  justify-self: end;
+  max-width: 260px;
   padding: 22px;
+  width: 100%;
 }
 
 .evidence-panel,
@@ -101,6 +104,9 @@
 
 .evidence-panel {
   border-right: 1px solid rgba(199, 155, 85, 0.2);
+  align-content: start;
+  display: grid;
+  gap: 16px;
 }
 
 .active-panel {

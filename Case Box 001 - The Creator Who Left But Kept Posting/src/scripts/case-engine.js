@@ -9,6 +9,10 @@ export function createInitialState(caseData) {
     puzzleAttempts: {},
     lastUnlockMessage: "",
     tagsByEvidence: {},
+    reconstructionSelections: Object.fromEntries(
+      (caseData.reconstructionBoard?.slots || []).map((slot) => [slot.id, null])
+    ),
+    submittedReconstruction: null,
     submittedReading: null,
     selectedCustody: null
   };
