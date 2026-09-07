@@ -4,6 +4,14 @@ An early Windows build of the revised game's Oracle encounter. Walk through the 
 
 This is the U2 engine and feel checkpoint from the [revised plan](../docs/plans/2026-09-07-0140-feat-enter-the-network-plan.md), following the [U1 authoring brief](../docs/network-3d/experience-bible.md). The complete four-space Mara chapter, full Arbiter/Warden encounters, production saves, controller/remapping and finished art remain later units. Investigation progress resets when this encounter exits.
 
+## Play online
+
+Open [Enter the Network](https://enter-the-network.breadback00.chatgpt.site) on a computer with a keyboard and mouse. The hosted preview is currently private to the owner's account. It runs this same encounter in the browser; it is separate from the historical browser room. Use the full-screen button for more space. Restarting or leaving resets this temporary session.
+
+The browser build uses Compatibility / WebGL 2 and a single thread. Its lighting and performance may differ from the Windows Forward+ build. See the [web preview record](../docs/network-3d/web-preview.md) for verification and limits.
+
+To rebuild, install Godot 4.7.2 stable with matching web export templates and Python 3. From the repository root, run `python game/tools/build-web.py --godot <editor-executable> --output <static-output-directory>`. Serve that output through HTTP. The custom loader restores the compressed engine in the browser; uploading only Godot's raw export omits that step. Run `node game/tests/test_web_loader.cjs` to check the loader's success and failure paths.
+
 ## Run a packaged build
 
 Extract the whole Windows package and run `EnterTheNetwork.exe`. Keep `EnterTheNetwork.pck` beside it. No editor, network account or live service is needed. The executable is an unsigned development build.

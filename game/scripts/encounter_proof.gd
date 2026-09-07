@@ -213,7 +213,7 @@ func open_page(id: String) -> void:
 			words("You are the Archivist. Mara Vale's account has returned. The Oracle offers a complete explanation. Find what its sources actually support.")
 			words("Inspect the public summary and verification scope. Pin their passages, then present your finding to the Oracle. The Porchlight recording provides context, not proof.")
 			button("Enter the chamber", close_page)
-			words("Early native encounter · provisional art and voices · this session resets when you exit", 15)
+			words("Early encounter · provisional art and voices · this session resets when you exit", 15)
 		"summary", "scope":
 			words("THE PUBLIC SUMMARY" if id == "summary" else "THE BADGE'S LIMIT", 28)
 			words(SUMMARY if id == "summary" else SCOPE)
@@ -276,7 +276,7 @@ func open_page(id: String) -> void:
 				player.look_angle = 0
 				player.camera.rotation = Vector3.ZERO
 				close_page())
-			button("Exit to desktop", func(): get_tree().quit())
+			button("Restart encounter" if OS.has_feature("web") else "Exit to desktop", exit_encounter)
 	if id != "welcome":
 		button("Return to the room", close_page)
 	for child in body.get_children():
@@ -301,6 +301,12 @@ func close_page() -> void:
 	page = ""
 	panel.hide()
 	player.set_active(true)
+
+func exit_encounter() -> void:
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.location.reload()")
+	else:
+		get_tree().quit()
 
 func _stop_media() -> void:
 	if is_instance_valid(movie):
@@ -362,6 +368,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	if not is_instance_valid(player): return
+	if OS.has_feature("web") and player.active and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		open_page("pause")
 	if page.is_empty():
 		var from = player.camera.global_position
 		var query = PhysicsRayQueryParameters3D.create(from, from - player.camera.global_basis.z * 4.0)
