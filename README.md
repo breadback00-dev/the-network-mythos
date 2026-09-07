@@ -18,9 +18,9 @@ Each case contains 15 evidence artifacts, search/filter tools, contradiction fla
 
 ## New Direction and 3D Proof
 
-The [current Enter the Network plan](docs/plans/README.md) develops the game into a connected 3D narrative adventure with encounterable Network roles, human mysteries, media evidence, and remembered choices. The plan and saved revisions are tracked in this repository. The native chapter remains future work.
+The [current Enter the Network plan](docs/plans/README.md) develops the game into a connected 3D narrative adventure with encounterable Network roles, human mysteries, media evidence, and remembered choices. The plan and saved revisions are tracked in this repository. The first native Oracle encounter is implemented; the complete Mara chapter remains in development.
 
-Native development starts with the [experience bible](docs/network-3d/experience-bible.md) and the `game/` engine proof. The [earlier browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) is preserved on its historical branch as a record of progress.
+Read the [native run instructions](game/README.md), [engine checkpoint and captures](docs/network-3d/engine-proof.md), and [experience bible](docs/network-3d/experience-bible.md). The Windows encounter includes source pinning, an animated Oracle, voice, vertical video, captions and a bounded review request. Human platform and feel checks remain pending. The [earlier browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) is preserved on its historical branch as a record of progress.
 
 ## Why It Is Interesting
 

@@ -1,0 +1,4 @@
+.godot/
+builds/
+export_presets.local.cfg
+test-results/

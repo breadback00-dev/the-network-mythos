@@ -5,9 +5,10 @@
 - [Current plan and revision history](plans/README.md): Enter the Network, its relationship revision, and the earlier browser plan.
 - [Initial game review](reviews/2026-09-06-the-network-mythos-review.html): saved HTML review; download and open locally for the formatted view.
 - [Native experience bible](network-3d/experience-bible.md): chapter, roles, source boundaries and authoring decisions.
+- [Native engine checkpoint](network-3d/engine-proof.md): playable Oracle encounter, Windows verification, captures and pending feel review.
 - [Historical browser room proof](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d): earlier demonstration preserved as progress history.
 
-The native 3D chapter is planned, not yet implemented. The existing Archive Hub remains playable as described below.
+The first native encounter is implemented; the complete 3D chapter remains in development. The existing Archive Hub remains playable as described below.
 
 Start with these files:
 
