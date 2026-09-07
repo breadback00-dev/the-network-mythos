@@ -13,6 +13,14 @@ The experience is built around:
 
 The player is not simply solving mysteries. The player is deciding how dangerous truths should be held.
 
+## GitHub Record and Active Direction
+
+The user wants plans, iterations, and completed project work kept on GitHub. Canonical plans live in `docs/plans/`; reviews live in `docs/reviews/`; prototype source and required assets live with the prototype. Start with `docs/plans/README.md` to identify the active plan and historical revisions.
+
+Save canonical changes in this repository first. At completed, reviewed checkpoints, commit the relevant files and push the active feature branch unless the user asks to pause publishing. Do not treat local output files as a GitHub backup. Preserve history, exclude credentials and unrelated work, and report the resulting GitHub branch, commit, or pull-request link. This preference does not authorize automatic merging into the default branch, store publication, or deployment.
+
+The Enter the Network plan governs the proposed native 3D direction, including its documented changes to the older room and fixed-artifact format. The runtime instructions below describe the existing Archive Hub. The isolated `prototypes/archive-3d/` demonstration uses port `4189`, follows its own README, and does not share production Archive saves. It is an earlier browser proof, not implementation of the complete native plan.
+
 ## Start Here
 
 Read first:

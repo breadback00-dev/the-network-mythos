@@ -1,5 +1,13 @@
 # Documentation Index
 
+## Active direction and saved work
+
+- [Current plan and revision history](plans/README.md): Enter the Network, its relationship revision, and the earlier browser plan.
+- [Initial game review](reviews/2026-09-06-the-network-mythos-review.html): saved HTML review; download and open locally for the formatted view.
+- [Playable 3D room proof](../prototypes/archive-3d/README.md): isolated browser demonstration, setup, and limitations.
+
+The native 3D chapter is planned, not yet implemented. The existing Archive Hub remains playable as described below.
+
 Start with these files:
 
 - [README](../README.md): public overview, playable state, and local run instructions.
