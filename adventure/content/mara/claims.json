@@ -1,0 +1,77 @@
+[
+  {
+    "id": "D1",
+    "title": "Who came back?",
+    "scene": "oracle",
+    "sources": [
+      "mara.04",
+      "mara.09.scope"
+    ],
+    "claim": "scope",
+    "options": [
+      {
+        "id": "person",
+        "text": "The badge proves Mara herself returned."
+      },
+      {
+        "id": "scope",
+        "text": "An authentic account does not prove who operates it."
+      },
+      {
+        "id": "dead",
+        "text": "Mara must be dead or replaced."
+      }
+    ],
+    "feedback": "These sources limit what verification proves. They do not establish death, reconstruction or the current operator."
+  },
+  {
+    "id": "D2",
+    "title": "What was commissioned?",
+    "scene": "arbiter",
+    "sources": [
+      "mara.09.service",
+      "mara.13"
+    ],
+    "claim": "commission",
+    "options": [
+      {
+        "id": "invoice",
+        "text": "The invoice alone proves every detail."
+      },
+      {
+        "id": "commission",
+        "text": "The matching project ties the returned account to a commissioned reconstruction."
+      },
+      {
+        "id": "conscious",
+        "text": "The records prove the presence has no consciousness."
+      }
+    ],
+    "feedback": "Match service and commission project. That establishes the commissioned return, not consciousness or culpability."
+  },
+  {
+    "id": "D3",
+    "title": "What would proof expose?",
+    "scene": "archive",
+    "sources": [
+      "mara.10",
+      "mara.14"
+    ],
+    "claim": "boundary",
+    "options": [
+      {
+        "id": "alive",
+        "text": "The trace proves where Mara lives now."
+      },
+      {
+        "id": "boundary",
+        "text": "A limited private lead could invite a search; present whereabouts remain unknown."
+      },
+      {
+        "id": "alias",
+        "text": "The name on the slip independently confirms Mara’s identity."
+      }
+    ],
+    "feedback": "Testimony and a redacted association support a limited lead. They do not establish current location or a confirmed alias."
+  }
+]

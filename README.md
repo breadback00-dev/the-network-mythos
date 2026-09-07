@@ -18,7 +18,7 @@ Each case contains 15 evidence artifacts, search/filter tools, contradiction fla
 
 ## New Direction and 3D Proof
 
-The [current implementation plan](docs/plans/2026-09-07-1006-feat-illustrated-mystery-rpg-plan.md) develops the game as an illustrated mystery adventure with light RPG progression. The first target is a complete short Mara chapter with expressive avatars, media evidence, remembered choices and browser saves. This adaptation is planned, not yet implemented. [Earlier plans and revisions](docs/plans/README.md) remain saved.
+The [current implementation plan](docs/plans/2026-09-07-1006-feat-illustrated-mystery-rpg-plan.md) develops the game as an illustrated mystery adventure with light RPG progression. The [illustrated Mara chapter](adventure/README.md) now has an internal playable build with expressive avatars, media evidence, remembered choices and browser saves. Read its [verification record](docs/illustrated-mystery/verification-record.md) and [release record](docs/illustrated-mystery/release-record.md); human pacing and voice review remain pending. [Earlier plans and revisions](docs/plans/README.md) remain saved.
 
 Read the [native run instructions](game/README.md), [engine checkpoint and captures](docs/network-3d/engine-proof.md), and [experience bible](docs/network-3d/experience-bible.md). The Windows encounter includes source pinning, an animated Oracle, voice, vertical video, captions and a bounded review request. Human platform and feel checks remain pending. The [earlier browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) is preserved on its historical branch as a record of progress.
 

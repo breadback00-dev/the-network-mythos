@@ -1,0 +1,14 @@
+{
+  "Publish": {
+    "withheld": "The public record now links the returned account to a commissioned reconstruction. The family message and identifying trace are absent. Accountability is visible; controversy still attracts attention.",
+    "included": "The public record challenges the reconstructed return. Your packet also makes the private message and redacted association public. Accountability includes its context; the association can invite a hunt."
+  },
+  "Bury": {
+    "withheld": "The active case is closed and its packet sealed. Private context is excluded. New circulation is limited; the public return remains largely unchallenged.",
+    "included": "The active case is closed. Private context remains inside its sealed packet, with no public release. Immediate exposure is limited; sensitive context remains your responsibility."
+  },
+  "Preserve": {
+    "withheld": "A restricted source collection is retained for future review. Private context is outside it. An accountable record survives; public correction of the reconstruction is delayed.",
+    "included": "The restricted collection includes the private message and trace for future review. They have not been made public. Context survives; future custody and access remain an obligation."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "title": "The Door Is Real",
+  "subtitle": "A Mara Vale investigation",
+  "date": "15 November 2030",
+  "version": 1,
+  "abilities": {
+    "Observation": {
+      "2": "Notice where the summary changes “account” into “Mara”. A change of noun can hide a change of certainty.",
+      "3": "Compare project identifiers character by character. Matching identifiers link a commission and service; resemblance alone cannot."
+    },
+    "Interviewing": {
+      "2": "Ask Rafi what the community misses. Return to him in the Archive or Porchlight.",
+      "3": "Ask Elian what an honest boundary would sound like. Return to the Archive."
+    },
+    "Systems": {
+      "2": "Ask the Oracle how verification scope works.",
+      "3": "Ask the Arbiter how a provenance question becomes permission to review."
+    }
+  },
+  "roles": [
+    {
+      "name": "Archivist",
+      "scene": "archive",
+      "text": "You hold sources and decide custody. You cannot command consent."
+    },
+    {
+      "name": "Oracle",
+      "scene": "oracle",
+      "text": "Interprets records and issues a bounded request; cannot certify a life."
+    },
+    {
+      "name": "Arbiter",
+      "scene": "arbiter",
+      "text": "Applies the standard that permits service review."
+    },
+    {
+      "name": "Warden",
+      "scene": "arbiter",
+      "text": "Enforces the mandate. A badge does not change it."
+    },
+    {
+      "name": "Covenant",
+      "scene": "porchlight",
+      "text": "Belonging: care and pressure to stay can coexist."
+    },
+    {
+      "name": "Algorithm",
+      "scene": "porchlight",
+      "text": "Distribution rewards engagement. Circulation is not corroboration."
+    },
+    {
+      "name": "Exchange",
+      "finding": "D2",
+      "text": "A commission turns continuity into a service."
+    },
+    {
+      "name": "Silence",
+      "finding": "D3",
+      "text": "Withholding can protect someone or suppress accountability."
+    },
+    {
+      "name": "Devourer",
+      "finding": "D3",
+      "text": "Escalating circulation can turn answers into spectacle."
+    },
+    {
+      "name": "Eidolons / Proxies",
+      "finding": "D2",
+      "text": "Synthetic origin and human operation are distinct. Neither appearance nor origin settles conduct."
+    },
+    {
+      "name": "Returned / Lost",
+      "finding": "D3",
+      "text": "Leaving and becoming unavailable are histories, not appearance tests."
+    },
+    {
+      "name": "False Returned",
+      "finding": "D2",
+      "text": "A presence used to counterfeit a return. This contextual use alone does not settle its inner experience."
+    },
+    {
+      "name": "Cloud / Artifacts",
+      "scene": "archive",
+      "text": "Retained fragments can outlast consent. Copies share ancestry."
+    },
+    {
+      "name": "Origin Realm",
+      "finding": "D3",
+      "text": "Embodied life beyond indexing. No location search is offered."
+    },
+    {
+      "name": "Constructs / Echoes",
+      "ending": true,
+      "text": "Reserved, unresolved terms. This chapter establishes no taxonomy."
+    }
+  ],
+  "hints": [
+    [
+      "Find the gap between a welcome and its proof.",
+      "Porchlight has both the summary and verification scope.",
+      "Inspect The confident summary and What the badge verifies. At the Oracle, select both and decide what they establish."
+    ],
+    [
+      "A scoped request is ready. Follow the service trail.",
+      "Present the Oracle request at the Arbiter and compare its records.",
+      "Inspect Service appendix and The continuity commission. Match their project identifiers and select the supported explanation."
+    ],
+    [
+      "Return to the Archive. Knowledge creates a boundary.",
+      "Compare the consented witness message with the paper trace.",
+      "Inspect Elian’s private message and A redacted paper trace. Connect a limited lead without claiming a current location."
+    ],
+    [
+      "Decide what you will hold.",
+      "Return to the Archive and open Decide the packet.",
+      "Choose destination and private handling. Review the exact packet and notices, then confirm or cancel."
+    ]
+  ]
+}

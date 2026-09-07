@@ -1,0 +1,189 @@
+{
+  "rafi": {
+    "speaker": "Rafi Kline",
+    "portrait": "rafi",
+    "scenes": [
+      "archive",
+      "porchlight"
+    ],
+    "nodes": {
+      "start": {
+        "text": "Porchlight wants to welcome her back. Before we do, can you tell me what this account actually proves?",
+        "choices": [
+          {
+            "id": "look",
+            "label": "I’ll look at the sources.",
+            "next": "sources"
+          },
+          {
+            "id": "why",
+            "label": "Why ask me?",
+            "next": "why"
+          },
+          {
+            "id": "miss",
+            "label": "What do you miss about her? [Interviewing 2]",
+            "ability": "Interviewing",
+            "level": 2,
+            "next": "miss"
+          }
+        ]
+      },
+      "sources": {
+        "text": "Start with the summary and the badge’s scope. Everyone keeps showing me one as if it were the other. I’ve left both at Porchlight.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Follow the public trail."
+          }
+        ]
+      },
+      "why": {
+        "text": "Because everyone else has already chosen which answer they need. I want the deception challenged. I also miss the place we were before it needed a moderator every six minutes.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "I can investigate. I can’t promise comfort."
+          }
+        ]
+      },
+      "miss": {
+        "text": "She noticed when somebody went quiet. Not their engagement rate. Them. A community can give real care and still tell itself a convenient lie.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Keep that distinction in mind."
+          }
+        ]
+      }
+    }
+  },
+  "elian": {
+    "speaker": "Elian Vale",
+    "portrait": "elian",
+    "scenes": [
+      "archive"
+    ],
+    "nodes": {
+      "start": {
+        "text": "Use the public records. Leave my message and the private trace out of the packet. Can you promise that?",
+        "choices": [
+          {
+            "id": "promise",
+            "label": "I will keep that private context out of the packet.",
+            "assurance": "promised",
+            "next": "promise"
+          },
+          {
+            "id": "decline",
+            "label": "I can’t promise what the packet will contain yet.",
+            "assurance": "declined",
+            "next": "decline"
+          },
+          {
+            "id": "boundary",
+            "label": "What would an honest boundary sound like? [Interviewing 3]",
+            "ability": "Interviewing",
+            "level": 3,
+            "next": "boundary"
+          }
+        ]
+      },
+      "promise": {
+        "text": "Then make that boundary mean something when the packet is in front of you. Reading a message is not permission to circulate it.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Return to the Archive."
+          }
+        ]
+      },
+      "decline": {
+        "text": "Then say so when you decide. Don’t let a label make the choice for you. You may read my consented message to Rafi; that is not permission to send people looking.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Return to the Archive."
+          }
+        ]
+      },
+      "boundary": {
+        "text": "Say who receives it. Say what they can keep. “Safe” is not a destination. “Private” is not the same as leaving it out.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "I understand the distinction."
+          }
+        ]
+      }
+    }
+  },
+  "oracle": {
+    "speaker": "Oracle",
+    "portrait": "oracle-person",
+    "scenes": [
+      "oracle"
+    ],
+    "nodes": {
+      "start": {
+        "text": "A coherent account is useful. Its omissions are less visible. Bring me two passages and tell me exactly what does not follow.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "I will compare the sources."
+          },
+          {
+            "id": "scope",
+            "label": "Explain verification scope. [Systems 2]",
+            "ability": "Systems",
+            "level": 2,
+            "next": "scope"
+          }
+        ]
+      },
+      "scope": {
+        "text": "A credential chain belongs to an account. A claim about its operator needs other evidence. Similarity does not change the question a test can answer.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Return to the sources."
+          }
+        ]
+      }
+    }
+  },
+  "arbiter": {
+    "speaker": "Arbiter",
+    "portrait": "arbiter-person",
+    "scenes": [
+      "arbiter"
+    ],
+    "nodes": {
+      "start": {
+        "text": "The Warden enforces the mandate in front of them. An account badge is not a mandate to inspect the service behind it.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Inspect my credentials."
+          },
+          {
+            "id": "scope",
+            "label": "Who can authorise a review? [Systems 3]",
+            "ability": "Systems",
+            "level": 3,
+            "next": "scope"
+          }
+        ]
+      },
+      "scope": {
+        "text": "The Oracle identifies a provenance question. This office authorises a scoped review. The Warden applies that scope. None of these roles certifies a life.",
+        "choices": [
+          {
+            "id": "end",
+            "label": "Return to the threshold."
+          }
+        ]
+      }
+    }
+  }
+}

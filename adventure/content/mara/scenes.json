@@ -1,18 +1,59 @@
 [
   {
     "id": "archive",
-    "name": "The Archive"
+    "name": "The Archive",
+    "eyebrow": "01 / A QUESTION LEFT OPEN",
+    "description": "Rain against the glass. A recorder. Two cups, one still warm. Somewhere outside this room, an absent woman is being welcomed home.",
+    "alt": "Worn room with lamp, recorder, kettle and rain-streaked window.",
+    "person": "rafi",
+    "quote": "Porchlight wants to welcome her back. Before we do, can you tell me what this account actually proves?",
+    "speaker": "Rafi Kline",
+    "talk": "rafi",
+    "actions": [
+      "rafi",
+      "elian"
+    ]
   },
   {
     "id": "porchlight",
-    "name": "Porchlight"
+    "name": "Porchlight",
+    "eyebrow": "02 / EVERYONE MISSED YOU",
+    "description": "The lights are warm. The welcome is ready. The uncertainty has been cropped out of the picture.",
+    "alt": "Rooftop cafe with lanterns, plants and a welcome display.",
+    "person": "mara",
+    "quote": "I am returning carefully. The answer is consent that can be revised.",
+    "speaker": "The returned account · recording",
+    "talk": "rafi",
+    "actions": [
+      "rafi"
+    ]
   },
   {
     "id": "oracle",
-    "name": "The Oracle"
+    "name": "The Oracle",
+    "eyebrow": "03 / A COHERENT ACCOUNT",
+    "description": "Fragments arrange themselves into a reassuring circle. There is no space left for a question.",
+    "alt": "Observatory with translucent panes in an incomplete ring.",
+    "person": "oracle-person",
+    "quote": "The account is authentic. A coherent account can be comforting.",
+    "speaker": "Oracle",
+    "talk": "oracle",
+    "actions": [
+      "oracle"
+    ]
   },
   {
     "id": "arbiter",
-    "name": "The Arbiter"
+    "name": "The Arbiter",
+    "eyebrow": "04 / WITHIN OUR RECORDS",
+    "description": "Columns, seals and a closed palm. Every answer begins by defining the question it is allowed to answer.",
+    "alt": "Records hall with a Warden silhouette at an amber threshold.",
+    "person": "arbiter-person",
+    "quote": "Authenticity and authority are different columns. Tell me which one you need.",
+    "speaker": "Arbiter",
+    "talk": "arbiter",
+    "actions": [
+      "arbiter"
+    ]
   }
 ]
