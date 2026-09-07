@@ -18,11 +18,11 @@ Each case contains 15 evidence artifacts, search/filter tools, contradiction fla
 
 ## New Direction and 3D Proof
 
-The [current Enter the Network plan](docs/plans/README.md) develops the game into a connected 3D narrative adventure with encounterable Network roles, human mysteries, media evidence, and remembered choices. The plan and saved revisions are tracked in this repository. The first native Oracle encounter is implemented; the complete Mara chapter remains in development.
+The [current implementation plan](docs/plans/2026-09-07-1006-feat-illustrated-mystery-rpg-plan.md) develops the game as an illustrated mystery adventure with light RPG progression. The first target is a complete short Mara chapter with expressive avatars, media evidence, remembered choices and browser saves. This adaptation is planned, not yet implemented. [Earlier plans and revisions](docs/plans/README.md) remain saved.
 
 Read the [native run instructions](game/README.md), [engine checkpoint and captures](docs/network-3d/engine-proof.md), and [experience bible](docs/network-3d/experience-bible.md). The Windows encounter includes source pinning, an animated Oracle, voice, vertical video, captions and a bounded review request. Human platform and feel checks remain pending. The [earlier browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) is preserved on its historical branch as a record of progress.
 
-[Play the Oracle encounter online](https://enter-the-network.breadback00.chatgpt.site) with a desktop keyboard and mouse. This preview is currently private to the owner's account. The [web preview record](docs/network-3d/web-preview.md) describes the browser build and what has been verified.
+[Preserved Oracle browser preview](https://enter-the-network.breadback00.chatgpt.site), currently private to the owner's account. The user reported that it did not work after the startup check; full browser playability is unverified. The [web preview record](docs/network-3d/web-preview.md) retains the build and verification history.
 
 ## Why It Is Interesting
 
