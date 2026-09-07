@@ -16,6 +16,12 @@ Players investigate strange digital cases through an Archive Hub, read evidence 
 
 Each case contains 15 evidence artifacts, search/filter tools, contradiction flagging, investigator notes, theory prompts, evidence-pair discoveries, and a final Archive decision.
 
+## New Direction and 3D Proof
+
+The [current Enter the Network plan](docs/plans/README.md) develops the game into a connected 3D narrative adventure with encounterable Network roles, human mysteries, media evidence, and remembered choices. The plan and saved revisions are tracked in this repository. The native chapter remains future work.
+
+An [isolated playable 3D Archive room](prototypes/archive-3d/README.md) is available as an earlier browser proof. It includes a fictional short video, a voice message, a meme, one evidence deduction, and sample consequences. Follow its setup instructions and open port `4189`; it does not change the Archive Hub or its saves.
+
 ## Why It Is Interesting
 
 The prototype treats investigation as an ethical system rather than a puzzle box. Solving a case is not enough; the player must decide how much truth should become public, what should remain protected, and what the Archive becomes as those decisions accumulate.

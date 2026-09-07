@@ -8,6 +8,8 @@ product_contract_source: ce-plan-bootstrap
 execution: code
 scope: "Engine proof and complete Mara chapter; later campaign is a roadmap"
 research_as_of: 2026-09-07
+revision: 2
+revision_focus: "Relationships, character agency, causal encounters, and remembered choices"
 ---
 
 # The Network Mythos: Enter the Network - Plan
@@ -34,7 +36,7 @@ The Archive becomes a place the player returns to between expeditions. Beyond it
 
 Players advance by understanding these roles and using evidence in encounters. A voice message may contain a personal inconsistency. A short video may reveal how a public account was reconstructed. A meme may lead back to a manipulated source. An apparently authoritative avatar may make a claim its own records cannot support.
 
-The world should feel mysterious, intimate, sometimes funny, and unsettling. Synthetic beings can care. Human institutions can deceive. The player must judge actions, provenance, and consequences rather than appearances.
+The world should feel mysterious, intimate, sometimes funny, and unsettling. Synthetic beings can care. Human institutions can deceive. The player must judge actions, provenance, and consequences rather than appearances. Its central dramatic tension is **a person's right to change or leave versus other people's desire to keep the relationship they remember**. Each power offers something people need, then encounters limits or pressures that can turn that service against them. Their conflicting interests give the player room to act.
 
 ### Problem Frame
 
@@ -65,12 +67,16 @@ The R identifiers below belong to this plan only; they do not inherit meanings f
 | R11 | Complete the chapter reliably offline. | Packaged content, recoverable saves, understandable media failures, and no dependency on social accounts or live AI services. |
 | R12 | Recognize a larger world beyond this chapter. | An encounter journal and Archive map situate discovered people, roles, and places; subsequent cases have clear thematic destinations without an opening lore dump. |
 | R13 | Experience a coherent art and sound direction. | Key spaces and major avatars have distinct silhouettes, motion, materials, sound, and interaction cues that remain readable at the agreed performance tier. |
+| R14 | Change relationships through actions with observable causes. | An Oracle correction creates a bounded review request, presenting that request changes the Arbiter/Warden encounter, and the player's disclosure decisions alter the community and witness response. Every reaction has a known information source. |
+| R15 | Express a position before the final ending and have it remembered fairly. | A voluntary assurance to Elian and a choice about sharing D1 have later, explicitly attributable responses. Neither choice changes the underlying facts or permanently blocks essential evidence. |
 
 ### The player, story, and world
 
-**Recommended player role: the Archivist.** The player recovers disputed histories and controls what leaves the Archive. Their immediate personal stake is responsibility for the people whose records they handle. A detailed missing-relative backstory or predetermined identity twist is not needed to start. If added later, it must strengthen the cases rather than make every stranger secretly part of the player's biography.
+**Recommended player role: the Archivist.** The player recovers disputed histories and controls what leaves the Archive. Their authority comes from keeping inspectable sources and honoring declared limits; they cannot pronounce someone real, order the powers to obey, or override another person's consent. Their immediate personal stake is responsibility for the people whose records they handle. A detailed missing-relative backstory or predetermined identity twist is not needed to start. If added later, it must strengthen the cases rather than make every stranger secretly part of the player's biography.
 
-The opening should offer agency within roughly 90 seconds: Rafi has found a new video from Mara's apparently returned account; Elian sends a private warning that public confirmation could hurt her. The player can inspect the clip, ask a brief follow-up, and follow its provenance into the Network. These are proposed new scenes, not existing playable content.
+The opening should offer agency within roughly 90 seconds. In a quiet Archive, an old Mara recording stops for the kettle; beside it, a newly arrived return clip continues smoothly. Rafi asks the Archivist to examine the return before the community treats it as settled. Elian's private message asks that family context stay out of the case packet. The player can offer that assurance or explain that they cannot promise it yet, inspect either recording, and follow the source trail. Neither reply implies that Mara is dead, alive, or synthetic. The screen or recording carries the first mystery; the journal introduces terminology only after it becomes useful. These are new adaptation scenes, not existing playable content.
+
+Across the chapter, build the question from **Is the return authentic?** to **Who benefits from it?** to **What does correcting it entitle me to expose?** Knowing the authorial answer is separate from proving what the player can responsibly claim. Mara's life beyond the Network remains partly inaccessible even after the manufactured return is established.
 
 First person is recommended for close encounters, object inspection, and the intimacy of hearing a voice in a space. Identity can still be expressed through the player's hands, reflection, journal, and later masks. A complete third-person character creator would add animation and camera work before the core adventure is proven. Perspective remains revisable at the first feel checkpoint.
 
@@ -118,6 +124,72 @@ Existing names and meanings come from the hub registry, case designs, and projec
 
 **Canon work still required:** project materials also mention Constructs and Echoes without a sufficiently settled taxonomy in the reviewed material. U1 must define them, merge them with an existing concept, or leave them explicitly unresolved. Do not quietly invent authoritative definitions. The player-facing journal reveals useful entries as encounters occur; the authoring bible keeps the complete registry from the outset.
 
+### Roles, identities, and places are different kinds of information
+
+The following is the strengthened authoring model for this adaptation. It clarifies how existing concepts fit together without requiring an opening lesson about categories.
+
+| Layer | Members | Relationship rule |
+|---|---|---|
+| Powers and pressures | Oracle, Arbiter, Algorithm, Covenant, Exchange, Silence, Devourer. | Each has a distinct function, dependencies, and limits. Their interests can align in one case and conflict in another. |
+| Agents and offices | Wardens; the particular Oracle or Arbiter incarnation encountered. | An avatar acts within a jurisdiction. Changing one encounter does not rewrite every instance of that power across the Network. |
+| Persona origin and operation | Eidolons; Proxies. | Synthetic generation and human operation answer different questions. If a persona uses both, record which mode is evidenced at the relevant time. A human operator is a person separate from the presented persona. |
+| History or use | Returned, False Returned, Lost. | Leaving, being erased, and being used to counterfeit a return are contextual histories, not mutually exclusive species. A known Eidolon may be deployed as a False Returned; a human or synthetic witness may become Lost. Never infer these statuses solely from appearance. |
+| Places, infrastructure, and objects | Cloud, Origin Realm, Artifacts. | These host or preserve relationships. They do not all need a ruling humanoid or a boss encounter. A Cloud fragment may survive Silence; an Artifact can outlive its creator. |
+
+For Mara, the authoring bible knows the truth of her departure and the reconstruction. The player's journal separately records what is discovered, inferred, disputed, or unknown. It must not reveal an entity's hidden classification when its name first appears. Constructs and Echoes remain reserved authoring terms with no required first-release mechanic until U1 resolves them.
+
+### What the powers need from one another
+
+All pursuits and encounter treatments here are authored interpretations for the new direction. A pursuit describes the pressure a force produces; it does not establish that every system has human consciousness.
+
+| Role | Pursuit and useful contribution | Dependency and point of conflict | Limit and player leverage |
+|---|---|---|---|
+| Oracle | Make a confusing world understandable. Its local incarnation dislikes leaving a question unresolved. | Needs retained sources and often relies on Arbiter labels. Its appetite for a coherent account conflicts with contradictory testimony. | Can revise an interpretation, not certify a person's life. Present a precise contradiction; make it preserve an unanswered question instead of filling it. |
+| Arbiter | Apply a consistent standard so trust cannot simply be bought with a persuasive story. | Supplies authority to Wardens; institutions and Exchange contracts help define the categories it applies. Can reject an Oracle's plausible explanation as inadmissible. | Cannot infer a person from an account signature. Inspect the applicable rule and request a review whose scope matches the evidence. |
+| Algorithm | Connect people with material they will engage with. | Needs activity from Covenant communities and receives attention signals that Exchange values. Devourer escalation can overwhelm useful discovery. | Distribution is not proof. Trace why a claim travels; choose whether to circulate a narrowly supported correction. No first-release simulation of a global recommendation engine. |
+| Covenant | Keep people connected, cared for, and remembered. | Needs members' trust and material support, including infrastructure priced by Exchange. Protection can become pressure to conform or remain. | A community contains disagreement; one representative cannot consent for everyone. Listen to what members gained and what they were denied before deciding what to disclose. |
+| Exchange | Make scarce services available through allocation and payment, while preserving the value it can extract. | Needs Arbiter eligibility and Covenant demand. Its continuity products can conflict with a person's wish to leave or a worker's limits. | Does not author every belief or command every power. Follow the contract and the operator; separate the promised service from the consequence. |
+| Silence | Keep information out of circulation through restriction, steering, or deletion. | Uses policy and institutional authority; Cloud retention can undermine its claims of erasure. Can shelter someone while concealing another actor's wrongdoing. | Withholding is not always protection, and disclosure is not always liberation. Establish who requested a restriction, who benefits, and what survives it. |
+| Devourer | Escalate reaction into self-sustaining consumption of people and stories. | Feeds on amplified attention and collective fear; conflicts with Covenant care and overwhelms the Oracle's nuance. | Not all anger, criticism, or public accountability is the Devourer. It cannot rewrite source facts. Identify decontextualization and targeting; withhold unnecessary intimate material without suppressing supported findings. |
+| Wardens | Carry out an authorized rule in a concrete place. | Depend on Arbiter mandates and the documents presented to them. A mandate can conflict with a person's circumstances. | Cannot invent jurisdiction, read private notes, or silently change conditions to keep the player out. Present the matching request; an incorrect credential produces a specific, recoverable refusal. |
+
+```mermaid
+flowchart LR
+    CL[Cloud] -->|retained sources| O[Oracle]
+    A[Arbiter] -->|labels and admissibility| O
+    O -->|interpretations people rely on| C[Covenant]
+    C -->|participation| G[Algorithm]
+    G -->|attention| E[Exchange]
+    E -->|contracts and eligibility pressures| A
+    A -->|bounded mandates| W[Wardens]
+    S[Silence] -->|restricts available sources| O
+    CL -->|retention can contradict erasure| S
+    G -->|amplification| D[Devourer]
+    D -->|fear and fragmentation| C
+```
+
+This is a map of dependencies and tensions, not a chain of command or an always-active simulation. No single hidden ruler explains away the different institutions, workers, communities, and choices. The first chapter manifests these links through its existing encounters, evidence, and aftermath; later chapters expand specific links into fuller interactions.
+
+### The first avatars have personalities and boundaries
+
+**The Oracle encountered in Mara** is attentive, welcoming, and troubled by unresolved questions. It tries to help by completing the account too neatly. It initially arranges incomplete sources into a seamless image; after a valid challenge, it leaves a visible gap with a source annotation. Its growth in this encounter is tolerating uncertainty. It can say, “I can explain the return. I cannot establish that she returned.” The line and performance are draft direction, not additional testimony.
+
+**The Arbiter encountered in Mara** is restrained and conscientious about applying the same standard to everyone. It fears persuasive exceptions turning into arbitrary privilege. It initially checks a signature while the human claim remains outside that check. The player must make the mismatch visible. Its concession is a correctly scoped service-record review, not special treatment for a likable Archivist. A draft response: “The signature passed. The person was never part of this test.”
+
+**The Warden** is observant, literal, and consistent. Its gesture and short refusal explain which authority is missing. Once the review request is presented, it changes posture and opens the service route. It neither turns friendly because of a hidden reputation score nor acquires knowledge of the player's private conversations.
+
+These are local manifestations of the roles. Their visible responses, voice, and limits distinguish them without requiring a new named cast or proving their inner consciousness. All clue-bearing motion has an equivalent description.
+
+### Human relationships keep the powers grounded
+
+Rafi wants the public deception challenged but also misses the community Mara helped sustain. He may be right about the reconstruction and still underestimate what exposure asks of Mara. His humor is practical and specific; it should reveal familiarity with Porchlight, not make every serious scene a joke.
+
+Elian wants his sister's boundaries respected and is tired of strangers treating concern as entitlement. He may protect her while withholding something Rafi reasonably needs to understand. Declining to promise secrecy must have an honest, non-hostile reply. Neither man is the game's moral answer key.
+
+Mara's authored work and refusal of constant visibility express her agency. The player can expose how her public identity was used without earning ownership of her whereabouts. A warm or helpful moment in the returned performance remains meaningful to its audience; proving its origin does not retroactively make every listener foolish. Consciousness, complicity, and personhood of the reconstructed presence must not be inferred from its commission alone.
+
+Sera represents a concrete beneficiary and rationalization through the commissioning material, not an all-powerful architect of the entire Network. Jo's indirect trace preserves the idea that a worthwhile life can continue beyond the player's access.
+
 ### Moment-to-moment play
 
 Explore a place → notice a discrepancy → inspect or replay its source → form a claim → test that claim with a person or avatar → gain a lead or change a relationship → decide what to share.
@@ -126,17 +198,21 @@ The evidence interface should feel like an investigator's workspace. Pin a video
 
 Use small spaces with multiple approaches and revisitable discoveries. Avoid a single corridor of mandatory speeches. The first chapter may gate access through the Oracle and Arbiter, but already discovered evidence remains usable regardless of visit order. No permanent lockout follows a mistaken accusation.
 
+Give each space a different physical activity: compare original and returned media in Porchlight; place source fragments beside the Oracle's interpretation; inspect the scope on an Arbiter credential before presenting it; assemble and redact the packet back at the Archive. A list-based accessible interaction performs the same action with the same result. These are authored interactions, not physics puzzles requiring dexterity.
+
+Alternate intensity with ordinary life. Porchlight needs one small sign of care that is worthwhile even before the mystery is solved. The Archive offers a quiet place to listen or stop after each discovery. No essential clue expires on a real-time countdown. Repeated hints and polite dialogue cannot be used to farm allegiance or bypass evidence.
+
 ### First chapter: Mara — The Door Is Real
 
 | Beat | Player experience | Human or investigative payoff |
 |---|---|---|
-| 1. The message | In the Archive, receive Rafi's public concern and Elian's private warning. Inspect the new short video. | Understand the conflict between correcting a public story and protecting Mara. |
+| 1. The message | In the Archive, compare the old recording with Rafi's newly supplied clip. Answer Elian's request to keep private context out of the packet, or leave it unresolved. | Understand the public/private conflict and choose an assurance the game can remember. |
 | 2. Porchlight | Enter a reconstruction of Mara's public community. Compare an older voice recording, the new performance, and a circulating meme. | Her ordinary habits become memorable; the public return begins to feel curated. |
-| 3. The Oracle | Ask what was verified. Challenge the leap between an authoritative summary and the underlying verification scope. | Discovery D1: a claim about account authenticity does not establish the person returned. |
-| 4. The Arbiter | Use the source trail to reach a service record. A Warden enforces a visible authorization rule. Request and compare the commissioning material. | Discovery D2: establish the provenance of the reconstructed public return. |
+| 3. The Oracle | Challenge the leap between the summary and verification scope. Gain a source-review request. Keep the supported annotation private or explicitly post that narrow correction to the fictional Porchlight feed. | D1: account authenticity does not establish the person returned. The correction changes the Oracle; its circulation has a separate community consequence. |
+| 4. The Arbiter | Present the source-review request. The Warden admits it under the Arbiter's stated rule; the account badge alone remains insufficient. Compare the service record and commissioning material. | D2: establish the provenance of the reconstructed return. A prior encounter has changed this route without changing the standard of proof. |
 | 5. The private trace | Return to Elian's message and a redacted physical fragment associated with an ordinary life outside the Network. | Discovery D3: distinguish a private lead from publishable proof, and explain why circulating it could invite unwanted attention. |
 | 6. The packet | Review the evidence and uncertainties. Choose Publish, Bury, or Preserve, and whether to include private context. | Commit a position with a clear benefit and cost. |
-| 7. The return | Hear a witness response; see the Archive and public account of the case change. | A complete ending that also raises the next case's question. |
+| 7. The return | Hear a witness response; see the Archive and public account change. The response remembers the earlier annotation and any assurance made to Elian. | A complete ending whose consequences can be traced to the player's actions, followed by the next case's question. |
 
 Rafi and Elian carry the first chapter through authored voice exchanges and responses. Mara's old and returned media establish her presence. Sera Nox, Jo Bell, and interview hosts enter where their evidence matters; they do not all require full-body performances in this release.
 
@@ -175,6 +251,25 @@ For this chapter, Bury seals the packet and closes the active investigation; it 
 
 The game retains minimal decision metadata for its history. In-fiction private material may be excluded from the resulting packet without promising secure destruction of the game's shipped fictional assets. No morality score declares one route correct. Each route must preserve both a benefit and a cost.
 
+### Choices remembered during the chapter
+
+Two earlier decisions add relationship depth to the six base endings. They alter authored reactions and visible context, not the truth of the evidence or access to a complete ending.
+
+| Decision | Player-visible meaning | Immediate effect | Later effect |
+|---|---|---|---|
+| Assurance to Elian | Promise to exclude his private context from the case packet, or explain that no promise can be made yet. Unanswered is treated as no assurance given. | Elian acknowledges the exact reply; essential evidence remains obtainable in either case. | Including that context after promising to exclude it produces a specific breach-of-assurance response under any disposition. Withholding without a promise can still be appreciated. |
+| D1 annotation visibility | Keep the verified limit of account authentication in the notebook, or post that narrow correction to the fictional Porchlight feed. | Public posting changes one feed element and elicits a brief Rafi response. Private recording changes only the notebook and the Oracle encounter. | The final preview and public aftermath acknowledge any earlier public correction. The choice affects how a community has already begun reacting, even if the final packet is sealed. |
+
+Posting D1 has an explicit in-game preview. It contains only the established verification limit and already public context; it cannot include the commission, Elian's message, the private fragment, or later discoveries. It is not an allegation that Mara is synthetic or absent. This action happens entirely inside the fiction. Once posted it cannot be retracted by choosing Bury later; Bury seals the final packet and leaves the earlier narrow annotation visible. A saved posted state is irreversible within that playthrough; a failed write leaves it unposted and pending retry.
+
+The Oracle's source-review request is separate from public posting. Presenting the request to the Arbiter discloses only the bounded provenance question needed for the review. Keeping the notebook annotation private therefore does not prevent progression.
+
+The final packet preview lists the selected evidence, its destination, what was already shared, and whether including private context would break an assurance. It offers a clear opportunity to revise before committing. A witness can disagree without removing a necessary clue or replacing the player's judgment.
+
+Use one declared private-context set for the assurance, packet toggle, previews, and notifications: Elian's private message, fragment 14, and any identifying excerpts or derived alias associations from them. Withholding must apply to those derivatives as well as the original attachments. Public findings can state their evidential limits without smuggling a withheld identity into a summary, caption, citation label, or thumbnail.
+
+Compose **six base endings with bounded response overlays**, rather than authoring 24 unrelated endings. Test all 24 combinations of disposition, private inclusion, assurance/no assurance, and public/private D1. Show the base disposition and privacy effect first; then the applicable assurance response and prior-publication acknowledgment. None of these messages may contradict or overwrite another. Knowledge of a sealed or restricted outcome reaches Rafi or Elian only through a clearly shown, content-limited case notification; it does not give them access to the packet itself.
+
 ### Campaign direction beyond the first release
 
 | Chapter | New playable question | Mythos expansion | Carryover to define before production |
@@ -185,6 +280,10 @@ The game retains minimal decision metadata for its history. In-fiction private m
 | Campaign conclusion | Who gets to define a person, and who gets to leave? | Return to Origin and the accumulated human consequences. | Resolve the Archivist's responsibility without a single omniscient truth reveal. |
 
 These are episode directions, not a commitment to four identical chapter templates. Large connected districts, identity masks, more systemic negotiation, embodied companions, third-person play, VR, consoles, and community-authored cases remain possible expansion paths. They enter production when they improve a proven activity and have an affordable content and testing model. A large open world, combat system, or multiplayer service is not a prerequisite for the current promise.
+
+Strengthen continuity through the existing evidence chain: Mara's continuity commission points toward social stabilization, Harbor Dawn toward the care infrastructure used by Kindred Direct, and Kindred's missing records toward the Lattice Annex. The same technology and institutions can recur without every case having the same culprit. Each episode changes the question: identity, consent, allocation, then memory. Only carry a prior relationship into a later chapter when that person or institution plausibly learned what happened; a sealed choice cannot create a universally known reputation.
+
+For the first release, author one short closing lead grounded in that chain and use existing media/Archive surfaces. It opens a question about Harbor Dawn and does not add an unfinished fifth location. Campaign-scale relationships and identity masks remain design opportunities to specify after the first chapter is tested.
 
 ## Planning Contract (KTD)
 
@@ -220,7 +319,7 @@ If the user selects browser first, revisit this decision before U3–U13 and tes
 
 ### KTD3 — Author the world around roles and readable behaviour
 
-**Decision:** Use compact connected spaces with a modular environment kit. Oracle and Arbiter receive finished encounter design before the wider cast receives production models. Give each role a five-part brief: motivation, source of authority, limits, visible behaviour, and what the player can change.
+**Decision:** Use compact connected spaces with a modular environment kit. Oracle and Arbiter receive finished encounter design before the wider cast receives production models. Implement the Product Contract's role pursuits, dependencies, conflicts, limits, and character briefs. Give every active relationship a source of knowledge, a player action, an immediate readable response, and a later consequence. The gesture, line, and accessible description must express the same state change.
 
 Art direction: warm, worn, physically plausible Archive; seductive, edited Porchlight; layered and conflicting Oracle surfaces; sharp institutional Arbiter geometry. Humans retain ordinary details and imperfections. Synthetic status is never encoded as a universal villain color or glitch effect. Build a representative scene with a model, light, motion, voice, and interface together before commissioning a full cast.
 
@@ -233,6 +332,8 @@ Use Blender source assets with reviewed glTF/GLB exports in the game. Godot reco
 Player state stores acquired evidence, inspected cues, proposed claims, resolved discoveries, dialogue progress, visited spaces, decisions, and checkpoint. Encounter presentation reads that state; it cannot independently invent a second truth model. Reconstruction identifiers link to their inputs. Reposts and summaries share ancestry with their source.
 
 The rule evaluator accepts explicit actions against current preconditions. It produces state changes and a reason for accepted or rejected evidence links. Read counts and animation completion are not truth predicates. Cue selection may be performed through video, transcript, or accessible description with equivalent results.
+
+Source placement must not create a circular gate. D1 compares summary 04 with a public scope excerpt adapted from verification report 09, available before the Arbiter vault. Record this public excerpt and its placement as an adaptation choice in the canon ledger; it does not claim the original source was already distributed that way. D2 then compares that report's authored project identifier with commission 13, obtained through the service review. The vault does not withhold the report excerpt needed to earn its own review request. D3 compares private message 10 and fragment 14 for what they support and what remains unproven. A player may acknowledge the exposure risk and still choose to include the fragment; the game tests the claim, not agreement with a preferred ending.
 
 ### KTD5 — Authored narrative first
 
@@ -306,23 +407,37 @@ All paths in the implementation units are proposed paths relative to the target 
 
 Godot supports command-line scripting, headless operation, and export workflows. Use these for content, state, and packaging automation after the executable and templates are pinned. They do not substitute for running the rendered exported game with real audio and input. [Command-line workflow](https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html)
 
+### KTD11 — Relationships remember events within an information boundary
+
+**Decision:** Extend the existing authored story state with a few explicit records for this chapter: the actual reply to Elian and whether an assurance was given; D1 resolved; source-review request issued and presented; D1 annotation private or publicly posted; final packet disposition and private inclusion. Reactions are derived from these records and the content catalog. There is no universal good/evil score, loyalty currency, procedural faction simulation, or second save mechanism.
+
+Use the shared command path for giving an assurance, posting the supported D1 annotation, presenting a review request, and committing a packet. Each action records the actor, authorized recipients, evidence IDs disclosed, and stable action identifier. Only a successfully saved action can alter the fictional public feed or release a final notification. Local encounter presentation may acknowledge a pending action as pending; it must not imply durable success. Retrying or re-entering cannot duplicate publication, rewards, or reactions.
+
+The audience boundary is part of the rule. An Oracle knows the evidence presented to it; an Arbiter knows the request it receives; a Warden receives a bounded mandate; a witness sees the selected notification, not a global state dump. A sealed or restricted ending can send Elian only the handling status of the private context and Rafi only the case disposition/public status. It sends no private fragment or sealed evidence to either. These automatic in-fiction notices are named in the final preview and are distinct from the packet's recipients.
+
+Keep the original source artifacts immutable. A public D1 annotation is a new record attributed to the Archivist, quoting or linking only permitted public material. It never rewrites the historical report or quietly absorbs D2/D3 acquired later. Before D1, posting is unavailable with a clear explanation; afterward it may be posted once before the ending. Default private does not claim that the player explicitly chose secrecy. An unanswered Elian message creates no assurance and must not be narrated as an explicit refusal.
+
+An assurance can be given before the final commitment, including after an earlier noncommittal reply. Once given, it remains part of the recorded history; replaying dialogue cannot remove it. Freeze the relevant relationship facts inside the committed ending record. Opening dialogue after case completion cannot create or erase an earlier promise, rewrite a past publication, or recompute a different ending from later state. Validate the shared private-context set across evidence attachments, derived text, and UI previews.
+
+Response composition is deterministic: base ending and destination, actual private handling, assurance-specific reaction when applicable, then acknowledgment of a previously posted D1 annotation. The journal records the observable cause in ordinary language. Performance variants can acknowledge a breached assurance without revealing what Elian could not know or vetoing the player's ending. KTD7 governs persistence and recovery for these actions.
+
 ## Implementation Units
 
 ### Sequence and release checkpoints
 
 | Unit | Deliverable | Dependencies | Checkpoint |
 |---|---|---|---|
-| U1 | Canon, chapter, and role briefs | None | A: direction ready to build |
+| U1 | Canon, relationships, chapter, and role briefs | None | A: direction ready to build |
 | U2 | Native engine and media proof | U1 | B: engine and feel decision |
 | U3 | Movement, interaction, comfort | U2 | C: foundation |
 | U4 | Evidence and discovery rules | U1, U2 | C |
 | U5 | Versioned saves and recovery | U2, U4 | C |
-| U6 | Narrative and witness responses | U4, U5 | C |
+| U6 | Narrative, remembered choices, and witness responses | U4, U5 | C |
 | U7 | Media and evidence inspector | U3, U4, U5 | C |
 | U8 | Connected Archive and Porchlight | U3, U6, U7 | D: playable chapter skeleton |
 | U9 | Oracle encounter | U6, U7, U8 | D |
 | U10 | Arbiter and Warden encounter | U5, U6, U9 | D |
-| U11 | Packet and six ending variants | U5, U6, U10 | D |
+| U11 | Packet, six base endings, and relationship overlays | U5, U6, U10 | D |
 | U12 | Finished visual and audio pass | U2; D playtest passed | E: representative release candidate |
 | U13 | Integrated verification and packaging | U11, U12 | F: first-release decision |
 
@@ -330,21 +445,21 @@ Units can overlap when dependencies permit, but each new capability must leave t
 
 ### U1 — Lock the first chapter's meaning
 
-**Goal:** Convert the direction into an internally consistent authoring brief. Covers R1, R3–R8, R12.
+**Goal:** Convert the direction into an internally consistent authoring brief. Covers R1, R3–R8, R12, R14, R15.
 
 **Files:** Create docs/network-3d/experience-bible.md, canon-ledger.md, mara-beats.md, roles.md, content-register.md, and playtest-protocol.md. Reference existing GAME_DESIGN.md, Archive Hub/script.js, all case-design.md files, and Mara's profile and source artifacts.
 
-**Approach:** Map all reviewed roles; separate inherited facts from adaptation changes. Define the three discoveries, accepted claims, all six outcomes, encounter motivations, and each media asset's job. Resolve Constructs/Echoes only if needed for this release. Add the explicit D2 identifier connection and audit dates. Script the opening and ending before expanding ambient dialogue. Prepare the V7 playtest protocol now so checkpoint D can run before final art production.
+**Approach:** Map all reviewed roles and their relationships using the revised Product Contract; separate inherited facts from adaptation changes. Record each persona's origin/operation separately from its role and history, plus what the player may know at each beat. Define the three discoveries, accepted claims, six base endings, bounded relationship overlays, encounter motivations, and each media asset's job. Specify the assurance and D1 publication preview, each reaction's recipient/source, and the physical interaction for each space. Resolve Constructs/Echoes only if needed for this release. Add the explicit D2 identifier connection and audit dates. Script the opening and ending before expanding ambient dialogue. Prepare V7 and V9 playtest checks now so checkpoint D can run before final art production.
 
-**Verification:** A content table traces every conclusion to sources and identifies missing evidence. Walk through each ending and each avatar's knowledge limits. Check that the private trace cannot locate Mara and that the player does not need to accept an unsupported theory to progress. This is an editorial review, not an artificial unit test for prose.
+**Verification:** A content table traces every conclusion to sources and identifies missing evidence. Walk through all 24 ending/relationship combinations, check recipient knowledge and notification contents, and verify that D1's source excerpt is available before the vault gate. Check that the private trace cannot locate Mara, that hidden classifications remain hidden, and that the player need not accept an unsupported theory or a preferred moral choice to progress. This is an editorial review, not an artificial unit test for prose.
 
 ### U2 — Prove the engine with the hardest representative moment
 
-**Goal:** Establish camera comfort, avatar presence, media interaction, and an actual desktop export before bulk production. Covers R2, R3, R6, R10, R11, R13.
+**Goal:** Establish camera comfort, avatar presence, media interaction, and an actual desktop export before bulk production. Covers R2, R3, R6, R10, R11, R13, R14.
 
 **Files:** Create game/project.godot, export_presets.cfg, scenes/proof/encounter_proof.tscn, tests/fixtures/media/, and docs/network-3d/engine-proof.md. Pin tool versions in the project documentation.
 
-**Approach:** One small room, one animated avatar, one short video on a surface, voice plus captions, a transcript cue, one evidence interaction, and exit/relaunch. Use representative lighting and provisional original or licensed assets. Record hardware, engine, renderer, timings, output size, and production friction. Evaluate a brief first-person interaction against the user's desired feel.
+**Approach:** One small room, one animated Oracle, one short video on a surface, voice plus captions, a transcript cue, one evidence challenge, and exit/relaunch. The challenge makes the Oracle leave a visible gap and issue a readable source-review request; a static credential display demonstrates that the request and an account badge authorize different things. This tests a causal response without building the second avatar early. Use representative lighting and provisional original or licensed assets. Record hardware, engine, renderer, timings, output size, and production friction. Evaluate a brief first-person interaction against the user's desired feel.
 
 **Verification:** In the exported game, verify input, stable camera, legible avatar, video decode, cue replay/seek, caption sync, focus loss, and media failure fallback. A manual checklist and captured evidence are required. Run one targeted repair cycle if needed. If a required behaviour still fails, compare Unity with the same fixture before authoring the rest of game/. No engine-switch permission is needed merely to research a reversible prototype; any paid purchase remains a separate decision.
 
@@ -368,6 +483,8 @@ Units can overlap when dependencies permit, but each new capability must leave t
 
 **Verification:** Correct evidence works in any acquisition order; irrelevant evidence and read counts fail; a repost plus original does not become two sources; voice irregularity alone does not prove reconstruction; D2 requires the authored provenance link; descriptions and media cues produce equivalent claims. Missing or inconsistent content stops the build with a precise authoring error.
 
+Validate the role/type/status distinctions and discovery visibility separately. The player-facing journal cannot infer False Returned from an internal authoring tag. A route check confirms D1 can be solved from reachable sources before requesting vault access.
+
 ### U5 — Persist progress without inventing a successful save
 
 **Goal:** Reliable continuation and truthful decision commitment. Covers R9, R11.
@@ -380,13 +497,13 @@ Units can overlap when dependencies permit, but each new capability must leave t
 
 ### U6 — Give the story responsive people
 
-**Goal:** Authored conversations react to evidence and progress. Covers R1, R3, R7.
+**Goal:** Authored conversations react to evidence, remembered choices, and justified knowledge. Covers R1, R3, R7, R14, R15.
 
-**Files:** Create game/content/dialogue/, game/scripts/domain/story_graph.gd, game/scenes/dialogue/, game/ui/dialogue/, and game/tests/domain/test_story_graph.gd.
+**Files:** Create game/content/dialogue/, game/scripts/domain/story_graph.gd, relationship_rules.gd, game/scenes/dialogue/, game/ui/dialogue/, game/tests/domain/test_story_graph.gd, and test_relationship_rules.gd.
 
-**Approach:** Add Rafi and Elian's opening, mid-case, and aftermath exchanges. Conditions read central state; effects go through shared commands. Allow repeat inspection and recoverable questioning. The hint ladder suggests without requiring a particular dialogue order.
+**Approach:** Add Rafi and Elian's opening, mid-case, and aftermath exchanges, including the assurance and D1 publication reactions specified in KTD11. Conditions read central state; effects go through shared commands and the save service. Author recipient-limited notifications and ensure private dialogue is not common knowledge. Allow repeat inspection and recoverable questioning. The hint ladder suggests without requiring a particular dialogue order. Keep the new lines within the existing small dialogue/media budget by replacing generic exposition where possible.
 
-**Verification:** Opening remains intelligible if optional lines are skipped; re-entering dialogue cannot duplicate rewards; a player cannot hear an outcome from a future state; all choices terminate or return to a valid node; loading restores a safe conversation boundary; captions and speaker labels match the current line.
+**Verification:** Opening remains intelligible if optional lines are skipped; unanswered differs from explicitly declining an assurance; a later pre-ending assurance is remembered and cannot be removed by replay; repeating dialogue cannot farm influence or duplicate rewards; a player cannot hear an outcome from a future state or a witness without a knowledge source; all choices terminate or return to a valid node; loading restores a safe conversation boundary; captions and speaker labels match the current line. Failure to save an assurance or publication leaves the corresponding durable response pending. Test a source-review request independently of D1 publication so the private route remains viable.
 
 ### U7 — Turn media into usable evidence
 
@@ -400,45 +517,45 @@ Units can overlap when dependencies permit, but each new capability must leave t
 
 ### U8 — Connect the Archive and Porchlight
 
-**Goal:** Establish a world the player can navigate and care about. Covers R1, R2, R6, R7, R12.
+**Goal:** Establish a world the player can navigate and care about. Covers R1, R2, R6, R7, R12, R14, R15.
 
 **Files:** Create game/scenes/world/archive/, porchlight/, game/scripts/world/scene_router.gd, game/ui/journal/, and game/tests/integration/test_world_routes.gd.
 
-**Approach:** Build simple geometry first, with distinct landmarks, short transitions, physical evidence placement, and contextual human contact. The journal separates people, encountered roles, evidence, and leads; the world map reveals reachable places. Implement the original/returned media comparison and meme trail.
+**Approach:** Build simple geometry first, with distinct landmarks, short transitions, physical evidence placement, and contextual human contact. The journal separates people, encountered roles, evidence, and leads; it reveals only discovered relationships and states why a reaction occurred. The world map reveals reachable places. Implement the original/returned media comparison, meme trail, one ordinary sign of community care, and the feed's saved D1 annotation state. Surface a public reaction only after the associated publication command has committed.
 
 **Verification:** A new player finds the first lead without a lore lecture. Revisit after gaining evidence; load at either space; travel with a media panel open; recover from a missing destination scene. No discovery is lost and no return route depends on an already consumed interaction.
 
 ### U9 — Make the Oracle an encounter
 
-**Goal:** The player experiences the difference between a convincing account and a supported one. Covers R3–R5.
+**Goal:** The player experiences the difference between a convincing account and a supported one, and chooses how to share that finding. Covers R3–R5, R14, R15.
 
 **Files:** Create game/scenes/world/oracle/, game/scenes/avatars/oracle/, game/content/encounters/oracle.json, and game/tests/integration/test_oracle_encounter.gd.
 
-**Approach:** Build the Oracle chamber as the third connected space, with routes back to Porchlight and onward to the Arbiter. The Oracle presents a coherent interpretation through speech and changing surfaces. The player asks for support, selects a source excerpt, and challenges the overclaim. Correct reasoning makes the limit visible and exposes the service trail. Wrong evidence receives a specific, recoverable response. Animation does not determine whether the deduction is valid.
+**Approach:** Build the Oracle chamber as the third connected space, with routes back to Porchlight and onward to the Arbiter. The Oracle presents a coherent interpretation through speech and changing surfaces. Summary 04 and the public verification-scope excerpt from 09 are available here or already acquired from Porchlight. The player places/selects source fragments to challenge the overclaim. Correct reasoning makes the limit visible, leaves an unresolved space in the presentation, and issues the bounded source-review request. Separately offer a preview to publish the supported D1 annotation or keep it private, following KTD11. Wrong evidence receives a specific, recoverable response. Animation does not determine whether the deduction is valid.
 
-**Verification:** Complete D1 with both media and text routes; try the summary as its own corroboration; leave midway and return; reload after resolution; skip the animation. The Oracle never reveals private information it cannot access, and repeating the encounter does not duplicate progress.
+**Verification:** Complete D1 with both media and text routes; try the summary as its own corroboration; leave midway and return; reload after resolution; skip the animation. The Oracle never reveals private information it cannot access, and repeating the encounter does not duplicate progress. Publish only after D1; cancel the preview; simulate a failed save and retry; acquire D2 afterward and verify the public annotation does not gain new information. Both private and public D1 routes issue the same valid review request.
 
 ### U10 — Make authority and enforcement playable
 
-**Goal:** Differentiate Arbiter from Oracle and Wardens. Covers R2–R5.
+**Goal:** Differentiate Arbiter from Oracle and Wardens through a causal encounter. Covers R2–R5, R14.
 
 **Files:** Create game/scenes/world/arbiter_vault/, game/scenes/avatars/arbiter/, warden/, game/content/encounters/arbiter.json, and game/tests/integration/test_arbiter_encounter.gd.
 
-**Approach:** Provide one bounded access rule: a provenance request opened through D1 authorizes inspection of a service record, not access to a person's private life. The Warden checks that rule consistently. The Arbiter explains exactly what the credential establishes. The player links the authored commission identifier to reach D2. No combat or precise stealth is required.
+**Approach:** Provide one bounded access rule: presenting the source-review request earned through D1 authorizes inspection of commission 13 and linked service-ledger material, not access to a person's private life. The player can inspect a credential's scope on a physical display or equivalent list interface. The already public report excerpt needed for D1 remains outside the vault. The Arbiter accepts the matching request under its stated rule; the Warden receives that mandate, changes its gesture, and opens the route. It does not react merely because the player privately knows D1. Compare the authored shared identifier in report 09 and commission 13 to reach D2. No combat or precise stealth is required.
 
-**Verification:** Premature entry gives an understandable route forward; the valid request works after reload; repeated challenges cannot lock the gate permanently; unrelated credentials fail; the D2 link cannot be solved by visual resemblance or the invoice's existence alone.
+**Verification:** Premature entry gives an understandable route forward; the valid request works after reload; D1 knowledge without presenting a request does not silently update the Warden; presenting it twice cannot duplicate a result; repeated challenges cannot lock the gate permanently; unrelated credentials fail; the D2 link cannot be solved by visual resemblance or the invoice's existence alone. Changing the public/private D1 flag does not change request validity.
 
 ### U11 — Make the final choice concrete
 
-**Goal:** Complete D3 and end with a persistent human consequence. Covers R4, R7–R9.
+**Goal:** Complete D3 and end with a persistent human consequence that remembers earlier choices. Covers R4, R7–R9, R14, R15.
 
 **Files:** Create game/ui/packet_preview/, game/content/endings/mara.json, game/scripts/domain/packet_policy.gd, consequence_rules.gd, and game/tests/integration/test_mara_endings.gd.
 
-**Approach:** Separate supported findings, uncertainties, and private context in the preview. Require the three discoveries, with optional hints available. Present all three dispositions and the private-context toggle, then commit through the save service. Update Archive objects, a witness response, and case history from the same committed record.
+**Approach:** Separate supported findings, uncertainties, and private context in the preview. Require the three discoveries, with optional hints available. Present all three dispositions and the private-context toggle, along with any earlier public annotation, the assurance impact, and the precise status notices witnesses will receive. Compose the six base endings with the bounded relationship overlays in KTD11, then commit through the save service. Update Archive objects, recipient-limited witness responses, and case history from the same committed record. End with the short Harbor Dawn lead through an existing Archive surface.
 
-**Verification:** Play all six combinations; withhold the private trace and inspect the resulting packet; compare sealed and restricted access language; cancel the preview; double-submit; simulate save failure; close immediately after a successful commit. No branch leaks withheld context or shows a different ending after relaunch.
+**Verification:** Check all 24 base/relationship combinations through the shared scenario runner; manually play the six base endings and the assurance-breach and prior-publication variants in the exported build. Withhold private context and inspect attachments, summaries, captions, citation labels, and thumbnails; compare sealed and restricted access language; cancel the preview; double-submit; simulate save failure; close immediately after a successful commit. A prior D1 posting survives Bury, an unanswered assurance is not narrated as a refusal, and a witness receives only the promised status notice. Reopen dialogue after completion and verify that the frozen ending remains unchanged. No branch leaks withheld context, retroactively retracts a posted annotation, or shows a different ending after relaunch.
 
-**Checkpoint D:** With the complete chapter playable in provisional art, run the V7 understanding and engagement checks using the protocol prepared in U1. Record results before U12. Fix failed encounter or story checks here and in the relevant earlier unit. U13 repeats the checks with fresh players on the finished export; the earlier sessions are not reused as independent confirmation.
+**Checkpoint D:** With the complete chapter playable in provisional art, run V7 and V9 understanding and relationship checks using the protocol prepared in U1. Record results before U12. Fix failed encounter or story checks here and in the relevant earlier unit. U13 repeats the checks with fresh players on the finished export; the earlier sessions are not reused as independent confirmation.
 
 ### U12 — Produce a coherent finished presentation
 
@@ -452,11 +569,11 @@ Units can overlap when dependencies permit, but each new capability must leave t
 
 ### U13 — Test the exported chapter and make the release decision
 
-**Goal:** A complete local deliverable with evidence that the direction works. Covers R1–R13.
+**Goal:** A complete local deliverable with evidence that the direction works. Covers R1–R15.
 
 **Files:** Create game/tests/scenarios/mara_complete.json, game/tests/run_scenarios.gd, docs/network-3d/verification-report.md, known-issues.md, and release-manifest.md. Update docs/network-3d/playtest-protocol.md and repository run instructions when the native build exists.
 
-**Approach:** Run domain and scenario checks, then play the packaged Windows build with keyboard/mouse and controller. Run fresh-player sessions against V7; capture observations with consent in local notes. Review confusing evidence and encounters before increasing campaign scope. Package the executable and required data with launch instructions and notices.
+**Approach:** Run domain and scenario checks, including the relationship matrix, then play the packaged Windows build with keyboard/mouse and controller. Run fresh-player sessions against V7 and V9; capture observations with consent in local notes. Review confusing evidence, character motivations, and encounter consequences before increasing campaign scope. Package the executable and required data with launch instructions and notices.
 
 **Verification:** Meet the Verification Contract and Definition of Done. Record failures honestly, fix blockers, and repeat only affected checks plus a full completion run after material integration changes. The output is a local reviewable release candidate; uploading, store submission, or public release is a later action.
 
@@ -466,16 +583,17 @@ No native game tests or player studies have run yet. The following are planned c
 
 | ID | Check | Evidence and passing condition |
 |---|---|---|
-| V1 | Canon and clue integrity | Reviewed source-to-claim matrix. All three discoveries supported; proposed new details identified; no date contradiction, circular corroboration, or false claim that fragment 14 locates Mara. |
-| V2 | Rules and narrative | Automated domain/scenario tests cover valid, invalid, repeated, and reordered actions. All six endings are reachable from legitimate play and impossible from merely marking everything read. |
-| V3 | Save and recovery | Fault-injection results plus real filesystem relaunch tests. Old/new committed states stay internally consistent; no false success or silent destruction of an unsupported save. |
+| V1 | Canon and clue integrity | Reviewed source-to-claim and role/type/status matrices. All three discoveries supported; D1 sources reachable before the vault; proposed new details identified; no hidden classification leaked through the journal, date contradiction, circular corroboration, or false claim that fragment 14 locates Mara. |
+| V2 | Rules and narrative | Automated domain/scenario tests cover valid, invalid, repeated, and reordered actions, including all 24 ending/relationship combinations. Six base endings remain reachable from legitimate play under every earlier-choice combination and impossible from merely marking everything read. Unanswered dialogue does not imply a promise or explicit refusal. |
+| V3 | Save and recovery | Fault-injection results plus real filesystem relaunch tests for assurance, D1 posting, review-request presentation, and final commitment. Old/new committed states stay internally consistent; no false publication/success or silent destruction of an unsupported save. |
 | V4 | Media and accessibility | Exported build demonstrates video, voice, meme, cue replay, captions, descriptions, remapping, controller, comfort settings, and large text. Test cues at start/middle/end and after replay; caption timing target within 150 ms of authored cue boundaries, with perceptual review of speech and significant sounds. |
 | V5 | Navigation and interaction | Full exported playthrough; every overlay can be exited, every space has a return or recovery route, and scene changes do not leave stale input or audio. |
 | V6 | Performance and packaging | Named reference hardware, engine, renderer, resolution, quality setting, and frame-time capture. Initial target: 1080p, 60 fps with at least 95% of measured gameplay frames at or below 20 ms on the chosen reference machine. Profile traversal, avatar encounter, and video playback separately. Record loading separately; investigate repeated gameplay stalls above 100 ms. These are proposed targets, not measured capabilities. |
 | V7 | New-player understanding and engagement | At least five fresh players. Aim for four to explain their role within three minutes, find a useful lead within eight minutes, distinguish Oracle from Arbiter after both encounters, and distinguish supported findings from uncertainty at the ending. At least four should want to continue and identify a specific memorable moment. Record hint use and reasons for confusion; do not treat this tiny sample as market validation. |
 | V8 | Release integrity | A clean extracted package starts offline, completes, saves, and resumes without editor tooling. Rights/attribution records and known issues included; current browser game and demo still available. |
+| V9 | Relationships and causal understanding | In the same five fresh-player sessions used for V7, aim for four to explain why the Warden's behaviour changed, name a legitimate concern of one avatar or witness, and link a visible response to an actual player action. Inspect private and public routes to confirm no unexplained knowledge transfer. The first chapter demonstrates at least one cross-encounter change, one community response to circulation, and one witness response to a remembered choice. Record observed cases separately from hypothetical questions. |
 
-If V7 fails, identify whether the issue is story clarity, interaction, navigation, or encounter depth. Revise that element and test with new players before producing another full chapter. If exploration feels like walking between menus, add an observable avatar response or a meaningful spatial decision to the existing encounter before adding more map area.
+If V7 or V9 fails, identify whether the issue is story clarity, interaction, navigation, encounter depth, or an unexplained relationship. Revise that element and test with new players before producing another full chapter. If exploration feels like walking between menus, add an observable avatar response or a meaningful spatial decision to the existing encounter before adding more map area. If players cannot distinguish the Oracle and Arbiter, clarify the difference between interpreting evidence and granting authority in the encounter itself before adding glossary text.
 
 At checkpoint B, record whether third-person presentation would solve an observed problem that first person cannot. Do not change perspective merely to increase apparent production value. At checkpoint D, assess the complete chapter with provisional art before authorizing the full presentation workload in U12.
 
@@ -484,8 +602,10 @@ At checkpoint B, record whether third-person presentation would solve an observe
 - [ ] U1–U13 are complete or a documented scope change has explicitly revised this contract.
 - [ ] One complete Mara chapter provides four connected spaces, two major avatar encounters, one Warden interaction, three fair discoveries, and a persistent ending.
 - [ ] Voice, short video, meme, and physical evidence each have an investigative purpose and accessible equivalent.
-- [ ] The six disposition/private-context outcomes are authored, distinct where appropriate, and verified after relaunch.
-- [ ] All required checks V1–V8 have recorded results. Blocking defects are fixed; remaining limitations are visible in known issues.
+- [ ] The six disposition/private-context outcomes and their relationship overlays are authored and verified across all 24 combinations, including relaunch at critical changes.
+- [ ] The Oracle, Arbiter, and Warden encounters demonstrate distinct functions and a causal connection; community and witness responses have explicit knowledge sources.
+- [ ] The opening assurance, D1 annotation preview, packet destination, prior publication, and status notifications use consistent language and do not hide a commitment.
+- [ ] All required checks V1–V9 have recorded results. Blocking defects are fixed; remaining limitations are visible in known issues.
 - [ ] New-player feedback supports the direction or records the specific redesign needed before campaign expansion.
 - [ ] A local packaged build, launch instructions, verification report, asset register, and source changes are reviewable.
 - [ ] The previous browser game, saves, authored cases, and room demo remain intact.
@@ -513,6 +633,8 @@ At checkpoint B, estimate the full chapter from observed work: cost per finished
 
 The largest likely production drivers are avatar animation, final voice/video, environmental finish, and branch verification. Use placeholders to learn early, then finish the assets that carry the story. No specific budget, staffing level, deadline, or permission to purchase assets has been assumed.
 
+Revision 2 strengthens the existing chapter rather than adding locations or production avatars. Its added implementation work is a few saved relationship facts, two authored decision interactions, limited witness/community responses, and verification of the 24 combinations. Record the additional writing, recording, and testing effort at checkpoints B and D; the 30–45 minute duration remains a target to validate, not a requirement to rush dialogue or omit consequences.
+
 ### Decision register and research boundaries
 
 | Question | Current recommendation or uncertainty | Resolve by |
@@ -538,4 +660,8 @@ Prepared from repository inspection and primary-source research on 7 September 2
 
 Four corrections were applied: the Oracle chamber now has explicit implementation ownership; the checkpoint D playtest protocol and execution occur before the art unit that depends on them; an engine change explicitly requires updating dependent implementation instructions; and presentation checks refer to the quality tiers actually established in the engine proof.
 
-No additional blocking document findings remain. Platform preference, native engine suitability, production effort, and player response remain the explicitly assigned validation questions in the decision register, not verified facts. Native implementation and human playtesting remain future work.
+**Revision 2 — relationships and story:** The user authorized strengthening the roles' relationships and other areas that improve the experience. This revision adds an explicit taxonomy, power dependencies and conflicts, local avatar personalities, a clearer opening, remembered assurances, scoped mid-case disclosure, and chapter-to-chapter continuity. R14–R15, KTD11, V9, and the affected existing units carry these changes through to implementation and verification. Native implementation and human playtesting remain future work.
+
+Revision 2 received the same sequential self-review across consistency, feasibility, product, design, scope, and adversarial scenarios. The pass checked every new requirement against its implementation and verification owner and tightened five concrete failure points: a circular evidence/access gate, earlier publication disappearing under Bury, witnesses knowing private choices without notification, later dialogue rewriting an ending, and private details leaking through derived summaries. The explicit rules and checks now cover these cases. No additional blocking document findings remain; native behaviour has not been implemented or tested.
+
+Platform preference, native engine suitability, production effort, and player response remain the explicitly assigned validation questions in the decision register, not verified facts. The added relationship design preserves the current four-space, two-major-avatar chapter and the earlier engine/feel checkpoint.
