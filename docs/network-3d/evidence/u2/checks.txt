@@ -1,0 +1,34 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Vulkan 1.3.224 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce GTX 1060
+
+RENDERER: forward_plus
+GPU: NVIDIA GeForce GTX 1060
+PASS: a fresh launch starts the proof without prior progress
+PASS: rendered image exists: native-welcome
+PASS: rendered image exists: native-room
+PASS: movement changes player position
+PASS: inspection owns input and stops walking
+PASS: missing pinned evidence cannot solve the encounter
+PASS: source controls pin both passages
+PASS: unsupported replacement claim is rejected
+PASS: supported finding changes avatar and issues request
+PASS: rendered image exists: native-finding
+PASS: credential display refuses account badge
+PASS: credential display accepts issued source review
+PASS: packaged Oracle voice loads
+PASS: voice playback advances
+PASS: Oracle speech has a caption equivalent
+PASS: focus loss pauses Oracle speech
+PASS: explicit replay resumes Oracle speech after focus loss
+PASS: switching to evidence stops encounter speech
+PASS: packaged video and caption cues load
+PASS: Theora video decoding advances
+PASS: decoded video supplies an actual texture
+PASS: rendered image exists: native-video
+PASS: cue replay seeks to the requested time
+PASS: focus loss releases movement
+PASS: focus loss pauses media without losing the cue
+PASS: leaving evidence stops all owned media
+PASS: missing media gives a usable transcript fallback
+PASS: rendered image exists: native-gap
+RESULT: {"engine":"4.7.2-stable (official)","failures":0,"frames":240,"gpu":"NVIDIA GeForce GTX 1060","max_frame_ms":36.232,"note":"Short automated wall-clock scene sample; not a chapter performance benchmark or human playtest.","p95_frame_ms":17.791,"renderer":"forward_plus","window_size":"(1280, 720)"}

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Enter the Oracle's chamber. Follow Mara's sources and decide what the evidence can support.">
+<title>Enter the Network</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #101b22; color: #e9e6d9; font-family: "Segoe UI", sans-serif; }
+#canvas { display: block; width: 100%; height: 100%; outline: none; }
+#loading { position: fixed; inset: 0; display: grid; place-content: center; gap: 1rem; padding: 2rem; background: #101b22; text-align: center; }
+#loading[hidden] { display: none; }
+.eyebrow { color: #d8b983; font-size: .95rem; letter-spacing: .15em; }
+h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 400; margin: 0; }
+p { max-width: 36rem; margin: 0; line-height: 1.6; }
+progress { width: 100%; height: .4rem; accent-color: #7ab8b3; }
+button { justify-self: center; color: #e9e6d9; border: 1px solid #91b7ae; background: #263e45; padding: .8rem 1.5rem; font: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid #d8b983; outline-offset: 3px; }
+#toolbar { position: fixed; right: 1rem; top: .8rem; display: flex; gap: .5rem; }
+#toolbar button { padding: .4rem .7rem; font-size: .9rem; background: #101b22d9; }
+@media (max-width: 760px) { #toolbar { top: auto; bottom: .3rem; } }
+</style>
+$GODOT_HEAD_INCLUDE
+</head>
+<body>
+<canvas id="canvas" tabindex="0" aria-label="Enter the Network game. Use a keyboard and mouse."></canvas>
+<div id="loading" role="status" aria-live="polite">
+  <div class="eyebrow">THE NETWORK MYTHOS</div>
+  <h1>Enter the Network</h1>
+  <p id="notice">Opening the Oracle's chamber…</p>
+  <progress id="progress" aria-label="Loading the encounter"></progress>
+  <p>Play on a computer with a keyboard and mouse. This early encounter resets when you leave.</p>
+  <button id="retry" hidden>Try again</button>
+</div>
+<div id="toolbar"><button id="fullscreen" title="Use the full screen">Full screen</button></div>
+<noscript>Enable JavaScript to play Enter the Network.</noscript>
+<script src="network-loader.js"></script>
+<script src="$GODOT_URL"></script>
+<script>
+const config = $GODOT_CONFIG;
+const engine = new Engine(config);
+const overlay = document.getElementById('loading');
+const notice = document.getElementById('notice');
+const progress = document.getElementById('progress');
+const state = { status: 'loading', error: null };
+const originalFetch = window.fetch.bind(window);
+window.fetch = NetworkLoader.createFetch(originalFetch, {
+  baseURL: window.location.href,
+  executable: config.executable,
+  fileSizes: config.fileSizes,
+});
+document.getElementById('retry').onclick = () => window.location.reload();
+document.getElementById('fullscreen').onclick = async () => {
+  try {
+    if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
+    else await document.exitFullscreen();
+  } catch { /* The encounter remains playable in the window. */ }
+  document.getElementById('canvas').focus();
+};
+function fail(error) {
+  console.error(error);
+  state.status = 'error';
+  state.error = error instanceof Error ? error.message : String(error);
+  overlay.hidden = false;
+  notice.textContent = 'The chamber could not open. Check your connection and try again in an up-to-date desktop browser.';
+  progress.hidden = true;
+  document.getElementById('retry').hidden = false;
+}
+const missing = Engine.getMissingFeatures({ threads: false });
+if (missing.length || typeof DecompressionStream === 'undefined') {
+  fail(new Error('Required browser features unavailable: ' + missing.join(', ')));
+} else {
+  engine.startGame({
+    onProgress(current, total) {
+      if (total > 0) { progress.max = total; progress.value = current; }
+    },
+    onExit() { state.status = 'stopped'; },
+  }).then(() => {
+    state.status = 'ready';
+    overlay.hidden = true;
+    document.getElementById('canvas').focus();
+  }).catch(fail);
+}
+const lifecycle = new AbortController();
+window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
+if (document.modelContext?.registerTool) {
+  const tools = [
+    { name: 'read_encounter_loading_state', description: 'Read whether the online Oracle encounter is loading, ready or unable to open.', annotations: { readOnlyHint: true }, execute: () => ({ ...state }) },
+    { name: 'restart_encounter', description: 'Restart the online encounter. This clears this temporary session and reloads the same game.', annotations: { readOnlyHint: false }, execute: () => { setTimeout(() => location.reload(), 150); return { restarting: true }; } },
+  ];
+  for (const tool of tools) {
+    const execute = tool.execute;
+    tool.inputSchema = { type: 'object', properties: {}, additionalProperties: false };
+    tool.execute = input => {
+      if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).length) throw new Error('This tool takes an empty object.');
+      return execute();
+    };
+    try { Promise.resolve(document.modelContext.registerTool(tool, { signal: lifecycle.signal })).catch(console.warn); }
+    catch (error) { console.warn('Optional browser tool unavailable.', error); }
+  }
+}
+</script>
+</body>
+</html>

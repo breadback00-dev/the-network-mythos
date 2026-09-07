@@ -16,6 +16,14 @@ Players investigate strange digital cases through an Archive Hub, read evidence 
 
 Each case contains 15 evidence artifacts, search/filter tools, contradiction flagging, investigator notes, theory prompts, evidence-pair discoveries, and a final Archive decision.
 
+## New Direction and 3D Proof
+
+The [current Enter the Network plan](docs/plans/README.md) develops the game into a connected 3D narrative adventure with encounterable Network roles, human mysteries, media evidence, and remembered choices. The plan and saved revisions are tracked in this repository. The first native Oracle encounter is implemented; the complete Mara chapter remains in development.
+
+Read the [native run instructions](game/README.md), [engine checkpoint and captures](docs/network-3d/engine-proof.md), and [experience bible](docs/network-3d/experience-bible.md). The Windows encounter includes source pinning, an animated Oracle, voice, vertical video, captions and a bounded review request. Human platform and feel checks remain pending. The [earlier browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) is preserved on its historical branch as a record of progress.
+
+[Play the Oracle encounter online](https://enter-the-network.breadback00.chatgpt.site) with a desktop keyboard and mouse. This preview is currently private to the owner's account. The [web preview record](docs/network-3d/web-preview.md) describes the browser build and what has been verified.
+
 ## Why It Is Interesting
 
 The prototype treats investigation as an ethical system rather than a puzzle box. Solving a case is not enough; the player must decide how much truth should become public, what should remain protected, and what the Archive becomes as those decisions accumulate.
