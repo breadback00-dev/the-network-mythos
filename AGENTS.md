@@ -21,6 +21,8 @@ Save canonical changes in this repository first. At completed, reviewed checkpoi
 
 The Enter the Network plan governs the proposed native 3D direction, including its documented changes to the older room and fixed-artifact format. The runtime instructions below describe the existing Archive Hub. The isolated `prototypes/archive-3d/` demonstration uses port `4189`, follows its own README, and does not share production Archive saves. It is an earlier browser proof, not implementation of the complete native plan.
 
+Native work lives in `game/`, with its authoring brief in `docs/network-3d/`. The browser demonstration is preserved on `feat/archive-3d-proof`; do not merge or extend that historical draft as part of native development. Use the native branch and its own verification record. Legacy Hub checks apply when Hub or case runtime changes; native changes require Godot checks and exported-build evidence. Follow the plan's engine/feel and fresh-player gates before dependent production work.
+
 ## Start Here
 
 Read first:

@@ -4,7 +4,8 @@
 
 - [Current plan and revision history](plans/README.md): Enter the Network, its relationship revision, and the earlier browser plan.
 - [Initial game review](reviews/2026-09-06-the-network-mythos-review.html): saved HTML review; download and open locally for the formatted view.
-- [Playable 3D room proof](../prototypes/archive-3d/README.md): isolated browser demonstration, setup, and limitations.
+- [Native experience bible](network-3d/experience-bible.md): chapter, roles, source boundaries and authoring decisions.
+- [Historical browser room proof](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d): earlier demonstration preserved as progress history.
 
 The native 3D chapter is planned, not yet implemented. The existing Archive Hub remains playable as described below.
 

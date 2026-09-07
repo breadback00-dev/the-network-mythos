@@ -2,7 +2,7 @@
 
 Start with [The Network Mythos: Enter the Network — current plan](2026-09-07-0140-feat-enter-the-network-plan.md). Revision 2 includes the 3D adventure direction, role relationships, character motivations, remembered choices, implementation stages, and planned verification.
 
-The plan describes future work. The complete native chapter and its avatar encounters have not been implemented. The isolated browser room is documented separately under [prototypes/archive-3d](../../prototypes/archive-3d/README.md).
+The plan describes the complete native chapter, which remains in development. Start native authoring with the [experience bible](../network-3d/experience-bible.md). The earlier [browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) remains on its historical branch and does not need to be merged to preserve that progress.
 
 ## Saved planning states
 

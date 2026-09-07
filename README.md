@@ -20,7 +20,7 @@ Each case contains 15 evidence artifacts, search/filter tools, contradiction fla
 
 The [current Enter the Network plan](docs/plans/README.md) develops the game into a connected 3D narrative adventure with encounterable Network roles, human mysteries, media evidence, and remembered choices. The plan and saved revisions are tracked in this repository. The native chapter remains future work.
 
-An [isolated playable 3D Archive room](prototypes/archive-3d/README.md) is available as an earlier browser proof. It includes a fictional short video, a voice message, a meme, one evidence deduction, and sample consequences. Follow its setup instructions and open port `4189`; it does not change the Archive Hub or its saves.
+Native development starts with the [experience bible](docs/network-3d/experience-bible.md) and the `game/` engine proof. The [earlier browser room](https://github.com/breadback00-dev/the-network-mythos/tree/feat/archive-3d-proof/prototypes/archive-3d) is preserved on its historical branch as a record of progress.
 
 ## Why It Is Interesting
 
