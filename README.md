@@ -1,5 +1,7 @@
 # The Network Mythos
 
+**Active development: [`feat/illustrated-mystery`](https://github.com/breadback00-dev/the-network-mythos/tree/feat/illustrated-mystery).** The user confirmed this illustrated mystery RPG as the direction to continue on 7 September 2026. **Next change: a story-led opening** that explains Mara's apparent return, the player's role and the human stakes. Read the [next-session handoff and saved opening draft](docs/illustrated-mystery/next-session.md). [Play the current illustrated chapter](https://enter-the-network.breadback00.chatgpt.site/adventure/).
+
 **The Network Mythos** is a playable interactive archive about synthetic identity, online communities, platform power, and the ethics of preserving truth.
 
 Players investigate strange digital cases through an Archive Hub, read evidence dossiers, unlock deeper files, build theories, and decide what the Archive should do with the truth: **Publish**, **Bury**, or **Preserve**.
@@ -16,7 +18,7 @@ Players investigate strange digital cases through an Archive Hub, read evidence 
 
 Each case contains 15 evidence artifacts, search/filter tools, contradiction flagging, investigator notes, theory prompts, evidence-pair discoveries, and a final Archive decision.
 
-## New Direction and 3D Proof
+## Active Illustrated Direction and Preserved Prototypes
 
 The [current implementation plan](docs/plans/2026-09-07-1006-feat-illustrated-mystery-rpg-plan.md) develops the game as an illustrated mystery adventure with light RPG progression. The [illustrated Mara chapter](adventure/README.md) now has an internal playable build with expressive avatars, media evidence, remembered choices and browser saves. Read its [verification record](docs/illustrated-mystery/verification-record.md) and [release record](docs/illustrated-mystery/release-record.md); human pacing and voice review remain pending. [Earlier plans and revisions](docs/plans/README.md) remain saved.
 
