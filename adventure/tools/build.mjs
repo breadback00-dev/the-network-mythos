@@ -1,0 +1,5 @@
+import{readdir,readFile,writeFile,mkdir,copyFile}from'node:fs/promises';import{join,dirname}from'node:path';import{fileURLToPath}from'node:url';import{createHash}from'node:crypto';
+const root=fileURLToPath(new URL('../',import.meta.url)),out=join(root,'dist');
+const entries=['index.html','styles.css','src','content','assets'];const manifest={};
+async function copy(rel){const path=join(root,rel);let children;try{children=await readdir(path,{withFileTypes:true});}catch{const bytes=await readFile(path);await mkdir(dirname(join(out,rel)),{recursive:true});await copyFile(path,join(out,rel));manifest[rel]={bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};return;}for(const c of children){if(c.isSymbolicLink())throw Error('Symlinks are not release inputs');await copy(join(rel,c.name));}}
+for(const e of entries)await copy(e);await writeFile(join(out,'build-manifest.json'),JSON.stringify(manifest,null,2));console.log('Built',Object.keys(manifest).length,'files;',Object.values(manifest).reduce((n,f)=>n+f.bytes,0),'bytes');
